@@ -17,6 +17,7 @@
 	24Nov14 zig - add meta tag for image for google custom search 
 	24Nov14 zig - make featured image the default again (change =='Enable'  to !='Disable')
 	10jun15 zig - honor related posts = 'disable'
+	23Aug16 zig - remove related posts within content.
  */
 ?>
 <?php get_header();?>    
@@ -72,14 +73,14 @@
 						<div class="prl-entry-content clearfix">
 							
 						   <?php if($prl_data['show_excerpt']=='Enable') {?><strong><?php the_excerpt(); ?></strong><?php }?>
-						   <?php if (in_category('Obituaries')) { the_content();  } 
+						   <?php /* zig xout 23Aug16  if (in_category('Obituaries')) { the_content();  } 
 						   		else { 
 						   		$relpostpos = get_post_meta($post->ID, 'pl_related', true);
 						   		echo '<!-- '.$relpostpos.' zig -->';
 						   		embed_related_content($relpostpos);  
-						   	} ?>
+						   	} */ ?>
 						   <?php /* embed_related_content(); echo '<!-- content -->'.$content; */ ?>
-						   <?php /* the_content(); */?>
+						   <?php /* zig 23Aug16 ++ */ the_content(); ?>
 
 						   <?php wp_link_pages(array('before' => __('Pages','presslayer').': ', 'next_or_number' => 'number')); ?>
 						   <?php edit_post_link(__('Edit','presslayer'),'<p>','</p>'); ?>
