@@ -701,6 +701,17 @@ body {
   #sliderTab .slider_content .slider_title {
     background: linear-gradient(to bottom, transparent 0%, #0D365A 100%); }
 
+.pullquote-left {
+  width: 250px;
+  float: left;
+  position: relative;
+  font-weight: bold;
+  font-size: 1.5em;
+  line-height: 1.3em;
+  margin: 20px 20px 20px -65px;
+  text-align: center;
+  font-family: times; }
+
 /* the Author tabs section at bottom of single posts */
 #ts-fab-below div.ts-fab-tabs div.ts-fab-tab {
   border-color: #DDD; }
@@ -876,6 +887,28 @@ a.more-about-link:before {
   .widget .textwidget .eai-right-rail {
     width: 300px;
     margin-left: -30px; } }
+@media only screen and (max-width: 1250px) {
+  .pullquote-left {
+    width: 100%;
+    float: none;
+    position: relative;
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: 1.3em;
+    margin: 20px 0px;
+    text-align: center;
+    font-family: times; } }
+@media only screen and (max-width: 770px) and (min-width: 670px) {
+  .pullquote-left {
+    width: 250px;
+    float: left;
+    position: relative;
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: 1.3em;
+    margin: 20px 20px 20px -65px;
+    text-align: center;
+    font-family: times; } }
 /* Smaller than standard 960 (devices and browsers) */
 @media only screen and (max-width: 959px) {
   nav.ubermenu {

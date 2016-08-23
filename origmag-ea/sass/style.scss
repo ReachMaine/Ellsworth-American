@@ -50,6 +50,20 @@ body {
 	}
 }
 
+// Pull-Quotes
+
+.pullquote-left {
+	width: 250px;
+	float: left;
+	position: relative;
+	font-weight: bold;
+	font-size: 1.5em;
+	line-height: 1.3em;
+	margin: 20px 20px 20px -65px;
+	text-align: center;
+	font-family: times;
+}
+
 /* the Author tabs section at bottom of single posts */
 #ts-fab-below {
 	div.ts-fab-tabs {
