@@ -1,0 +1,6 @@
+			$logout_url = "";
+			if (function_exists('get_leaky_paywall_settings')){
+				$lk_settings = get_leaky_paywall_settings();
+				$logout_url = get_page_link( $lk_settings['page_for_login'] );
+			}
+			$result .= '<p>Click here to <a href="'.wp_logout_url( $logout_url ).'">Log Out</a>';

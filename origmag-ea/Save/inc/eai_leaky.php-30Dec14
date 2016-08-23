@@ -1,0 +1,245 @@
+<?php 
+
+/* functions & setting for adding leakypay wall to */
+
+
+/*  leaky_paywall_continue_reading
+
+	if hit the nag and login or pay, be able to go back to what you are reading.
+
+*/
+/*  leaky_paywall_continue_reading
+
+	if hit the nag and login or pay, be able to go back to what you are reading.
+
+*/
+if ( !function_exists( 'do_eai_paywall_thanks') ) {
+	function do_eai_paywall_thanks() {
+		global $current_user;
+		$result = "";
+
+		$result .= '<div class="prl-grid eai-leaky-thanksbox">';
+
+		if (function_exists( 'is_issuem_leaky_subscriber_logged_in') ) {
+			$query_str = $_SERVER['QUERY_STRING'];
+			if ( is_issuem_leaky_subscriber_logged_in() ) {
+				/* user is logged in  */
+
+				get_currentuserinfo();
+				$result .= '<div class="prl-span-6 eai-leaky-thanks">';
+				if ( $query_str == 'issuem-leaky-paywall-stripe-return=1' ) {
+					/* user is just paid - on the stripe success */
+					$result .= '<h3>Thank you for Subscribing!</h3>';
+					$result .= '<p>Your username is <span class="eai-login-name">'.$current_user->user_login.'</span>.</p>';
+					$result .= '<p>Please Note:</br>You should recieve an email containing your password shortly.  You may change your password at any time.  Just visit the site and click <a href="'.get_bloginfo('url').'/account-profile">My Account</a> above the main menu.</p>';
+					$result .= '<p>For your convenience, we suggest you save your username and password in your browser when prompted.</p>';
+
+				} else {
+					$result .= '<p>Welcome <span class="eai-login-name">'.$current_user->user_login.'</span>.</p>';
+					$result .= '<p>You may change your password at any time.  Just visit the site and click <a href="'.get_bloginfo('url').'/account-profile">My Account</a> above the main menu.</p>';
+				}
+				$result .= '</div>';
+
+				$last_read = $_SESSION["eai_last"];
+				if ($last_read != '') {
+					$refer_url = get_permalink($last_read);
+					$refer_title = get_the_title($last_read);
+					/*$result .= '<p>Click <a href="'.$refer_url.'">here</a> to continue reading...'.$refer_title."</p>";*/
+					$result .= '<div class="prl-span-6">';
+						$result .= '<h3 class="eai-leaky-continue"><a  href="'.$refer_url.'">Click here to continue reading...</a></h3>';
+						$result .= build_referer($last_read);
+					$result .= '</div>';
+					unset($_SESSION['eai_last']);// clear out session var if get here.
+				}
+			
+			} else {
+				if (is_user_logged_in()) {
+					$result .= '<p>Your subscription has expired. Please sign up below to renew.</p>';
+				}
+			}
+		}
+		$result .= '</div>'; // end row/panel.
+		return $result;
+	}
+	add_shortcode( 'leaky_paywall_thanks', 'do_eai_paywall_thanks' );
+}
+function build_referer($in_post_id) {
+	$refer_title = get_the_title($in_post_id);
+	$refer_link = get_permalink($in_post_id);
+	$results .= '<div class="prl-span-8">';
+        $results .= '<div class="prl-grid">';
+			$results.=  '<div class="prl-span-6">';
+        		$results.=  '<article class="prl-article">';
+        			$results .= '<a href="'.$refer_link.'" title="'.$refer_title.'">';
+						$results .= get_the_post_thumbnail($in_post_id, 'ea_featuredcrop');
+					$results .= '</a>';
+				$results.=  '</article>';
+        	$results .= '</div>';
+        	$results.=  '<div class="prl-span-6">';
+        		$results.=  '<article class="prl-article">';
+        			$results.=  '<h3 class="prl-article-title"><a href="'.$refer_link.'" title="'.$refer_title.'">'.$refer_title.'</a></h3>';
+					$results .= '<p>'.get_excerpt_by_id($in_post_id).'</p>';
+        		$results.=  '</article>';
+         	$results.=  '</div>';    
+        $results .= '</div>';
+    $results .= '</div>';
+    return $results;
+}
+function build_thanks() {
+	global $current_user;
+	get_currentuserinfo();
+	$result_html = "";
+	$result_html .= '<p> Your username is <span class="eai-login-name">'.$current_user->user_login.'</span>.</p>';
+	$result_html .= '<p>You should recieve and email containing your password shortly.  You may change your password at any time.  Just visit the site and click "My Account" in the main menu.</p>';
+	$result_html .= '<p>For your convenience, we suggest you save your username and password in your browser when prompted.</p>';
+
+	return $result_html;
+}
+if ( !function_exists( 'eai_logout_process' ) ) {
+	/**
+	 * Removes session variables for EA Leaky Paywall subscriber
+	 *
+	 */
+	function eai_logout_process() {
+		unset( $_SESSION['eai_last'] );
+	}
+	add_action( 'wp_logout', 'eai_logout_process' ); //hook into the WP logout process
+}
+
+
+if (!function_exists('get_excerpt_by_id')) {
+	function get_excerpt_by_id($post_id){
+	    $the_post = get_post($post_id); //Gets post ID
+	    $the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
+	    $excerpt_length = 15; //Sets excerpt length by word count
+	    $the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); //Strips tags and images
+	    $words = explode(' ', $the_excerpt, $excerpt_length + 1);
+
+	    if(count($words) > $excerpt_length) :
+	        array_pop($words);
+	        array_push($words, '…');
+	        $the_excerpt = implode(' ', $words);
+	    endif;
+
+	    return $the_excerpt;
+	}
+}
+
+/*
+	functino to display the login/subscribe or hello/logout  
+*/
+
+if (!function_exists('eai_leaky_loginmenu')) {
+	function eai_leaky_loginmenu(){
+
+		$out_string = "";
+		if (function_exists( 'is_issuem_leaky_subscriber_logged_in') ) {
+			$lp_settings = get_leaky_paywall_settings();
+			$login_url = get_page_link( $lp_settings['page_for_login'] );
+			$subscription_url = get_page_link( $lp_settings['page_for_subscription'] );
+			$out_string .= '<ul class="ea-leaky-login">';
+			if ( is_user_logged_in()){ 
+				if ( is_issuem_leaky_subscriber_logged_in() ) {
+					$out_string .= '<li>';
+						$out_string .= '<a class="eai-leaky-account" href="'.get_bloginfo('url').'/account-profile">My Account</a>';
+					$out_string .= "</li>";
+					$out_string .= '<li>';
+						$out_string .= '<a href="'.wp_logout_url( get_page_link( $settings['page_for_login'] ) ).'">'. __( 'Log Out', 'issuem-leaky-paywall' ).'</a>';
+					$out_string .= "</li>";
+				} else {
+					$out_string .= '<li class="eai-leaky-subscribe-link">';
+					$out_string .= '<a href="'.$subscription_url.'">Subscribe</a>'; 
+					$out_string .= "</li>";
+					$out_string .= '<li>';
+						$out_string .= '<a href="'.wp_logout_url( get_page_link( $settings['page_for_login'] ) ).'">'. __( 'Log Out', 'issuem-leaky-paywall' ).'</a>';
+					$out_string .= "</li>";
+				}
+			}else {
+				// not logged in at all 
+				$out_string .= '<li class="eai-leaky-login-link">';
+					$out_string .= '<a href="'.$login_url.'">Login</a>';
+				$out_string .= "</li>";
+				$out_string .= '<li class="eai-leaky-subscribe-link">';
+					$out_string .= '<a href="'.$subscription_url.'">Subscribe</a>'; 
+				$out_string .= "</li>";
+			}
+			$out_string .= "</ul>";
+		}
+		return $out_string;
+	}
+} 
+if (!function_exists('cimy_update_ExtraFields')) {
+	add_action('profile_update','cimy_update_ExtraFields'); // zig
+}
+
+add_action('profile_update','eia_update_cimy'); // zig
+if (!function_exists('eia_update_cimy')) {
+	function eia_update_cimy() {
+		
+	}
+}
+add_action( 'wp_login_failed', 'custom_login_fail', 10, 1 );  // hook failed login
+function custom_login_fail( $username ) {
+	$referrer = $_SERVER['HTTP_REFERER'];  // where did the post submission come from?
+   // if there's a valid referrer, and it's not the default log-in screen
+	wp_redirect( $referrer . '?login=failed' ); 
+   if ( !empty($referrer) && !strstr($referrer,'wp-login') && !strstr($referrer,'wp-admin') ) {
+   	 $pos = strpos($referrer, '?login=failed');
+        if($pos === false) {
+            // add the failed
+            wp_redirect( $referrer . '?login=failed' );  // let's append some     information (login=failed) to the URL for the theme to use
+        }
+        else {
+            // already has the failed don't appened it again
+            wp_redirect( $referrer );  // already appeneded redirect back
+        }   
+ 
+      exit;
+   }
+}
+/* still have issue when no username or password.  
+see http://wordpress.stackexchange.com/questions/95614/login-failed-only-attached-to-url-under-certain-circumstances
+add_action( 'wp_authenticate', 'my_front_end_login_fail', 1, 2 );
+
+function my_front_end_login_fail( $user, $pwd ) { 
+	 if ( ! empty( $user ) && ! empty( $pwd ) && ! is_wp_error( $user ) )
+        return false;
+} */
+
+/******* Custom Post type for Obits ***********/
+add_action ('init', 'create_obit_posttype');
+if (!function_exists('create_obit_posttype')) {
+	function create_obit_posttype() {
+		 register_post_type( 'ea_obit',
+		    array (
+		      'labels' => array(
+		        'name' => __( 'Obits' ),
+		        'singular_name' => __( 'Obit' )
+		    ),
+		      'taxonomies' => array('category', 'post_tag'),  
+		      'public' => true,
+		      'has_archive' => true,
+		      'supports' => array( 'title', 'editor', 'comments', 'excerpt', 'custom-fields', 'thumbnail' ),
+		      'rewrite' => array('slug' => 'obituary'),
+		)   );
+	}
+}
+
+
+/******* Custom Post type for e_edition ***********/
+add_action ('init', 'create_eedition_posttype');
+if (!function_exists('create_eedition_posttype')) {
+	function create_eedition_posttype() {
+		 register_post_type( 'ea_eedition',
+		    array (
+		      'labels' => array(
+		        'name' => __( 'E-editions' ),
+		        'singular_name' => __( 'E-edition' )
+		    ),
+		      'public' => true,
+		      'has_archive' => true,
+		      'rewrite' => array('slug' => 'eedition'),
+		)   );
+	}
+}
+?>

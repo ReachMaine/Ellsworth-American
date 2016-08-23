@@ -1,0 +1,65 @@
+aside .widget-zbtlist { /* sytling for text ad's widget on sidebar 123 */
+	ul.zbt-ad-list {
+		.zbt-title {
+			font-size: 14px;
+			font-weight: bold;
+			display: block;
+		}
+		img.zbt-image {
+			width: 100%;
+		}
+		padding-left: 0px;
+		li:not(:last-child) {
+		 	//border-bottom: 1px solid $borderltgrey;
+		}
+		
+		.zbt-content {
+			display: block;
+		}
+		.zbt-ad-link {
+			font-size: 12px;
+		}
+	}
+
+}
+.biz-today.horizontal aside.widget-zbtlist  { // styling for business today ads underneath content */
+	float: left;
+	//border-bottom: 1px solid $borderltgrey;
+	.widget-title {
+		text-align: center;
+	}
+	ul.zbt-ad-list  {
+		float: left;
+		padding-left: 0px;
+		li {
+			//border-left: 1px solid $borderltgrey;
+			width: 30%;
+			float: left;
+			padding-left: 2%;
+			padding-right: 1%;
+			.zbt-title {
+				font-size: 14px;
+				font-weight: bold;
+				display: block;
+				height: 35px;
+			}
+			.zbt-content {
+				display: block;
+			}
+			.zbt-ad-link {
+				font-size: 12px;
+				float: left;
+				text-align: right;
+				width: 100%;
+			}
+		}
+		li:first-child {
+			padding-left: 0px;
+			border-left: 0px;
+		}	
+		li:last-child {
+			padding-right: 0px;
+		}
+	}
+	
+}

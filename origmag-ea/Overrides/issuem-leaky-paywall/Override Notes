@@ -1,0 +1,34 @@
+Override Notes / changes.
+1.  VisionData as payment gateway = Manual
+	functions.php -> ????
+
+
+2.  Redirect when login
+	shortcodes.php -> do_leaky_paywall_login().  
+		- Add redirect parameter.  
+		- Use it if there is one.
+
+3.  Save the referrer s.t. we can get them back there when login.
+	class.php -> the_content_paywall() (just before return)
+			/* zig - save the post id of last read post */
+			$refer_url = $_SERVER["REQUEST_URI"];
+			$refer_id = url_to_postid($refer_url);
+			$_SESSION["eai_last"] = $refer_id;
+			/* zig done */
+
+4.  A change label for being able to login via username OR email
+	shortcodes.php -> do_leaky_paywall_login() args for wp_login_form. 
+		- 'label_username' => 'Username or Email', // zig
+
+5.  if login failed, give SOME indication  & user our own login_form_bottom action 
+	shortcodes.php -> do_leaky_paywall_login() beginning of traditional login stuff.
+		-	if ($_GET['login'] == 'failed' ) { // zig - give some error...
+				echo '<div class="eai-login-fail-msg"> Login Failed.  Please try again.</div>'; 
+			}
+		-	comment out the add_action for 'login_form_bottom' (using our own, defined in /inc/eai_leaky)
+---------------------
+
+also see shortcodes added in /inc/eai_leaky.php
+		ea_leaky_paywall_welcome
+		leaky_paywall_thanks
+	and some handy functions & actions there.
