@@ -10,6 +10,13 @@ require_once(get_stylesheet_directory().'/inc/eai_election_results.php');
 require_once(get_stylesheet_directory().'/inc/eai_leaky.php'); 
 require_once(get_stylesheet_directory().'/inc/eai_obits.php');
 require_once(get_stylesheet_directory().'/inc/eai_technav.php');
+require_once(get_stylesheet_directory().'/inc/ea_expand_image.php');
+
+// add the javascript for the expand_image stuff
+	function ea_enqueue_styles() {
+	    wp_enqueue_script('ea_expand_image', get_stylesheet_directory_uri().'/inc/ea_expand_image.js', array( 'jquery' ) );
+	}
+	add_action( 'wp_enqueue_scripts', 'ea_enqueue_styles' );
 
 if ( function_exists('register_sidebar') ){
 		// breaking news
