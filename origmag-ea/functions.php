@@ -68,7 +68,7 @@ function zig_remove_columns( $columns ) {
  
 }
 /*** images/media  ***/
-
+add_image_size( 'yarpp-thumbnail', 180, 180, true ); // thumbnail size for yarpp zig 29Aug16
 add_image_size( 'ea_featuredimg', 1200, 800, false ); 
 add_image_size( 'ea_featuredcrop', 1200, 800, true ); 
 add_image_size( 'ea_story', 600, 400, false ); 
