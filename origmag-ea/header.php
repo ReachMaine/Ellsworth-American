@@ -10,6 +10,7 @@
 		3Aug15 zig - dont add broadstreet init for secure pages ,may not need this....
 		31jan16 - zig:  add technavia paywall login call (take out leaky)
 		29Aug16 - zig - move technavia script put to under body tag (from footer)
+		1sept 15 zig add google font Vollkorn
 */
 global $theme_url, $prl_data; ?>
 <!DOCTYPE html>
@@ -33,7 +34,7 @@ global $theme_url, $prl_data; ?>
 	<link rel="shortcut icon" href="<?php echo trim($prl_data['site_fav']);?>">
 	<?php } ?>
 
-	
+<link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700,700i" rel="stylesheet">	
 <script data-cfasync="false" type="text/javascript" src="//cdn.broadstreetads.com/init.js"></script>
 <?php 
 	if (!is_singular('post') ) { 	?>
