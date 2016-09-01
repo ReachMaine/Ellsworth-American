@@ -9,6 +9,7 @@
 		17Mar15 -zig - add meta name=thumbnail
 		3Aug15 zig - dont add broadstreet init for secure pages ,may not need this....
 		31jan16 - zig:  add technavia paywall login call (take out leaky)
+		29Aug16 - zig - move technavia script put to under body tag (from footer)
 */
 global $theme_url, $prl_data; ?>
 <!DOCTYPE html>
@@ -64,7 +65,8 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 ?>
 <body <?php body_class($body_class[$prl_data['site_style']]); ?>>
 <?php if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) { gtm4wp_the_gtm_tag(); } ?>
-
+<?php /* 29Aug16 zig - put technavia script here....*/ ?>
+<script data-cfasync="false" type="text/javascript" src="http://ellsworthamerican.me.pw.newsmemory.com/include.php"></script>
 <div class="site-wrapper">
     <!--<div class="prl-container">-->
 

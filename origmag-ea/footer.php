@@ -3,6 +3,7 @@
 		10Oct14 - zig - modify copyright to 
 		24Dec14 - zig - add broadstreet popup script
 		31jan16 - zig - add technavia script at bottom of page
+		29Aug16 - zig - xout technavia script.  put into header.
 */ ?>
 <?php global $theme_url, $prl_data;?>
 	<footer id="footer">
@@ -34,7 +35,7 @@
 	<?php if($prl_data['switcher']=='Enable') include ('_switcher/index.php');?>  
 	<a id="toTop" href="#"><i class="fa fa-long-arrow-up"></i></a>
 	
-	<script data-cfasync="false" type="text/javascript" src="http://ellsworthamerican.me.pw.newsmemory.com/include.php"></script>
+	<?php /* 29Aug16 zig try moving to after body tag -<script data-cfasync="false" type="text/javascript" src="http://ellsworthamerican.me.pw.newsmemory.com/include.php"></script> */ ?>
 	<?php /* technavia footer script */ ?>
     
 	<?php wp_footer();?>
