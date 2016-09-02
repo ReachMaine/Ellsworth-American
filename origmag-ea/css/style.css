@@ -729,10 +729,14 @@ body.site-boxed .site-wrapper {
 body {
   background-image: none; }
 
-/* aligning main navigation */
-#ubermenu-nav-main-2672-main_nav {
-  display: flex;
-  justify-content: space-around; }
+/* aligning main & top navigation */
+@media (min-width: 1155px) {
+  #sf-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; } }
+#nav.prl-navbar #sf-menu {
+  padding-left: 0px; }
 
 .wp-caption p.wp-caption-text {
   padding: 5px; }
@@ -938,12 +942,6 @@ body.site-boxed .site-wrapper {
 body {
   background-image: none; }
 
-.prl-block-title, .comment-reply-title, .yarpp-related-widget h3 {
-  font-family: georgia;
-  border-bottom: none;
-  margin-bottom: 0px;
-  font-size: 15px; }
-
 #nav.prl-navbar .prl-container .nav-wrapper {
   border-top: none; }
 
@@ -961,10 +959,6 @@ aside .widget_hcclist ul.hcc_event_list li.hcc_event a .hcc_event_title, a.hcc_s
 
 div.hcc_event_venue, div.hcc_event_datetime {
   color: #484848; }
-
-aside .widget .widget-title, aside .widget .prl-block-title, aside .widget .widget-title a {
-  color: black;
-  font-family: georgia; }
 
 p {
   font-size: 15px; }
@@ -1016,6 +1010,49 @@ div.yarpp-related ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between; }
+
+#aq-template-wrapper-79074 .prl-span-3 {
+  padding-left: 15px;
+  padding-right: 20px; }
+
+.prl-block-title, .comment-reply-title, .yarpp-related-widget h3 {
+  font-family: "Roboto Condensed";
+  border-bottom: none;
+  margin-bottom: 0px;
+  font-size: 15px; }
+
+aside .widget .widget-title, aside .widget .prl-block-title, aside .widget .widget-title a {
+  color: black; }
+
+p, .single-post-thumbnail-caption {
+  font-family: Vollkorn; }
+
+p {
+  font-size: 17px;
+  line-height: 23px; }
+
+#nav.prl-navbar #sf-menu li a {
+  font-size: 18px;
+  font-family: "Roboto Condensed"; }
+
+#topnav a {
+  font-family: "Roboto Condensed";
+  font-size: 14px; }
+
+.ccfic {
+  font-size: 14px; }
+
+p.yarpp-thumbnail-title {
+  font-family: "Roboto Condensed"; }
+
+.wp-caption p.wp-caption-text {
+  font-size: 13px; }
+
+h4.eai-featured-2nd {
+  line-height: 19px; }
+
+aside .widget .widget-title {
+  font-family: "Roboto Condensed"; }
 
 /* this should stay at bottom */
 /* ********** media ************ */
