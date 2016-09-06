@@ -1040,19 +1040,22 @@ p {
   font-size: 14px; }
 
 .ccfic {
-  font-size: 14px; }
+  font-size: 15px; }
 
 p.yarpp-thumbnail-title {
   font-family: "Roboto Condensed"; }
 
 .wp-caption p.wp-caption-text {
-  font-size: 13px; }
+  font-size: 14px; }
 
 h4.eai-featured-2nd {
   line-height: 19px; }
 
 aside .widget .widget-title {
   font-family: "Roboto Condensed"; }
+
+strong:first-child {
+  font-size: 15px; }
 
 /* this should stay at bottom */
 /* ********** media ************ */
