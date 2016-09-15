@@ -6,6 +6,7 @@
 		Add sports scores block, 1st block after featured/heading block
 		-> use most recent post from the sport-> scores category
 	6April add link to scores archive
+	15Sept16 zig - apply filters to sports scores box.
 
 **/
 
@@ -374,7 +375,7 @@ if (!class_exists('eacat_sports')) {
 							echo '</div>';
 							echo '<article class="prl-article">';
 							echo '<h3 class="prl-article-title">'.get_the_title().'</h3>';
-							echo get_the_content();
+							echo apply_filters('the_content',get_the_content());
 							echo '</article>';
 							echo '<a class="scores-more-link" href="'.get_category_link( $scores_category ).'">Past Scores</a>';
 						echo '</div>';
