@@ -25,4 +25,27 @@ $sportbox-title-background: #1E73BE;
 	.scores-more-link:after {
 		content: " >>> ";
 	}
+	ul {
+		list-style: none;
+		padding-left: 0px;
+		padding-bottom: 4px;
+		font-size: .9em;
+		font-family: Vollkorn;
+	}
+	li {
+		padding-left: 11px;
+		font-weight: bold;
+		font-size: 1.2em;
+		font-family: Vollkorn;
+	}
+	p {
+		padding-bottom: 0px;
+		margin-bottom: 2px;
+		color: #1E73BE;
+	}
 } 
+
+div.eai-scores {
+padding-left: 20px;
+padding-right: 20px;
+}

@@ -577,6 +577,25 @@ aside .widget-zbtlist {
   float: right; }
 .eai-scores .scores-more-link:after {
   content: " >>> "; }
+.eai-scores ul {
+  list-style: none;
+  padding-left: 0px;
+  padding-bottom: 4px;
+  font-size: .9em;
+  font-family: Vollkorn; }
+.eai-scores li {
+  padding-left: 11px;
+  font-weight: bold;
+  font-size: 1.2em;
+  font-family: Vollkorn; }
+.eai-scores p {
+  padding-bottom: 0px;
+  margin-bottom: 2px;
+  color: #1E73BE; }
+
+div.eai-scores {
+  padding-left: 20px;
+  padding-right: 20px; }
 
 .party-R {
   color: #D33;
