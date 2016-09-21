@@ -736,6 +736,9 @@ table.eai-results {
 	padding-left: 8%;
 	padding-right: 8%:
 } */
+#eai-home-house img {
+  border: 1px solid #333333; }
+
 img.attachment-yarpp-thumbnail.size-yarpp-thumbnail.wp-post-image {
   float: left; }
 
