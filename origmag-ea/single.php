@@ -50,7 +50,9 @@
 							?>
 						</div>
 						<div class="single-post-thumbnail-caption space-bot">
-							<?php cc_featured_image_caption(); ?>
+							<?php if (function_exists('cc_featured_image_caption') ) {
+								cc_featured_image_caption();
+							} ?>
 						</div>
 					<?php endif; ?>
 			   <h1><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
