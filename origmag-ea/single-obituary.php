@@ -105,8 +105,11 @@
         </section>
 
         <aside id="sidebar" class="prl-span-3">
-
-            <?php get_sidebar('single');?>
+            <?php if ( is_active_sidebar('obits' )) {
+            	dynamic_sidebar('obits');
+            } else {
+            	get_sidebar('single');
+            } ?>
         </aside>
     </div>
 </div>
