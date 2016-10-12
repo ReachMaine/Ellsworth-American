@@ -1,5 +1,5 @@
-/*  
-	Theme Name: EA-origmag	
+/*
+	Theme Name: EA-origmag
 	Theme URI: http://www.reachmaine.com/
 	Description: Original Mag Template for the Ellsworth American
 	Version: 2.0.7
@@ -759,6 +759,9 @@ body {
     justify-content: space-around; } }
 #nav.prl-navbar #sf-menu {
   padding-left: 0px; }
+
+.single-post-thumbnail img {
+  width: 100%; }
 
 .wp-caption p.wp-caption-text {
   padding: 5px; }

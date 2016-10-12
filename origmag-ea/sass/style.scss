@@ -1,5 +1,5 @@
-/*  
-	Theme Name: EA-origmag	
+/*
+	Theme Name: EA-origmag
 	Theme URI: http://www.reachmaine.com/
 	Description: Original Mag Template for the Ellsworth American
 	Version: 2.0.7
@@ -9,7 +9,7 @@
 	License URI: license.txt
 	Template: original
 */
- 
+
 @import url("../original/style.css");
 @import "partials/settings";
 @import "partials/styles";
@@ -34,7 +34,7 @@
 	border: 1px solid #333333;
 }
 
-//Related posts in sidebar 
+//Related posts in sidebar
 
 img.attachment-yarpp-thumbnail.size-yarpp-thumbnail.wp-post-image {
 	float: left;
@@ -60,12 +60,16 @@ body {
 		flex-wrap: wrap;
 		justify-content: space-around;
 	}
-}	
+}
 
 #nav.prl-navbar #sf-menu {
 	padding-left: 0px;
 }
 //////////////
+
+.single-post-thumbnail img {
+  width: 100%;
+}
 
 .wp-caption p.wp-caption-text {
 	padding: 5px;
@@ -144,7 +148,7 @@ body {
 	content: "In Memoriam";
 }
 .prl-list-category .list-thumbnail {
-  margin-bottom: 0px; 
+  margin-bottom: 0px;
 }
 /* Footer/COPYRIGHT */
 
@@ -174,7 +178,7 @@ body {
 	}
 	.copyright {
 		.left {
-			width: auto; // 
+			width: auto; //
 		}
 	}
 }
@@ -205,16 +209,16 @@ aside .widget_hcclist {
 					font-size: 14px;
 				}
 				.hcc_event_venue {
-					
+
 				}
 				.hcc_event_datetime {
-					
+
 				}
 			}
-			
+
 		}
 		li:not(:last-child) {
-			
+
 		}
 	}
 }
@@ -266,7 +270,7 @@ a.more-about-link:before  {
 			color: #FF6700;
 		}
 	}
-	
+
 }
 
 .widget .textwidget .eia-right-rail,
@@ -279,7 +283,7 @@ a.more-about-link:before  {
 	box-shadow: 7px 15px 33px 0px rgba(0,0,0,0.75);
 }
 .flexslider.gallery_slider {
-	float: left; 
+	float: left;
 }
 .flexslider .caption {
 	position: initial;
