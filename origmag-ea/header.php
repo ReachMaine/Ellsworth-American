@@ -11,6 +11,7 @@
 		31jan16 - zig:  add technavia paywall login call (take out leaky)
 		29Aug16 - zig - move technavia script put to under body tag (from footer)
 		1sept 15 zig add google font Vollkorn
+		12Oct16 zig - remove https for search (for now)
 */
 global $theme_url, $prl_data; ?>
 <!DOCTYPE html>
@@ -79,7 +80,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 					<?php /*  <div class="right"><a href="#" id="search_btn" class="prl-nav-toggle prl-nav-toggle-search search_zoom" title="Search"></a></div> */ ?>
 					
 					<div id="search_form-top" class="nav_search">
-						<form class="prl-search" action="<?php echo home_url('', 'https');?>">
+						<form class="prl-search" action="<?php echo home_url(''/* , 'https' */);?>">
 							<input type="text" id="s" name="s" value="" placeholder="&#xF002;" class="nav_search_input" />
 							<?php /* <input type="text" id="s" name="s" value="" placeholder="<?php _e('Search ...','presslayer');?>" class="nav_search_input" /> */ ?>
 						</form>
@@ -161,7 +162,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 					<?php /*  <div class="right"><a href="#" id="search_btn" class="prl-nav-toggle prl-nav-toggle-search search_zoom" title="Search"></a></div> */ ?>
 					
 					<div id="search_form" class="nav_search show-tablet">
-						<form class="prl-search" action="<?php echo home_url('', 'https');?>">
+						<form class="prl-search" action="<?php echo home_url(''/*, 'https'*/);?>">
 							<input type="text" id="s" name="s" value="" placeholder="&#xF002;" class="nav_search_input" />
 							<?php /* <input type="text" id="s" name="s" value="" placeholder="<?php _e('Search ...','presslayer');?>" class="nav_search_input" /> */ ?>
 						</form>
