@@ -1,0 +1,8 @@
+jquery.js
+ts-fab.js
+smugmug-feed.js
+bxslider.js
+flexslider-min.js
+custom.js
+placeholder.js
+jquery.fitvids.js
