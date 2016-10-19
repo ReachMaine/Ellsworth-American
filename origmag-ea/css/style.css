@@ -1049,8 +1049,11 @@ div.yarpp-related ul {
 aside .widget .widget-title, aside .widget .prl-block-title, aside .widget .widget-title a {
   color: black; }
 
-p, .single-post-thumbnail-caption {
+p, .prl-entry-content li, .single-post-thumbnail-caption {
   font-family: Vollkorn; }
+
+.prl-entry-content li {
+  font-size: 15px; }
 
 p {
   font-size: 17px;

@@ -477,8 +477,12 @@ color: black;
 //font-family: georgia;
 }
 
-p, .single-post-thumbnail-caption {
+p, .prl-entry-content li, .single-post-thumbnail-caption {
 	font-family: Vollkorn;
+}
+
+.prl-entry-content li {
+	font-size: 15px;
 }
 
 p {
