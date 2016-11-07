@@ -1,10 +1,10 @@
-<?php /* 
+<?php /*
 	Mods:
 		12Aug2014 - Move Masthead around, use image for youtube, add calendar for date.
 		9Sept2014 - take out search button & make saarch always show.
 		28Oct2014 - add data-cfasync="false" to broadscreet init js
 		22Dec2014 - move default og:image lower in script.
-		22Dec2014 - use home_url with params('', 'https') for search. 
+		22Dec2014 - use home_url with params('', 'https') for search.
 		29Dec2014 - add login-link next to time
 		17Mar15 -zig - add meta name=thumbnail
 		3Aug15 zig - dont add broadstreet init for secure pages ,may not need this....
@@ -30,14 +30,14 @@ global $theme_url, $prl_data; ?>
 
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	
+
 	<?php if($prl_data['site_fav']!='') {?>
 	<link rel="shortcut icon" href="<?php echo trim($prl_data['site_fav']);?>">
 	<?php } ?>
 
-<link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700,700i" rel="stylesheet">	
+<link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700,700i" rel="stylesheet">
 <script data-cfasync="false" type="text/javascript" src="//cdn.broadstreetads.com/init.js"></script>
-<?php 
+<?php
 	if (!is_singular('post') ) { 	?>
 		<script data-cfasync="false" type="text/javascript" >var ta_cat = "not_post"; </script>
 	<?php }  ?>
@@ -60,7 +60,7 @@ global $theme_url, $prl_data; ?>
 			}
 		}
 	?>
-    
+
 </head>
 <?php
 $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
@@ -69,6 +69,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 <?php if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) { gtm4wp_the_gtm_tag(); } ?>
 <?php /* 29Aug16 zig - put technavia script here....*/ ?>
 <script data-cfasync="false" type="text/javascript" src="http://ellsworthamerican.me.pw.newsmemory.com/include.php"></script>
+<div id="topbar"><?php if ( is_active_sidebar( 'topbar') ) { 	dynamic_sidebar( 'topbar' );	}  ?></div>
 <div class="site-wrapper">
     <!--<div class="prl-container">-->
 
@@ -78,14 +79,14 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 				<?php if($prl_data['header_search_btn']!='Disable'):?>
 				<div class="prl-nav-flip-top hidden-tablet">
 					<?php /*  <div class="right"><a href="#" id="search_btn" class="prl-nav-toggle prl-nav-toggle-search search_zoom" title="Search"></a></div> */ ?>
-					
+
 					<div id="search_form-top" class="nav_search">
 						<form class="prl-search" action="<?php echo home_url(''/* , 'https' */);?>">
 							<input type="text" id="s" name="s" value="" placeholder="&#xF002;" class="nav_search_input" />
 							<?php /* <input type="text" id="s" name="s" value="" placeholder="<?php _e('Search ...','presslayer');?>" class="nav_search_input" /> */ ?>
 						</form>
 					</div>
-					
+
 				</div>
 				<?php endif;?>
 				<?php /* add top nav menu  - added by zig */ ?>
@@ -102,7 +103,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 					endif; ?>
 					</div>
 				</nav>
-				
+
 			</div> <?php /* end pr1-container for top menu & search */ ?>
 			<div class="prl-container top-header"><div class="masthead-bg clearfix">
 				<div class="prl-header-logo"><a href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?>"><img src="<?php echo sitelogo();?>" alt="<?php bloginfo('name'); ?>" /></a>
@@ -125,7 +126,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
                     <?php if($prl_data['header_youtube']!=''){?><a href="<?php echo $prl_data['header_youtube'];?>" class="youtube-pic" title="Youtube"><img src="<?php echo get_stylesheet_directory_uri().'/images/youtube.jpg'; ?>"></a><?php }?>
 				</div><!-- end of header social -->
 			<?php /*  </div> */ ?>
-			</div>					
+			</div>
 		</header>
 		<nav id="nav" class="prl-navbar" role="navigation">
 			<div class="prl-container">
@@ -133,7 +134,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 				<?php
 				// Main Menu
 				if ( has_nav_menu( 'main_nav' ) ) :
-					
+
 					$args = array (
 						'theme_location' => 'main_nav',
 						'container' => false,
@@ -142,7 +143,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 						'menu_id' => 'sf-menu',
 						'depth' => 4,
 						'fallback_cb' => false
-						
+
 					 );
 					if($prl_data['megamenu']!='Disable'):
 						$mega = array ('walker' => new TMMenu());
@@ -152,32 +153,32 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 				 else:
 					echo '<div class="message warning"><i class="icon-warning-sign"></i>' . __( 'Define your site main menu', 'presslayer' ) . '</div>';
 				 endif;
-				 
+
 				?>
-				
+
 				<div class="nav_menu_control"><a href="#" data-prl-offcanvas="{target:'#offcanvas'}"><span class="prl-nav-toggle prl-nav-menu"></span><span class="nav_menu_control_text"><?php _e('','presslayer');?></span></a>
 				</div>
 				<?php if($prl_data['header_search_btn']!='Disable'):?>
 				<div class="prl-nav-flip show-tablet">
 					<?php /*  <div class="right"><a href="#" id="search_btn" class="prl-nav-toggle prl-nav-toggle-search search_zoom" title="Search"></a></div> */ ?>
-					
+
 					<div id="search_form" class="nav_search show-tablet">
 						<form class="prl-search" action="<?php echo home_url(''/*, 'https'*/);?>">
 							<input type="text" id="s" name="s" value="" placeholder="&#xF002;" class="nav_search_input" />
 							<?php /* <input type="text" id="s" name="s" value="" placeholder="<?php _e('Search ...','presslayer');?>" class="nav_search_input" /> */ ?>
 						</form>
 					</div>
-					
+
 				</div>
 				<?php endif;?>
-				
+
 				</div>
 			</div>
 		</nav>
-		
+
 		<script>
 			var $ = jQuery.noConflict();
-			$(document).ready(function() { 
+			$(document).ready(function() {
 				var example = $('#sf-menu').superfish({
 					delay:       100,
 					animation:   {opacity:'show',height:'show'},
@@ -185,8 +186,8 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 					autoArrows:  false
 				});
 			});
-			
+
 		</script>
-        
+
     <!--</div>-->
 	<?php $offstr = get_template_directory().'/offcanvas.php'; require_once ($offstr);?>
