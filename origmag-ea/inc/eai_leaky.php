@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /* functions & setting for adding leakypay wall to */
 
@@ -62,14 +62,14 @@ if ( !function_exists( 'do_eai_paywall_welcome') ) {
  					$result .= '<a href="'.get_home_url().'">'.'<h3 class="eai-where-to">Take Me to the Homepage</h3></a>';
 				 	$result .= '<a href="'.get_home_url().'">'.get_the_post_thumbnail().'</a>';
 				 	$result .= '</div>'; // end home
-					
+
 					if ($last_read != '') {
 				 		$result .= '<div class="prl-span-4 eai-leaky-welcome-edig">';
 				 	} else {
 				 		$result .= '<div class="prl-span-6 eai-leaky-welcome-edig">';
 				 	}
 					$eedition = get_page_by_path('digital-edition',"OBJECT",'page');
- 				 	$result .= '<a href="'.get_permalink($eedition->ID).'"><h3 class="eai-where-to" >Access My Digital Edition</h3></a>';	
+ 				 	$result .= '<a href="'.get_permalink($eedition->ID).'"><h3 class="eai-where-to" >Access My Digital Edition</h3></a>';
 				 	$result .= '<a href="'.get_permalink($eedition->ID).'">'.get_the_post_thumbnail($eedition->ID).'</a>';
 
 				 	$result .= '</div>'; // end eedition
@@ -104,7 +104,7 @@ if ( !function_exists( 'do_eai_paywall_welcome') ) {
 				 		$result .= $eai_circ_email.'</p>';
 						$result .= '</div>'; // end of ngbox.
 				 	} else {
-				 		$result .= '<p class="eai-ng-explain"> According to our records, you do not have a subscription with <i>'.$eai_this_paper.'</i>.</p>';			 		
+				 		$result .= '<p class="eai-ng-explain"> According to our records, you do not have a subscription with <i>'.$eai_this_paper.'</i>.</p>';
 				 		$result .= '<p class="eai-ng-fixit">If you feel this is an error, please contact our circulation department at <a href="tel:'.$eai_circ_phone.'">'.$eai_circ_phone.'</a> or ';
 					 	$result .= $eai_circ_email.'</p>';
 						$result .= '</div>'; // end of ngbox.
@@ -112,19 +112,19 @@ if ( !function_exists( 'do_eai_paywall_welcome') ) {
 
 					$result .= '<div class="eai-with-subscript">'.do_shortcode($eai_with_subscript_get).'</div>';
 				 }
-			} 
+			}
 			/* some stuff for testing */
-			/* $result .= '<!--'; 
+			/* $result .= '<!--';
 			$result .= ' user id: '. $current_user->ID.'<br />';
 			$result .= 'user email: '.$current_user->user_email.'</br>';
-		 	$result .= 'session email: '.$_SESSION['issuem_lp_email'];	
+		 	$result .= 'session email: '.$_SESSION['issuem_lp_email'];
 		 	$result .= '<br /> user_hash = '.get_user_meta($current_user->ID, '_issuem_leaky_paywall_live_hash', true);
 		 	$result .= '<br /> cookie_hash = '.$_COOKIE['issuem_lp_subscriber'];
 		 	$result .= '<br /> session_hash: '.$_SESSION['issuem_lp_subscriber'];
 		 	$result .= '<br /> meta_expires = '.get_user_meta($current_user->ID, '_issuem_leaky_paywall_live_expires', true);
 		 	$result .= '<br /> leaky_expires via hash = '.leaky_paywall_has_user_paid( $_SESSION['issuem_lp_email'] );
 			$result .= '-->'; */
-		
+
 		} else { // not logged to wordpress, but got here.....
 			// redirect user to login page
 			$redir = get_page_by_path('membership/login');
@@ -132,14 +132,14 @@ if ( !function_exists( 'do_eai_paywall_welcome') ) {
 			wp_redirect($redir_link);
 			$result .= "<a href=".$redir_link.">Please login in.</a>";
 		}
-		
+
 		return $result;
 	}
 	add_shortcode( 'ea_leaky_paywall_welcome', 'do_eai_paywall_welcome' );
 } // end leaky_payway_welcome
 /*
  * function to get the leaky subscription expiration date
- * returns: string containing date, empty string if not there. 
+ * returns: string containing date, empty string if not there.
  */
 function eai_get_leaky_expires($in_user_id) {
 	$out_expire = "";
@@ -184,7 +184,7 @@ if ( !function_exists( 'do_eai_paywall_thanks') ) {
 					$display_name = $current_user->user_login;
 					if ($current_user->user_firstname != "") {
 						$display_name = $current_user->user_firstname;
-					} 
+					}
 					$result .= '<p>Welcome <span class="eai-login-name">'.$display_name.'</span>.</p>';
 					$result .= '<p>You may change your password at any time.  <a class="prl-button" href="'.get_bloginfo('url').'/membership/my-account">Edit My Account</a> </p>';
 				}
@@ -201,7 +201,7 @@ if ( !function_exists( 'do_eai_paywall_thanks') ) {
 					$result .= '</div>';
 					unset($_SESSION['eai_last']);// clear out session var if get here.
 				}
-			
+
 			} else {
 				if (is_user_logged_in()) {
 					/* $result .= '<p>Your subscription has expired. Please sign up below to renew.</p>'; */
@@ -235,7 +235,7 @@ function build_referer($in_post_id) {
         			$results.=  '<h3 class="prl-article-title"><a href="'.$refer_link.'" title="'.$refer_title.'">'.$refer_title.'</a></h3>';
 					$results .= '<p>'.get_excerpt_by_id($in_post_id).'</p>';
         		$results.=  '</article>';
-         	$results.=  '</div>';    
+         	$results.=  '</div>';
         $results .= '</div>';
     $results .= '</div>';
     return $results;
@@ -293,7 +293,7 @@ if (!function_exists('eai_leaky_loginmenu')) {
 			$login_url = get_page_link( $lp_settings['page_for_login'] );
 			$subscription_url = get_page_link( $lp_settings['page_for_subscription'] );
 			$out_string .= '<ul class="ea-leaky-login">';
-			if ( is_user_logged_in()){ 
+			if ( is_user_logged_in()){
 				if ( is_issuem_leaky_subscriber_logged_in() ) {
 					$out_string .= '<li>';
 						$out_string .= '<a class="eai-leaky-account" href="'.get_bloginfo('url').'/membership/my-account">My Account</a>';
@@ -303,19 +303,19 @@ if (!function_exists('eai_leaky_loginmenu')) {
 					$out_string .= "</li>";
 				} else {
 					$out_string .= '<li class="eai-leaky-subscribe-link">';
-					$out_string .= '<a href="'.$subscription_url.'">Subscribe</a>'; 
+					$out_string .= '<a href="'.$subscription_url.'">Subscribe</a>';
 					$out_string .= "</li>";
 					$out_string .= '<li>';
 						$out_string .= '<a href="'.wp_logout_url( get_page_link( $settings['page_for_login'] ) ).'">'. __( 'Log Out', 'issuem-leaky-paywall' ).'</a>';
 					$out_string .= "</li>";
 				}
 			}else {
-				// not logged in at all 
+				// not logged in at all
 				$out_string .= '<li class="eai-leaky-login-link">';
 					$out_string .= '<a href="'.$login_url.'">Login</a>';
 				$out_string .= "</li>";
 				$out_string .= '<li class="eai-leaky-subscribe-link">';
-					$out_string .= '<a href="'.$subscription_url.'">Subscribe</a>'; 
+					$out_string .= '<a href="'.$subscription_url.'">Subscribe</a>';
 				$out_string .= "</li>";
 			}
 			$out_string .= "</ul>";*/
@@ -329,22 +329,22 @@ if (!function_exists('eai_leaky_loginmenu')) {
 		}
 		return $out_string;
 	}
-} 
+}
 if (!function_exists('cimy_update_ExtraFields')) {
-	add_action('profile_update','cimy_update_ExtraFields'); // zig
+	//add_action('profile_update','cimy_update_ExtraFields'); // zig
 }
 
 add_action('profile_update','eia_update_cimy'); // zig
 if (!function_exists('eia_update_cimy')) {
 	function eia_update_cimy() {
-		
+
 	}
 }
 add_action( 'wp_login_failed', 'custom_login_fail', 10, 1 );  // hook failed login
 function custom_login_fail( $username ) {
 	$referrer = $_SERVER['HTTP_REFERER'];  // where did the post submission come from?
    // if there's a valid referrer, and it's not the default log-in screen
-	wp_redirect( $referrer . '?login=failed' ); 
+	wp_redirect( $referrer . '?login=failed' );
    if ( !empty($referrer) && !strstr($referrer,'wp-login') && !strstr($referrer,'wp-admin') ) {
    	 $pos = strpos($referrer, '?login=failed');
         if($pos === false) {
@@ -354,16 +354,16 @@ function custom_login_fail( $username ) {
         else {
             // already has the failed don't appened it again
             wp_redirect( $referrer );  // already appeneded redirect back
-        }   
- 
+        }
+
       exit;
    }
 }
-/* still have issue when no username or password.  
+/* still have issue when no username or password.
 see http://wordpress.stackexchange.com/questions/95614/login-failed-only-attached-to-url-under-certain-circumstances
 add_action( 'wp_authenticate', 'my_front_end_login_fail', 1, 2 );
 
-function my_front_end_login_fail( $user, $pwd ) { 
+function my_front_end_login_fail( $user, $pwd ) {
 	 if ( ! empty( $user ) && ! empty( $pwd ) && ! is_wp_error( $user ) )
         return false;
 } */
