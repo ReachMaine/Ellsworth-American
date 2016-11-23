@@ -28,10 +28,16 @@
 	padding-right: 8%:
 } */
 
-// border around in house ad
+// border around ads
 
 #eai-home-house img {
 	border: 1px solid #333333;
+}
+
+img.bs-expandable-expanded {
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
 }
 
 //Related posts in sidebar
