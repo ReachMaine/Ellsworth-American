@@ -1,4 +1,4 @@
-<?php 
+<?php
 /******* Custom Post type for Obits ***********/
 add_action ('init', 'create_obit_posttype');
 if (!function_exists('create_obit_posttype')) {
@@ -9,7 +9,7 @@ if (!function_exists('create_obit_posttype')) {
 		        'name' => __( 'Obits' ),
 		        'singular_name' => __( 'Obit' )
 		    ),
-		      'taxonomies' => array('category', 'post_tag'),  
+		      'taxonomies' => array('category', 'post_tag'),
 		      'public' => true,
 		      'has_archive' => true,
 		      'supports' => array( 'title', 'editor', 'excerpt', 'custom-fields', 'thumbnail' ),
@@ -18,10 +18,10 @@ if (!function_exists('create_obit_posttype')) {
 		register_post_type( 'obituary',
 		    array (
 		      'labels' => array(
-		        'name' => __( 'Obituarys' ),
+		        'name' => __( 'Obituaries' ),
 		        'singular_name' => __( 'Obituary' )
 		    ),
-		      'taxonomies' => array('category', 'post_tag'),  
+		      'taxonomies' => array('category', 'post_tag'),
 		      'public' => true,
 		      'has_archive' => true,
 		      'supports' => array( 'title', 'editor', 'excerpt', 'custom-fields', 'thumbnail' ),
