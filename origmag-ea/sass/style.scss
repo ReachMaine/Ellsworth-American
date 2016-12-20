@@ -17,6 +17,7 @@
 @import "partials/sportscores";
 @import "partials/electionresults";
 @import "partials/ea_expand_image";
+@import "partials/year-in-review";
 
 
 /* =Theme customization starts here */
@@ -303,7 +304,7 @@ a.more-about-link:before  {
     outline-color: #1e73be;
     outline-width: medium;
     outline-style: solid;
-    padding: 20px;
+    padding: 20px 20px 10px;
     margin-bottom: 20px;
 }
 .wonderplugingallery-container {
