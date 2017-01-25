@@ -38,7 +38,7 @@
 			   <h1><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 			   <hr class="prl-grid-divider">
 				<div class ="single-meta">
-			   		<?php ea_social_share();?>
+			   		<?php ea_social_share_obits();?>
 				</div>
 			   <hr class="prl-grid-divider">
 			   <div class="prl-grid">

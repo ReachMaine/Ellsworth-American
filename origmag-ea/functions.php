@@ -217,6 +217,21 @@ global $theme_url, $image;
 <?php
 }
 
+function ea_social_share_obits(){
+	// some social sharing is not appropiate for obits.  take out G+, pinterest & linkedin
+global $theme_url, $image;
+?>
+
+<ul class="prl-list prl-list-sharing">
+	<li><a href="http://www.facebook.com/share.php?u=<?php the_permalink();?>" target="_blank" title="facebook"><i class="fa fa-facebook-square"></i> </a></li>
+	<li><a href="http://twitter.com/home?status=<?php the_title_attribute();?> - <?php the_permalink();?>" target="_blank" title="twitter"><i class="fa fa-twitter-square"></i> </a></li>
+	<li><a href="mailto:?subject=<?php the_title_attribute();?>&body=<?php the_permalink();?>" target="_blank" title="E-mail"><i class="fa fa-envelope"></i></a></li>
+	<li><a href="#" onclick="window.print();" id="print-page" title="Print" ><i class="fa fa-print"></i></a></li>
+</ul>
+
+<?php
+}
+
 
 /* find the nth occurance of needle in haystack */
  function strnpos($haystack, $needle, $occurance, $pos = 0) {
