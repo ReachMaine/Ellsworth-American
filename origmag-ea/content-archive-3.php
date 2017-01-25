@@ -1,11 +1,11 @@
-<?php 
+<?php
 	global $pl_data, $theme_url;
 	if (have_posts()) :?>
-	
+
 	<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
  	  <?php /* If this is a category archive */ if (is_category()) { ?>
 		<h3 class="prl-archive-title"><?php single_cat_title(); ?></h3>
-		<?php echo category_description(); ?> 
+		<?php echo category_description(); ?>
  	  <?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
 		<h3 class="prl-archive-title"><?php _e('Posts Tagged','presslayer');?>: <?php single_tag_title(); ?></h3>
  	  <?php /* If this is a daily archive */ } elseif (is_day()) { ?>
@@ -19,9 +19,9 @@
  	  <?php } elseif (is_search()){ ?>
 	  	<h3 class="prl-archive-title"><?php _e('Search Results','presslayer');?></h3>
 	  <?php } ?>
-	
-	<div class="prl-grid prl-grid-divider">
-	<?php 
+
+	<div class="prl-grid prl-grid-divider content-archive-3">
+	<?php
 	$i=0;
 	$endRow = 0;
 	$columns = 3; // number of columns
@@ -35,7 +35,7 @@
 		<article class="prl-article">
 			<?php if( has_post_thumbnail()):?><div class="cat-thumbnail"><?php echo post_thumb(get_the_ID(),520, 360, true);?></div><?php endif;?>
 			<div class="prl-article-entry">
-				<h2 class="prl-article-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a> <?php echo get_label_format(get_the_ID());?> <?php echo get_label_meta(get_the_ID());?></h2> 
+				<h2 class="prl-article-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a> <?php echo get_label_format(get_the_ID());?> <?php echo get_label_meta(get_the_ID());?></h2>
 				<?php post_meta(true, true, false, false, false);?>
 				<?php /* the_excerpt(); */
 				echo text_trim(get_the_excerpt(),$num_excerpt,'...');
@@ -44,14 +44,14 @@
 		</article>
 	</div>
 
-	<?php 
+	<?php
 	$endRow++;
 	if($endRow >= $columns) {
 		echo '</div> <hr class="prl-grid-divider">';
 		$endRow = 0;
 	}
-	endwhile; 
-	
+	endwhile;
+
 	if($endRow != 0) {
 		while ($endRow < $columns) {
 			echo('<div class="prl-span-6">&nbsp;</div>');
@@ -59,12 +59,12 @@
 		}
 		echo('</div> <hr class="prl-grid-divider">');
 	}
-	
+
 	?>
-	
+
 	<?php if ( function_exists( 'page_navi' ) ) page_navi( 'items=5&amp;show_num=1&amp;num_position=after' ); ?>
-	  
+
 
 <?php else : ?>
 	<?php get_search_form(); ?>
-<?php endif; ?>  
+<?php endif; ?>
