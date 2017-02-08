@@ -18,7 +18,8 @@
   .ea-button-wrap .ea-button {
     padding: 15px;
     background-color: #1e73be;
-    color: white; }
+    color: white;
+    font-size: 1.3em; }
   .ea-button-wrap .ea-button:hover {
     color: #ececec;
     text-decoration: none; }
