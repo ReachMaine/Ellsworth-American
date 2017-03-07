@@ -59,6 +59,14 @@ if ( function_exists('register_sidebar') ){
 			'after_widget'  => '</div></div>'
 
 		));
+		// new bottom content widget area for obits.
+		register_sidebar(array(
+			'name' => 'Obit Bottom Ad',
+			'id' => 'obit_bottom_ad',
+			'description' => 'Widget for Obit bottom content ad.',
+			'before_widget' => '<div id="%1$s" class=" %2$s obit-ad-container">',
+			'after_widget'  => '</div>'
+		));
 
 	}
 

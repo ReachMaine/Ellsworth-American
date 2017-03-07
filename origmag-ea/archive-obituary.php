@@ -1,6 +1,7 @@
 <?php
 /* mods:
   25Jan16 zig - copy of index for obit custom post type.
+  7Mar17 zig - use new obits-ad-contair
 */
 get_header();?>
 <div class="prl-container archive obituary">
@@ -49,7 +50,10 @@ get_header();?>
 		get_template_part($content,'index');
  		//assert( "locate_template( array('content-archive-liv-index.php', 'content-archive-liv.php'), true, false )" );
 ?>
-		<?php if(is_category() && isset($prl_data['banner_bot_cat']) && $prl_data['banner_bot_cat']!='') echo '<div class="ads_bottom prl-panel hide-tablet"><div class="ad-container ad-in-content">'.stripslashes($prl_data['banner_bot_cat']).'</div></div>';?>
+		<?php /* zout if(is_category() && isset($prl_data['banner_bot_cat']) && $prl_data['banner_bot_cat']!='') echo '<div class="ads_bottom prl-panel hide-tablet"><div class="ad-container ad-in-content">'.stripslashes($prl_data['banner_bot_cat']).'</div></div>'; */?>
+        <?php if (is_active_sidebar('obit_bottom_ad')) {
+            echo '<hr class="prl-grid-divider">' ;
+            echo '<div class="hide-mobile"><center class="ad-container ad-in-content">'; dynamic_sidebar('obit_bottom_ad'); echo '</center></div>'; } ?>
 
 		</section>
         <aside id="sidebar" class="prl-span-3">
