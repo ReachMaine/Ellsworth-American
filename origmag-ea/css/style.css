@@ -1197,6 +1197,13 @@ p {
   font-size: 18px;
   font-family: "Roboto Condensed"; }
 
+#nav.prl-navbar #sf-menu li.ea-menu-button {
+  background-color: #7fda9a; }
+  #nav.prl-navbar #sf-menu li.ea-menu-button a {
+    padding-left: 7px;
+    padding-right: 7px;
+    color: white; }
+
 #topnav a {
   font-family: "Roboto Condensed";
   font-size: 14px; }

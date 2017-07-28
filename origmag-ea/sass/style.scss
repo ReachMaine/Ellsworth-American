@@ -502,7 +502,16 @@ p {
 	font-size: 18px;
 	font-family: "Roboto Condensed";
 }
-
+#nav.prl-navbar #sf-menu { // main menu
+	li.ea-menu-button { // styling the subscribe button on main menu.
+		background-color:  #7fda9a;
+		a {
+			padding-left: 7px;
+			padding-right: 7px;
+			color: white;
+		}
+	}
+}
 #topnav a {
 	font-family: "Roboto Condensed";
 	font-size: 14px;
