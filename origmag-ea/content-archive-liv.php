@@ -3,6 +3,7 @@
 special archive display for the living category s.t. we can
 * 25Mar15 - had wrong category id for _stickit search, now use slug.
 * 21Aug15 zig - change spec_cat2 to dvd reviews (was blogs)
+* 9Aug17 TimS - change spec_cat2 to horoscopes (was dvd reviews)
 */
 	global $pl_data, $theme_url;
 
@@ -21,7 +22,8 @@ special archive display for the living category s.t. we can
 			/* $category = 94;     // living category */
 			$spec_cat1 = 431;   // weddings & engagements;
 			/* $spec_cat2 = 376;  // blogs */
-			$spec_cat2 = 1012;  // dvd reviews
+			/* $spec_cat2 = 1012; // dvd reviews */
+			$spec_cat2 = 3390;  // horoscopes
 			$spec_cat3 = 418;    // auto revies
 			$nopost_cat = 1013;  // tvlistings
 
