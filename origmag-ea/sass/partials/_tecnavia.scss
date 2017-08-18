@@ -1,0 +1,21 @@
+@media only screen and (max-width: 479px) {
+  body #ta_invisible #ta_paywall.ta_centralPopup {
+    width: 90% !important;
+    .loginFormContainer {
+      margin: 0px 15px 10px 15px;
+      #ta_loginTable {
+        width: 95%;
+      }
+      #ta_loginSubmitButtonContainer {
+        margin-left: 13%;
+      }
+    }
+    .ta_paywallText {
+      .pw_subscribe_container {
+        a.pw_subscribe.ta_loginLables {
+          width: 70%;
+        }
+      }
+    }
+  }
+}
