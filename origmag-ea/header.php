@@ -12,6 +12,7 @@
 		29Aug16 - zig - move technavia script put to under body tag (from footer)
 		1sept 15 zig add google font Vollkorn
 		12Oct16 zig - remove https for search (for now)
+		13Sept17 zig - change technavia scripts.
 */
 global $theme_url, $prl_data; ?>
 <!DOCTYPE html>
@@ -41,7 +42,7 @@ global $theme_url, $prl_data; ?>
 	if (!is_singular('post') ) { 	?>
 		<script data-cfasync="false" type="text/javascript" >var ta_cat = "not_post"; </script>
 	<?php }  ?>
-   <script data-cfasync="false" type="text/javascript" src="http://ellsworthamerican.me.pw.newsmemory.com/include.php?service=onstop"></script>
+   <script data-cfasync="false" type="text/javascript" src="http://ellsworthamerican.me.pw.newsmemory.com/?meter&amp;service=onstop&amp;v=0"></script>
 
 <?php wp_head();?>
 	<?php if ( is_home() || is_front_page() )  { ?>
@@ -68,7 +69,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 <body <?php body_class($body_class[$prl_data['site_style']]); ?>>
 <?php if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) { gtm4wp_the_gtm_tag(); } ?>
 <?php /* 29Aug16 zig - put technavia script here....*/ ?>
-<script data-cfasync="false" type="text/javascript" src="http://ellsworthamerican.me.pw.newsmemory.com/include.php"></script>
+<script data-cfasync="false" type="text/javascript" src="http://ellsworthamerican.me.pw.newsmemory.com/?meter&amp;v=0"></script>
 <div id="topbar"><?php if ( is_active_sidebar( 'topbar') ) { 	dynamic_sidebar( 'topbar' );	}  ?></div>
 <div class="site-wrapper">
     <!--<div class="prl-container">-->
