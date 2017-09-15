@@ -887,6 +887,11 @@ img.bs-expandable-expanded {
 img.attachment-yarpp-thumbnail.size-yarpp-thumbnail.wp-post-image {
   float: left; }
 
+form.mc4wp-form-169972 label span {
+  font-size: 16px; }
+form.mc4wp-form-169972 input[type=submit] {
+  width: 100%; }
+
 /* remove body shadow and background*/
 body.site-boxed .site-wrapper {
   box-shadow: none;
