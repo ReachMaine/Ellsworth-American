@@ -42,7 +42,7 @@ global $theme_url, $prl_data; ?>
 	if (!is_singular('post') ) { 	?>
 		<script data-cfasync="false" type="text/javascript" >var ta_cat = "not_post"; </script>
 	<?php }  ?>
-   <script data-cfasync="false" type="text/javascript" src="http://ellsworthamerican.me.pw.newsmemory.com/?meter&amp;service=onstop&amp;v=0"></script>
+   <script data-cfasync="false" type="text/javascript" src="https://ellsworthamerican.me.pw.newsmemory.com/?meter&amp;service=onstop&amp;v=0"></script>
 
 <?php wp_head();?>
 	<?php if ( is_home() || is_front_page() )  { ?>
@@ -56,8 +56,8 @@ global $theme_url, $prl_data; ?>
 			if ($image_thumbnail) {
 				echo '<meta name="thumbnail" content="'.$image_thumbnail[0].'">';
 			} else {
-				echo '<meta name="thumbnail" content="http://www.ellsworthamerican.com/wp-content/themes/origmag-ea/images/ogi-ea.jpg">';
-				echo '<meta property="og:image" content="http://www.ellsworthamerican.com/wp-content/themes/origmag-ea/images/ogi-ea.jpg">';
+				echo '<meta name="thumbnail" content="https://www.ellsworthamerican.com/wp-content/themes/origmag-ea/images/ogi-ea.jpg">';
+				echo '<meta property="og:image" content="https://www.ellsworthamerican.com/wp-content/themes/origmag-ea/images/ogi-ea.jpg">';
 			}
 		}
 	?>
@@ -69,7 +69,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 <body <?php body_class($body_class[$prl_data['site_style']]); ?>>
 <?php if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) { gtm4wp_the_gtm_tag(); } ?>
 <?php /* 29Aug16 zig - put technavia script here....*/ ?>
-<script data-cfasync="false" type="text/javascript" src="http://ellsworthamerican.me.pw.newsmemory.com/?meter&amp;v=0"></script>
+<script data-cfasync="false" type="text/javascript" src="https://ellsworthamerican.me.pw.newsmemory.com/?meter&amp;v=0"></script>
 <div id="topbar"><?php if ( is_active_sidebar( 'topbar') ) { 	dynamic_sidebar( 'topbar' );	}  ?></div>
 <div class="site-wrapper">
     <!--<div class="prl-container">-->
@@ -113,14 +113,14 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 					<?php  if($prl_data['header_custom_text']!=''){?>
 					<span class="prl-header-custom-text"><?php echo trim($prl_data['header_custom_text']);?></span>
 					<?php  } if($prl_data['header_time']!='Disable'){  $current_site = get_current_site(); ?>
-					<span class="prl-header-time"><a href="http://www.reachdowneast.com/calendar/events/today/"><i class="fa fa-calendar"></i><?php echo date('l');?> - <?php echo date('M d, Y');?></a></span>
+					<span class="prl-header-time"><a href="https://www.reachdowneast.com/calendar/events/today/"><i class="fa fa-calendar"></i><?php echo date('l');?> - <?php echo date('M d, Y');?></a></span>
 					<?php } ?>
 					<?php  echo eai_technav_loginmenu();  ?>
 				</div>
 				<div class="prl-header-social">
 					<?php if($prl_data['header_facebook']!=''){?><a href="<?php echo $prl_data['header_facebook'];?>" class="fa fa-facebook" title="Facebook" target="_blank"></a><?php }?>
 					<?php if($prl_data['header_twitter']!=''){?><a href="https://twitter.com/<?php echo $prl_data['header_twitter'];?>" class="fa fa-twitter" title="Twitter" target="_blank"></a><?php }?>
-					<?php if($prl_data['header_pinterest']!=''){?><a href="http://www.pinterest.com/<?php echo $prl_data['header_pinterest'];?>" class="fa fa-pinterest" title="Pinterest" target="_blank"></a><?php }?>
+					<?php if($prl_data['header_pinterest']!=''){?><a href="https://www.pinterest.com/<?php echo $prl_data['header_pinterest'];?>" class="fa fa-pinterest" title="Pinterest" target="_blank"></a><?php }?>
 					<?php if($prl_data['header_google_plus']!=''){?><a href="<?php echo $prl_data['header_google_plus'];?>" class="fa fa-google-plus" title="Google plus"></a><?php }?>
 					<?php if($prl_data['header_linkedin']!=''){?><a href="<?php echo $prl_data['header_linkedin'];?>" class="fa fa-linkedin" title="LinkedIn"></a><?php }?>
                     <?php if($prl_data['header_instagram']!=''){?><a href="<?php echo $prl_data['header_instagram'];?>" class="fa fa-instagram" title="Instagram"></a><?php }?>
