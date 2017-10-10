@@ -42,7 +42,7 @@ global $theme_url, $prl_data; ?>
 	if (!is_singular('post') ) { 	?>
 		<script data-cfasync="false" type="text/javascript" >var ta_cat = "not_post"; </script>
 	<?php }  ?>
-   <script data-cfasync="false" type="text/javascript" src="https://ellsworthamerican.me.pw.newsmemory.com/?meter&amp;service=onstop&amp;v=0"></script>
+   <script data-cfasync="false" type="text/javascript" src="//ellsworthamerican-me-pw.newsmemory.com/?meter&amp;service=onstop&amp;v=0"></script>
 
 <?php wp_head();?>
 	<?php if ( is_home() || is_front_page() )  { ?>
@@ -69,7 +69,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 <body <?php body_class($body_class[$prl_data['site_style']]); ?>>
 <?php if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) { gtm4wp_the_gtm_tag(); } ?>
 <?php /* 29Aug16 zig - put technavia script here....*/ ?>
-<script data-cfasync="false" type="text/javascript" src="https://ellsworthamerican.me.pw.newsmemory.com/?meter&amp;v=0"></script>
+<script data-cfasync="false" type="text/javascript" src="//ellsworthamerican-me-pw.newsmemory.com/?meter&amp;v=0"></script>
 <div id="topbar"><?php if ( is_active_sidebar( 'topbar') ) { 	dynamic_sidebar( 'topbar' );	}  ?></div>
 <div class="site-wrapper">
     <!--<div class="prl-container">-->
