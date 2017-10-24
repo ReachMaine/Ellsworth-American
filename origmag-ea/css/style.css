@@ -1091,6 +1091,7 @@ a.more-about-link:before {
     height: 100%; }
 
 /* responsive video embed zig 10May16 */
+.youtube-embed,
 .ea-responsive-container {
   position: relative;
   padding-bottom: 50.25%;
@@ -1098,6 +1099,7 @@ a.more-about-link:before {
   height: 0;
   overflow: hidden;
   margin-bottom: 1em; }
+  .youtube-embed iframe,
   .ea-responsive-container iframe {
     position: absolute;
     top: 0;
