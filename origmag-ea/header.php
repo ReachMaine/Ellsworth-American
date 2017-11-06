@@ -13,6 +13,7 @@
 		1sept 15 zig add google font Vollkorn
 		12Oct16 zig - remove https for search (for now)
 		13Sept17 zig - change technavia scripts.
+		6Nov17 zig - change reachdowneast.com to downeastmaine.com in link on date 
 */
 global $theme_url, $prl_data; ?>
 <!DOCTYPE html>
@@ -113,7 +114,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 					<?php  if($prl_data['header_custom_text']!=''){?>
 					<span class="prl-header-custom-text"><?php echo trim($prl_data['header_custom_text']);?></span>
 					<?php  } if($prl_data['header_time']!='Disable'){  $current_site = get_current_site(); ?>
-					<span class="prl-header-time"><a href="https://www.reachdowneast.com/calendar/events/today/"><i class="fa fa-calendar"></i><?php echo date('l');?> - <?php echo date('M d, Y');?></a></span>
+					<span class="prl-header-time"><a href="https://www.downeastmaine.com/calendar/events/today/"><i class="fa fa-calendar"></i><?php echo date('l');?> - <?php echo date('M d, Y');?></a></span>
 					<?php } ?>
 					<?php  echo eai_technav_loginmenu();  ?>
 				</div>
