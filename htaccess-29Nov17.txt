@@ -1,0 +1,300 @@
+
+# BEGIN WP Rocket v2.9.8.1
+# Use UTF-8 encoding for anything served text/plain or text/html
+AddDefaultCharset UTF-8
+# Force UTF-8 for a number of file formats
+<IfModule mod_mime.c>
+AddCharset UTF-8 .atom .css .js .json .rss .vtt .xml
+</IfModule>
+
+# FileETag None is not enough for every server.
+<IfModule mod_headers.c>
+Header unset ETag
+</IfModule>
+
+# Since we’re sending far-future expires, we don’t need ETags for static content.
+# developer.yahoo.com/performance/rules.html#etags
+FileETag None
+
+<IfModule mod_alias.c>
+<FilesMatch "\.(html|htm|rtf|rtx|txt|xsd|xsl|xml)$">
+<IfModule mod_headers.c>
+Header set X-Powered-By "WP Rocket/2.9.8.1"
+Header unset Pragma
+Header append Cache-Control "public"
+Header unset Last-Modified
+</IfModule>
+</FilesMatch>
+
+<FilesMatch "\.(css|htc|js|asf|asx|wax|wmv|wmx|avi|bmp|class|divx|doc|docx|eot|exe|gif|gz|gzip|ico|jpg|jpeg|jpe|json|mdb|mid|midi|mov|qt|mp3|m4a|mp4|m4v|mpeg|mpg|mpe|mpp|otf|odb|odc|odf|odg|odp|ods|odt|ogg|pdf|png|pot|pps|ppt|pptx|ra|ram|svg|svgz|swf|tar|tif|tiff|ttf|ttc|wav|wma|wri|xla|xls|xlsx|xlt|xlw|zip)$">
+<IfModule mod_headers.c>
+Header unset Pragma
+Header append Cache-Control "public"
+</IfModule>
+</FilesMatch>
+</IfModule>
+
+# Expires headers (for better cache control)
+<IfModule mod_expires.c>
+ExpiresActive on
+
+# Perhaps better to whitelist expires rules? Perhaps.
+ExpiresDefault                          "access plus 1 month"
+
+# cache.appcache needs re-requests in FF 3.6 (thanks Remy ~Introducing HTML5)
+ExpiresByType text/cache-manifest       "access plus 0 seconds"
+
+# Your document html
+ExpiresByType text/html                 "access plus 0 seconds"
+
+# Data
+ExpiresByType text/xml                  "access plus 0 seconds"
+ExpiresByType application/xml           "access plus 0 seconds"
+ExpiresByType application/json          "access plus 0 seconds"
+
+# Feed
+ExpiresByType application/rss+xml       "access plus 1 hour"
+ExpiresByType application/atom+xml      "access plus 1 hour"
+
+# Favicon (cannot be renamed)
+ExpiresByType image/x-icon              "access plus 1 week"
+
+# Media: images, video, audio
+ExpiresByType image/gif                 "access plus 1 month"
+ExpiresByType image/png                 "access plus 1 month"
+ExpiresByType image/jpeg                "access plus 1 month"
+ExpiresByType video/ogg                 "access plus 1 month"
+ExpiresByType audio/ogg                 "access plus 1 month"
+ExpiresByType video/mp4                 "access plus 1 month"
+ExpiresByType video/webm                "access plus 1 month"
+
+# HTC files  (css3pie)
+ExpiresByType text/x-component          "access plus 1 month"
+
+# Webfonts
+ExpiresByType application/x-font-ttf    "access plus 1 month"
+ExpiresByType font/opentype             "access plus 1 month"
+ExpiresByType application/x-font-woff   "access plus 1 month"
+ExpiresByType application/x-font-woff2  "access plus 1 month"
+ExpiresByType image/svg+xml             "access plus 1 month"
+ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+
+# CSS and JavaScript
+ExpiresByType text/css                  "access plus 1 year"
+ExpiresByType application/javascript    "access plus 1 year"
+
+</IfModule>
+
+# Gzip compression
+<IfModule mod_deflate.c>
+# Active compression
+SetOutputFilter DEFLATE
+# Force deflate for mangled headers
+<IfModule mod_setenvif.c>
+<IfModule mod_headers.c>
+SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+# Don’t compress images and other uncompressible content
+SetEnvIfNoCase Request_URI \
+\.(?:gif|jpe?g|png|rar|zip|exe|flv|mov|wma|mp3|avi|swf|mp?g|mp4|webm|webp)$ no-gzip dont-vary
+</IfModule>
+</IfModule>
+
+# Compress all output labeled with one of the following MIME-types
+<IfModule mod_filter.c>
+AddOutputFilterByType DEFLATE application/atom+xml \
+		                          application/javascript \
+		                          application/json \
+		                          application/rss+xml \
+		                          application/vnd.ms-fontobject \
+		                          application/x-font-ttf \
+		                          application/xhtml+xml \
+		                          application/xml \
+		                          font/opentype \
+		                          image/svg+xml \
+		                          image/x-icon \
+		                          text/css \
+		                          text/html \
+		                          text/plain \
+		                          text/x-component \
+		                          text/xml
+</IfModule>
+<IfModule mod_headers.c>
+Header append Vary: Accept-Encoding
+</IfModule>
+</IfModule>
+
+# END WP Rocket
+
+# HTTPS forced by SG-Optimizer
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+</IfModule>
+# END HTTPS
+SetEnv PHPRC /home/eareachm/public_html/php.ini
+AddHandler fastcgi-script .php
+# Rewrite Rules
+RewriteCond %{HTTP_HOST} ^(www\.)?mdislander.com [NC]
+RewriteRule ^maine-news/business-news/rainwise-strikes-deal-with-ibm-and-the-weather-co$ http://www.mdislander.com/this-article-has-been-removed [R=301,NC,L]
+RewriteCond %{HTTP_HOST} ^(www\.)?ellsworthamerican.com [NC]
+RewriteRule ^featured/rainwise-strikes-deal-with-ibm-and-the-weather-co$ http://www.ellsworthamerican.com/this-article-has-been-removed [R=301,NC,L]
+#  redirect for mis-title & url 31May17
+RewriteCond %{HTTP_HOST} ^(www\.)?ellsworthamerican.com [NC]
+RewriteRule ^maine-news/cops/police-obviously-intoxicated-woman-charged-child-endangerment/$ http://www.ellsworthamerican.com/maine-news/cops/police-obviously-impaired-woman-charged-child-endangerment [R=301,L]
+RewriteCond %{HTTP_HOST} ^reachdowneast.com$
+RewriteRule ^calendar/?(.*)$ "http://www.reachdowneast.com/calendar/$1" [R=301,L]
+
+# ---- agents
+## nope - Redirect 301 http://ellsworthamerican.com/homeseller/index.php https://www.downeastmaine.com/classifieds/realestate/
+# Permanent URL redirect - generated by www.rapidtables.com
+Redirect 301 /homeseller/index.php https://www.downeastmaine.com/classifieds/realestate/
+#--- end agents
+
+<ifModule mod_gzip.c>
+mod_gzip_on Yes
+mod_gzip_dechunk Yes
+mod_gzip_item_include file .(html?|txt|css|js|php|pl)$
+mod_gzip_item_include handler ^cgi-script$
+mod_gzip_item_include mime ^text/.*
+mod_gzip_item_include mime ^application/x-javascript.*
+mod_gzip_item_exclude mime ^image/.*
+mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</ifModule>
+# BEGIN Expire headers
+ExpiresActive On
+ExpiresDefault "access plus 5 seconds"
+ExpiresByType image/x-icon "access plus 2592000 seconds"
+ExpiresByType image/jpeg "access plus 2592000 seconds"
+ExpiresByType image/jpg "access plus 2592000 seconds"
+ExpiresByType image/png "access plus 2592000 seconds"
+ExpiresByType image/gif "access plus 2592000 seconds"
+ExpiresByType application/x-shockwave-flash "access plus 2592000 seconds"
+ExpiresByType text/css "access plus 604800 seconds"
+ExpiresByType text/javascript "access plus 216000 seconds"
+ExpiresByType application/javascript "access plus 216000 seconds"
+ExpiresByType application/x-javascript "access plus 216000 seconds"
+ExpiresByType text/html "access plus 600 seconds"
+ExpiresByType application/xhtml+xml "access plus 600 seconds"
+# END Expire headers
+# BEGIN Cache-Control Headers
+<ifModule mod_headers.c>
+<filesMatch "\.(ico|jpe?g|png|gif|swf)$">
+Header set Cache-Control "public"
+</filesMatch>
+<filesMatch "\.(css)$">
+Header set Cache-Control "public"
+</filesMatch>
+<filesMatch "\.(js)$">
+Header set Cache-Control "private"
+</filesMatch>
+<filesMatch "\.(x?html?|php)$">
+Header set Cache-Control "private, must-revalidate"
+</filesMatch>
+</ifModule>
+# END Cache-Control Headers
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)(\.gz)?$">
+Header unset ETag
+FileETag None
+</FilesMatch>
+# BEGIN WordPress
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{HTTP_HOST} ^reachdowneast\.com
+RewriteRule ^/?$ "http\:\/\/www\.reachdowneast\.com\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^www.reachdowneast.com
+RewriteRule (.*)$ http://www.downeastmaine.com/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^mdislander\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.mdislander\.com$
+RewriteRule ^newspaper\/$ "http\:\/\/www\.mdislander\.com\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^ellsworthmaine\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.ellsworthmaine\.com$
+RewriteRule ^/?$ "http\:\/\/www\.ellsworthamerican\.com\/" [R=301,L]
+# uploaded files
+RewriteRule ^([_0-9a-zA-Z-]+/)?files/(.+) wp-includes/ms-files.php?file=$2 [L]
+# add a trailing slash to /wp-admin
+RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule  ^[_0-9a-zA-Z-]+/(wp-(content|admin|includes).*) $1 [L]
+RewriteRule  ^[_0-9a-zA-Z-]+/(.*\.php)$ $1 [L]
+RewriteRule . index.php [L]
+# END WordPressFcgidWrapper /usr/local/cpanel/cgi-sys/1h-fast-php54 .php
+#FcgidWrapper /usr/local/cpanel/cgi-sys/1h-fast-php54 .php
+AddHandler application/x-httpd-php71 .php .php5 .php4 .php3
+#AddHandler fastcgi-script .php
+RewriteCond %{HTTP_HOST} ^mdislander\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.mdislander\.com$
+RewriteRule ^maine\-news\/business\-news\/rainwise\-strikes\-deal\-with\-ibm\-and\-the\-weather\-co$ "http\:\/\/www\.mdislander\.com\/this\-article\-has\-been\-removed" [R=301,L]
+<FilesMatch "\.(js|css|jpg|png|jpeg|gif|xml|json|txt|pdf|mov|avi|otf|woff|ico|swf)$">
+	RequestHeader unset Cookie
+	Header unset Cookie
+  	Header unset Set-Cookie
+</FilesMatch>
+# -----------------------------------------------------------------------
+# Defining MIME types to ensure the web server actually knows about them.
+# -----------------------------------------------------------------------
+<IfModule mod_mime.c>
+    AddType application/javascript          js
+    AddType application/vnd.ms-fontobject   eot
+    AddType application/x-font-ttf          ttf ttc
+    AddType font/opentype                   otf
+    AddType application/x-font-woff         woff
+    AddType image/svg+xml                   svg svgz 
+    AddEncoding gzip                        svgz
+</Ifmodule>
+# -----------------------------------------------------------------------
+# Compressing output.
+# -----------------------------------------------------------------------
+# compress text, html, javascript, css, xml:
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE text/x-component
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE application/json
+AddOutputFilterByType DEFLATE application/atom+xml
+AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+AddOutputFilterByType DEFLATE application/x-font-ttf
+AddOutputFilterByType DEFLATE image/x-icon
+AddOutputFilterByType DEFLATE image/x-icon
+AddOutputFilterByType DEFLATE image/svg+xml
+AddOutputFilterByType DEFLATE font/opentype
+AddType application/x-font-woff woff
+AddType x-font/otf .otf
+AddType x-font/ttf .ttf
+AddType x-font/eot .eot
+AddType x-font/woff .woff
+AddType image/x-icon .ico
+AddType image/png .png
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>
+
+
+RewriteCond %{HTTP_HOST} ^www.reachdowneast.com
+RewriteRule (.*)$ http://www.downeastmaine.com/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^ellsworthamerican\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.ellsworthamerican\.com$
+RewriteRule ^homeseller\/$ "https\:\/\/www\.downeastmaine\.com\/classifieds\/realestate\/" [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^reachdowneast\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.reachdowneast\.com$
+RewriteRule ^homeseller\/?$ "https\:\/\/www\.downeastmaine\.com\/classifieds\/realestate\/" [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^downeastmaine\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.downeastmaine\.com$
+RewriteRule ^homeseller\/?$ "https\:\/\/www\.downeastmaine\.com\/classifieds\/realestate\/" [R=301,L]
+
+
+
