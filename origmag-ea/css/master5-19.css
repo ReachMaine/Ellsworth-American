@@ -206,6 +206,9 @@ header#masthead .prl-container .masthead-bg {
   .widget .eai-right-rail div {
     width: 100%; }
 
+#eai_babyfaces.eia-right-rail.eai-countdown-bold .bs-countdown .bs-countdown-text {
+  font-weight: 900 !important; }
+
 /* .widget .eia-right-rail div,
 .widget .eai-right-rail div {
 	width: 100%;
