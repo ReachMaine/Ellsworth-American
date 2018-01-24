@@ -273,6 +273,9 @@ aside .widget-zbtlist {
     aside .widget-zbtlist ul.zbt-ad-list .zbt-ad-link {
       font-size: 12px; }
 
+.biz-today.horizontal {
+  padding-top: 10px; }
+
 .biz-today.horizontal aside.widget-zbtlist {
   float: left;
   border-bottom: 1px solid #DDD; }
@@ -874,6 +877,13 @@ Styling for the Real News Campaign Page
         margin-left: 13%; }
     body #ta_invisible #ta_paywall.ta_centralPopup .ta_paywallText .pw_subscribe_container a.pw_subscribe.ta_loginLables {
       width: 70%; } }
+/* styling for broadstreet ads */
+.biz-today #eia-bix-pull .bs-lazy-ad .bs-lazy-header,
+.biz-today #eia-bix-pull .bs-lazy-ad .bs-lazy-footer {
+  background-color: white;
+  color: black;
+  opacity: initial; }
+
 /* =Theme customization starts here */
 /* article.type-post {
 	padding-left: 8%;
@@ -970,7 +980,8 @@ body {
 /* Footer/COPYRIGHT */
 #footer .footer-widget {
   padding-top: 10px;
-  background-color: #333; }
+  background-color: #333;
+  border-top: 1px solid #DDD; }
   #footer .footer-widget .prl-block-title {
     border-color: #444;
     color: #1E73BE;

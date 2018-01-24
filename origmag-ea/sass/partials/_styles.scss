@@ -253,7 +253,7 @@ header#masthead {
 }
 #eai_babyfaces.eia-right-rail.eai-countdown-bold {
 	.bs-countdown {
-		.bs-countdown-text { 
+		.bs-countdown-text {
 			font-weight: 900!important;
 		}
 	}
@@ -326,6 +326,9 @@ aside .widget-zbtlist { /* sytling for text ad's widget on sidebar 123 */
 		}
 	}
 
+}
+.biz-today.horizontal {
+	padding-top: 10px;
 }
 .biz-today.horizontal aside.widget-zbtlist  { // styling for business today ads underneath content */
 	float: left;

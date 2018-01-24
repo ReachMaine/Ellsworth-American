@@ -1,0 +1,14 @@
+/* styling for broadstreet ads */
+.biz-today { // widget area at the bottom of content
+  #eia-bix-pull {
+    .bs-lazy-ad {
+      .bs-lazy-header,
+      .bs-lazy-footer {
+        background-color: white;
+        color: black;
+        opacity: initial;
+      }
+    }
+  }
+
+}

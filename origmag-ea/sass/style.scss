@@ -20,6 +20,7 @@
 @import "partials/year-in-review";
 @import "partials/real_news";
 @import "partials/tecnavia";
+@import "partials/broadstreet";
 
 
 /* =Theme customization starts here */
@@ -176,6 +177,7 @@ body {
 	.footer-widget {
 		padding-top: 10px;
 		background-color: $footer-widgets-background;
+		border-top: 1px solid $borderltgrey;
 		.prl-block-title {
 			border-color: #444;
 			color: $linkcolor-bright;
