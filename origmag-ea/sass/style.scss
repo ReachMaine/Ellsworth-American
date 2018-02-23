@@ -193,8 +193,18 @@ body {
 			center {
 				padding-bottom: 5px;
 			}
+			.widget_nav_menu ul.menu li a,
 			a {
+				color: $footer-widgets-link-color;
 				font-size: 14px;
+			}
+			.widget_nav_menu ul.menu li.eai-bright-link a,
+			a.eai-bright-link {
+				color: $linkcolor-bright;
+				font-weight: bold;
+			}
+			.widget_nav_menu li {
+				text-align: center;
 			}
 		}
 	}
