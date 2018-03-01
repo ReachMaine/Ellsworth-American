@@ -126,10 +126,6 @@ header#masthead .prl-container .masthead-bg {
     background-color: #f2f4f8;
     border: 1px solid #DDD; }
 
-.eai-featured-2nd {
-  margin-top: 0px;
-  margin-bottom: 0px; }
-
 /* end breaking news styling */
 #main {
   border-left: 0px; }
@@ -1376,11 +1372,22 @@ strong:first-child {
     margin-bottom: 0; }
 
   .prl-grid-divider:not(:empty) > [class*='prl-span-']:not(.prl-span-12):nth-child(n+2) {
-    border: none; } }
+    border: none; }
+
+  ul.prl-list h4.prl-article-title,
+  h3.prl-article-title,
+  h4.prl-article-title {
+    font-size: 24px;
+    line-height: 28px; } }
 @media only screen and (min-width: 769px) {
   div#yarpp_widget-2 {
     background-color: #f7f7f7;
-    padding: 25px; } }
+    padding: 25px;
+    margin-bottom: 4px; }
+
+  .eai-featured-2nd {
+    margin-top: 0px;
+    margin-bottom: 0px; } }
 @media only screen and (max-width: 390px) {
   .wp-caption a img.size-medium {
     width: 200px; }

@@ -287,7 +287,7 @@ if (!class_exists('eacat_sports')) {
 
 							<?php echo post_thumb(get_the_ID(),520, 0, false);?>
 
-						<h4 class="eai-featured-2nd"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title();?></a> <?php echo get_label_format(get_the_ID());?> <?php echo get_label_meta(get_the_ID());?></h4>
+						<h4 class="eai-featured-2nd prl-article-title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title();?></a> <?php echo get_label_format(get_the_ID());?> <?php echo get_label_meta(get_the_ID());?></h4>
 
 					</li>
 
