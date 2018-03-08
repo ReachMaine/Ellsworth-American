@@ -1405,6 +1405,7 @@ strong:first-child {
   .prl-list-sharing li a i.fa-print {
     display: none; }
 
+  .ad-container-mobile,
   #sidebar {
     float: none;
     max-width: 320px;
