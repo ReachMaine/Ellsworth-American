@@ -1411,6 +1411,9 @@ strong:first-child {
     max-width: 320px;
     margin: auto; } }
 @media only screen and (min-width: 769px) {
+  .hidden-desktop {
+    display: none; }
+
   div#yarpp_widget-2 {
     background-color: #f7f7f7;
     padding: 25px;
