@@ -139,6 +139,13 @@
 		max-width: 320px;
 		margin: auto;
 	}
+	#over_footer_wrap {
+		display: none;
+		padding-top: 0px;
+		padding-bottom: 0px;
+		background-color: none;
+
+	}
 }
 
 @media only screen and (min-width: 769px) {

@@ -36,6 +36,10 @@ i.fa-pinterest-square {
 i.fa-linkedin-square {
   color: #0077B5; }
 
+.ad-flex-container {
+  display: flex;
+  justify-content: space-between; }
+
 /* ********* sytles ******** */
 .nowrap {
   white-space: nowrap; }
@@ -978,6 +982,15 @@ body {
 .prl-list-category .list-thumbnail {
   margin-bottom: 0px; }
 
+/**  Over footer widget aread ***/
+#over_footer_wrap {
+  background-color: #f3ed69e3;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+  #over_footer_wrap .flex-ad-container {
+    display: flex;
+    justify-content: space-between; }
+
 /* Footer/COPYRIGHT */
 #footer .footer-widget {
   padding-top: 10px;
@@ -1402,7 +1415,13 @@ strong:first-child {
   #sidebar {
     float: none;
     max-width: 320px;
-    margin: auto; } }
+    margin: auto; }
+
+  #over_footer_wrap {
+    display: none;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: none; } }
 @media only screen and (min-width: 769px) {
   .hidden-desktop {
     display: none; }
