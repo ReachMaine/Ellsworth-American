@@ -1,17 +1,17 @@
 <?php
 /** 22Aug2014 zig - a means to output a calendar pull.
-	16Oct2014 zig 
+	16Oct2014 zig
 		- use excerpt if there is one.
 		- dont export 'Unnamed Venue'
-	23Oct2014 zig - tweaks 
+	23Oct2014 zig - tweaks
 		- dont display Venue contact info (phone or website - only address, contact info to be embeded in content)
-	13Apr15 zig - 
-		- add option to not show end time, content, address & venue (mostly for sports calendar)	
-TBD 
+	13Apr15 zig -
+		- add option to not show end time, content, address & venue (mostly for sports calendar)
+TBD
 	parameterize the site ID of the calendar 'spoke'
  **/
 class ea_calendar extends AQ_Block {
-	
+
 	//set and create block
 	function __construct() {
 		$block_options = array(
@@ -19,13 +19,13 @@ class ea_calendar extends AQ_Block {
 			'size' => 'span-12',
 			'resizable' => 0
 		);
-		
+
 		//create the block
 		parent::__construct('ea_calendar', $block_options);
 	}
-	
+
 	function form($instance) {
-		
+
 		$defaults = array(
 			'title' => 'Calendar out',
 			'startDate' => '',
@@ -42,19 +42,19 @@ class ea_calendar extends AQ_Block {
 			'num_excerpt' =>15,
 			'show_addy' => true,
 			'show_venue' => true,
-			'show_content' => true, 
+			'show_content' => true,
 			'show_endtime' => true,
-			
+
 		);
 		$instance = wp_parse_args($instance, $defaults);
 		extract($instance);
-		
+
 		?>
 		<ul class="lightbox_form">
 			 <li>
 				<label for="<?php echo $this->get_field_id('title') ?>">
 				<div class="title">Title </div>
-				<div class="input">  
+				<div class="input">
 					<?php echo aq_field_input('title', $block_id, $title, $size = 'full') ?>
 					</div>
 				</label>
@@ -62,7 +62,7 @@ class ea_calendar extends AQ_Block {
 			<li>
 				<label for="<?php echo $this->get_field_id('startDate') ?>">
 				<div class="title">Start Date (YYYYMMDD) </div>
-				<div class="input">  
+				<div class="input">
 					<?php echo aq_field_input('startDate', $block_id, $startDate, $size = 'full') ?>
 					</div>
 				</label>
@@ -70,7 +70,7 @@ class ea_calendar extends AQ_Block {
 			<li>
 				<label for="<?php echo $this->get_field_id('endDate') ?>">
 				<div class="title">End Date (YYYYMMDD)</div>
-				<div class="input">  
+				<div class="input">
 					<?php echo aq_field_input('endDate', $block_id, $endDate, $size = 'full') ?>
 					</div>
 				</label>
@@ -78,7 +78,7 @@ class ea_calendar extends AQ_Block {
 			<li>
 				<label for="<?php echo $this->get_field_id('desc') ?>">
 				<div class="title">Description </div>
-				<div class="input">  
+				<div class="input">
 					<?php echo aq_field_input('desc', $block_id, $desc, $size = 'full') ?>
 					</div>
 				</label>
@@ -104,9 +104,9 @@ class ea_calendar extends AQ_Block {
 					<div class="title">Post count</div>
 					<div class="input"><?php echo aq_field_input('post_count', $block_id, $post_count, $size = 'small') ?></div>
 				</label>
-				
-			</li> 
-			
+
+			</li>
+
 			<li><li>
 				<label for="<?php echo $this->get_field_id('column') ?>">
 					<div class="title">Columns</div>
@@ -115,7 +115,7 @@ class ea_calendar extends AQ_Block {
 					</div>
 				</label>
 			</li>
-			
+
 			<li>
 				<label for="<?php echo $this->get_field_id('post_format') ?>">
 					<div class="title">Post Format</div>
@@ -124,44 +124,44 @@ class ea_calendar extends AQ_Block {
 					</div>
 				</label>
 			</li> */ ?>
-			
+
 			<li>
 				<div class="title">Show/Hide</div>
 				<div class="input">
 					<label for="<?php echo $this->get_field_id('show_title') ?>"><?php echo aq_field_checkbox('show_title', $block_id, $show_title) ?> Show Title</label> &nbsp; &nbsp; <label for="<?php echo $this->get_field_id('show_meta') ?>"><?php echo aq_field_checkbox('show_meta', $block_id, $show_meta) ?> Show Town as Group</label> &nbsp; &nbsp; <label for="<?php echo $this->get_field_id('show_excerpt') ?>"><?php echo aq_field_checkbox('show_excerpt', $block_id, $show_excerpt) ?> Show Excerpt</label>
 				</div>
 			</li>
-			
+
 			<li>
 				<div class="title">Options</div>
 				<div class="input">
-					<label for="<?php echo $this->get_field_id('show_endtime') ?>"><?php echo aq_field_checkbox('show_endtime', $block_id, $show_endtime) ?> Show End Time</label> 
-					&nbsp; &nbsp; 
-					<label for="<?php echo $this->get_field_id('show_addy') ?>"><?php echo aq_field_checkbox('show_addy', $block_id, $show_addy) ?> Show Address</label> 
-					&nbsp; &nbsp; 
+					<label for="<?php echo $this->get_field_id('show_endtime') ?>"><?php echo aq_field_checkbox('show_endtime', $block_id, $show_endtime) ?> Show End Time</label>
+					&nbsp; &nbsp;
+					<label for="<?php echo $this->get_field_id('show_addy') ?>"><?php echo aq_field_checkbox('show_addy', $block_id, $show_addy) ?> Show Address</label>
+					&nbsp; &nbsp;
 					<label for="<?php echo $this->get_field_id('show_venue') ?>"><?php echo aq_field_checkbox('show_venue', $block_id, $show_venue) ?> Show Venue</label>
-					&nbsp; &nbsp; 
+					&nbsp; &nbsp;
 					<label for="<?php echo $this->get_field_id('show_content') ?>"><?php echo aq_field_checkbox('show_content', $block_id, $show_content) ?> Show Content</label>
 				</div>
 			</li>
 			<?php /* <li>
 				<label for="<?php echo $this->get_field_id('num_excerpt') ?>">
 					<div class="title">Length of Excerpt</div>
-					<div class="input">  
+					<div class="input">
 						<?php echo aq_field_input('num_excerpt', $block_id, $num_excerpt, $size = 'full') ?>
 					</div>
 				</label>
 			</li> */ ?>
-			
+
         </ul>
-		
+
 <?php
-	} 
+	}
 	/* part that show the block on a page, ie the output of the block */
 	function block($instance) {
 		extract($instance);
 		?>
-		<?php  if($title!='') echo '<h5 class="prl-block-title">'.trim($title).'</h5>';  
+		<?php  if($title!='') echo '<h5 class="prl-block-title">'.trim($title).'</h5>';
 
 			$t_startDate = new DateTime($startDate);
 			$str_startDate = date_format( $t_startDate, 'l, F j, Y');
@@ -179,23 +179,23 @@ class ea_calendar extends AQ_Block {
 				echo "<br>Filtered by categories: ".$cats;
 			}
 			echo "</h2>";
-			 /* let's build the query */ 
+			 /* let's build the query */
 			global $wpdb;
 			$calquery = "SELECT p.ID,p.post_title,";
-    
+
 		    $calquery .= " (SELECT  CAST( meta_value AS DATE) FROM `ea_12_postmeta` pm WHERE p.ID=pm.post_id and pm.meta_key='_EventStartDate') as 'startDate',  ";
 		    $calquery .= " (SELECT  CAST( meta_value AS TIME) FROM `ea_12_postmeta` pm WHERE p.ID=pm.post_id and pm.meta_key='_EventStartDate') as 'startTime',  ";
 		    $calquery .= " (SELECT CAST( meta_value AS DATE) FROM `ea_12_postmeta` pm WHERE p.ID=pm.post_id and pm.meta_key='_EventEndDate') as 'endDate', ";
 		    $calquery .= " (SELECT CAST( meta_value AS TIME) FROM `ea_12_postmeta` pm WHERE p.ID=pm.post_id and pm.meta_key='_EventEndDate') as 'endTime', ";
 			$calquery .= " (SELECT  meta_value FROM `ea_12_postmeta` pm WHERE p.ID=pm.post_id and pm.meta_key='_EventCost') as 'cost', ";
 			$calquery .= " vp.post_title as 'Venue', ";
-    		$calquery .= " (SELECT  meta_value FROM `ea_12_postmeta` pm WHERE p.ID=pm.post_id and pm.meta_key='_EventVenueID') as 'VenueID', ";	
+    		$calquery .= " (SELECT  meta_value FROM `ea_12_postmeta` pm WHERE vp.ID=pm.post_id and pm.meta_key='_EventVenueID') as 'VenueID', ";
     		$calquery .= " (SELECT  meta_value FROM `ea_12_postmeta` pm WHERE vp.ID=pm.post_id and pm.meta_key='_VenueAddress') as 'Address', ";
-    		$calquery .= " (SELECT  meta_value FROM `ea_12_postmeta` pm WHERE vp.ID=pm.post_id and pm.meta_key='_VenueCity') as 'City',  ";	
-    		$calquery .= " (SELECT  meta_value FROM `ea_12_postmeta` pm WHERE vp.ID=pm.post_id and pm.meta_key='_VenuePhone') as 'Phone', ";	
-    		$calquery .= " (SELECT  meta_value FROM `ea_12_postmeta` pm WHERE vp.ID=pm.post_id and pm.meta_key='_VenueURL') as 'website', ";	
+    		$calquery .= " (SELECT  meta_value FROM `ea_12_postmeta` pm WHERE vp.ID=pm.post_id and pm.meta_key='_VenueCity') as 'City',  ";
+    		$calquery .= " (SELECT  meta_value FROM `ea_12_postmeta` pm WHERE vp.ID=pm.post_id and pm.meta_key='_VenuePhone') as 'Phone', ";
+    		$calquery .= " (SELECT  meta_value FROM `ea_12_postmeta` pm WHERE vp.ID=pm.post_id and pm.meta_key='_VenueURL') as 'website', ";
     		/* $calquery .= "  ";	 */
-    		$calquery .= " p.post_content, p.post_excerpt "; 
+    		$calquery .= " p.post_content, p.post_excerpt ";
     		/* now for the tables & joins */
 			$calquery .= " FROM `ea_12_posts` p";
 			$calquery .= " JOIN `ea_12_postmeta` pm ON p.ID=pm.post_id and pm.meta_key = '_EventVenueID' ";
@@ -205,13 +205,13 @@ class ea_calendar extends AQ_Block {
 				$calquery .= " LEFT JOIN ea_12_term_taxonomy tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id) ";
 			}
 			/* the where clause */
-			$calquery .= " WHERE p.post_status = 'publish'  AND p.post_type = 'tribe_events'"; 
+			$calquery .= " WHERE p.post_status = 'publish'  AND p.post_type = 'tribe_events'";
 			if ($startDate AND $endDate) {
 			 	 $calquery .=" AND ((select cast(meta_value AS Date) from `ea_12_postmeta` where post_id=p.ID and meta_key= '_EventStartDate') BETWEEN cast('".$startDate."' as Date) AND cast('".$endDate."'  as Date) ";
     			$calquery .= "  OR  (select cast(meta_value AS Date) from `ea_12_postmeta` where post_id=p.ID and meta_key= '_EventEndDate')  BETWEEN cast('".$startDate."' as Date) AND cast('".$endDate."'  as Date) ";
-    			$calquery .= "  OR (select cast(meta_value AS Date) from `ea_12_postmeta` where post_id=p.ID and meta_key= '_EventStartDate') < cast('".$startDate."'as Date) ";
-        		$calquery .= "  AND (select cast(meta_value AS Date) from `ea_12_postmeta` where post_id=p.ID and meta_key= '_EventEndDate') > cast('".$startDate."' as Date) " ;
-        		$calquery .= ")";
+    			  $calquery .= "  OR (select cast(meta_value AS Date) from `ea_12_postmeta` where post_id=p.ID and meta_key= '_EventStartDate') < cast('".$startDate."'as Date) ";
+        	  $calquery .= "  AND (select cast(meta_value AS Date) from `ea_12_postmeta` where post_id=p.ID and meta_key= '_EventEndDate') > cast('".$startDate."' as Date) " ;
+         $calquery .= ")";
 			}
 			if ($towns) {
 				$calquery .= "AND (SELECT  meta_value FROM `ea_12_postmeta` pm WHERE vp.ID=pm.post_id and pm.meta_key='_VenueCity') in (".$str_towns.")";
@@ -220,11 +220,14 @@ class ea_calendar extends AQ_Block {
 				$calquery .= " AND tt.taxonomy = 'tribe_events_cat' ";
    				$calquery .= "AND tt.term_id in (".$cats.')';
 			}
-			$calquery .= " ORDER BY startDate ASC, City ASC";
+			$calquery .= " ORDER BY startDate ASC";
+			if ($towns) {
+				$calquery .= ", City ASC";
+			}
 			//$calquery .= " ORDER BY startDate ASC, post_title ASC";
-			//echo "QUERY:".$calquery."<br>..END QUERY";
+			//echo "QUERY:".$calquery."<br>..END QUERY.";
 			$calresult = $wpdb->get_results($calquery);
-			
+
 			//echo "Array count:".count($calresult);
 			/* var_dump($calresult);  */
 		?>
@@ -245,10 +248,10 @@ class ea_calendar extends AQ_Block {
 		<button class="right" type="button" value="" onclick="myselecttext('eai-cal-out')" >Select all</button>
 		<div id="eai-cal-out" class="zcal_out"> <!--class="prl-grid prl-grid-divider"> -->
 			<?php
-			
+
 			$endRow = 0;
 			$curdate = $startDate;
-			$curcity = ""; 
+			$curcity = "";
 			$eventcount = count($calresult);
 			foreach ($calresult as $event) {
 
@@ -264,7 +267,7 @@ class ea_calendar extends AQ_Block {
 					echo '<h4 class="zcal_city_group">'.$event->City.'</h4>';
 				}
 				?>
-				
+
 				<div id="event-<?php echo $event->ID ?>" class="eai-cal-event" >
 					<?php /* output the event */
 					echo '<b>'.$event->post_title.'</b>';
@@ -274,37 +277,37 @@ class ea_calendar extends AQ_Block {
 					if (($event->startTime <> $event->endTime) && $show_time) {
 						$t_eventendTime = new DateTime($event->endTime);
 						$str_eventendTime = date_format($t_eventendTime, 'g:i A');
-						echo "-".beautify_timestr($str_eventendTime); 
+						echo "-".beautify_timestr($str_eventendTime);
 					}
 					if (($event->Venue) && ($event->Venue <> 'Unnamed Venue') && $show_venue) { echo ", ".$event->Venue; }
 					if ($event->Address && $show_addy) { echo ", ".$event->Address;}
 					if ($show_addy && $event->City) { echo ', '.$event->City; }
-					if ($event->post_excerpt && $show_excerpt) { 
-						echo ',<span class="zcal_content">'.$event->post_excerpt.'</span>'; 
+					if ($event->post_excerpt && $show_excerpt) {
+						echo ',<span class="zcal_content">'.$event->post_excerpt.'</span>';
 					} else {
-						if ($event->post_content && $show_content) { 
-							echo ',<span class="zcal_content">'.$event->post_content.'</span>'; 
+						if ($event->post_content && $show_content) {
+							echo ',<span class="zcal_content">'.$event->post_content.'</span>';
 						} else {
 							echo '<!-- no content -->';
 						}
 					}
-					
+
 					/* zig 23Oct2014 if ($event->Phone) { echo ', <span class="nowrap">'.$event->Phone.'</span>';}
 					if ($event->website) { echo ", ".$event->website;} */
 					echo "<br>";
 					?>
-				</div> 
-				<?php 
+				</div>
+				<?php
 			} /* end foreach */
 		echo "</div>";
-			
+
 	}
-	
+
 }
-function beautify_timestr($arg_timestr) { 
+function beautify_timestr($arg_timestr) {
 	/* prettify a time string:
-		 remove :00 
-		 change AM to a.m. 
+		 remove :00
+		 change AM to a.m.
 	*/
 		$newtimestr = $arg_timestr;
 		$newtimestr = str_replace("AM", "a.m.", $newtimestr);
