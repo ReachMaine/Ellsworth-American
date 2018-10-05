@@ -220,10 +220,7 @@ class ea_calendar extends AQ_Block {
 				$calquery .= " AND tt.taxonomy = 'tribe_events_cat' ";
    				$calquery .= "AND tt.term_id in (".$cats.')';
 			}
-			$calquery .= " ORDER BY startDate ASC";
-			if ($towns) {
-				$calquery .= ", City ASC";
-			}
+			$calquery .= " ORDER BY startDate ASC , City ASC";
 			//$calquery .= " ORDER BY startDate ASC, post_title ASC";
 			//echo "QUERY:".$calquery."<br>..END QUERY.";
 			$calresult = $wpdb->get_results($calquery);
