@@ -54,7 +54,18 @@
 	<?php endwhile; ?>
 
 	</ul>
-	<?php if ( function_exists( 'page_navi' ) ) page_navi( 'items=5&amp;show_num=1&amp;num_position=after' ); ?>
+	<?php if ( function_exists( 'page_navi' ) ) {
+		page_navi( 'items=5&amp;show_num=1&amp;num_position=after' ); }
+	else {
+		echo '<div class="navigation">';
+		echo '<div class="alignleft">'; 
+			previous_posts_link( '&laquo; Previous ' );
+		echo '</div>';
+		echo '<div class="alignright">';
+			next_posts_link( 'Next &raquo;', '' );
+		echo '</div>';
+	}
+	?>
 
 
 <?php else : ?>

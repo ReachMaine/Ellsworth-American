@@ -137,7 +137,17 @@ special archive display for the living category s.t. we can
 				endwhile;
 				echo '<hr/>';
 	        }
-	        if ( function_exists( 'page_navi' ) ) page_navi( 'items=5&amp;show_num=1&amp;num_position=after' );
+					if ( function_exists( 'page_navi' ) ) {
+						page_navi( 'items=5&amp;show_num=1&amp;num_position=after' ); }
+					else {
+						echo '<div class="navigation">';
+						echo '<div class="alignleft">';
+							previous_posts_link( '&laquo; Previous ' );
+						echo '</div>';
+						echo '<div class="alignright">';
+							next_posts_link( 'Next &raquo;', '' );
+						echo '</div>';
+					}
 		} else {   ?>
 		     <ul class="prl-list-category archive-liv">
 			<?php
@@ -161,7 +171,17 @@ special archive display for the living category s.t. we can
 			<?php endwhile; ?>
 
 			</ul>
-			<?php if ( function_exists( 'page_navi' ) ) page_navi( 'items=5&amp;show_num=1&amp;num_position=after' ); ?>
+			<?php if ( function_exists( 'page_navi' ) ) {
+				page_navi( 'items=5&amp;show_num=1&amp;num_position=after' ); }
+			else {
+				echo '<div class="navigation">';
+				echo '<div class="alignleft">';
+					previous_posts_link( '&laquo; Previous ' );
+				echo '</div>';
+				echo '<div class="alignright">';
+					next_posts_link( 'Next &raquo;', '' );
+				echo '</div>';
+			}?>
 
 	<?php  } /* end of page > 1 */
 	else : /* dont have posts */ ?>
