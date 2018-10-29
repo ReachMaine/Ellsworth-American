@@ -349,6 +349,15 @@ add_filter('embed_oembed_html', 'wrap_embed_with_div', 10, 3);
 function wrap_embed_with_div($html, $url, $attr) {
         return '<div class="ea-responsive-container">'.$html.'</div>';
 }
+// trying to optimize the admin save of a post by removing the custom fields metabox.
+function remove_cfs() {
+ global $post_type;
 
+ if ( is_admin() && post_type_supports( $post_type, 'custom-fields' ) ) {
+	remove_meta_box( 'postcustom', 'post', 'normal' );
+	}
+ }
+
+add_action( 'add_meta_boxes', 'remove_cfs' );
 /* EOF */
 ?>
