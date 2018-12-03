@@ -755,6 +755,18 @@ Styling for the Real News Campaign Page
 
   div.real-news-question {
     clear: both; } }
+/* ------------------------------------
+Styling for the Our Town block on home page.
+------------------------------------ */
+#ea-our-town {
+  background-color: rgba(77, 128, 19, 0.24);
+  padding: 0 8px; }
+  #ea-our-town .aq-template-wrapper h5:empty {
+    display: none; }
+  #ea-our-town .aq-template-wrapper h5.prl-block-title {
+    border-top: 0px;
+    padding-bottom: 10px; }
+
 /* styling for broadstreet ads */
 .biz-today #eia-bix-pull .bs-lazy-ad .bs-lazy-header,
 .biz-today #eia-bix-pull .bs-lazy-ad .bs-lazy-footer {
