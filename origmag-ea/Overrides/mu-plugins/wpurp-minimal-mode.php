@@ -7,8 +7,8 @@ function wpurp_minimal_mode( $minimal_mode, $url ) {
     preg_match( "/^\/user/i", $url, $matches );
     if( count( $matches ) > 0 ) return true; // Any URL starting with /user
 
-    if ( !is_singular(array('post')) ) return true; // turn off for EVERTHING except single posts for now.
-
+    // dont show for archives(usually category) or single pages or obits, but do show for specific page with recipes on it.
+    if ( (is_post_type_archive(array('page','obituary', 'post')) || is_singular(array('obituary', 'page'))) && !is_page('ea-recipes') ) return true;
     return false;
 }
 add_filter( 'wpurp_minimal_mode', 'wpurp_minimal_mode', 10, 2 );
