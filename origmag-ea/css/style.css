@@ -759,7 +759,7 @@ Styling for the Real News Campaign Page
 Styling for the Our Town block on home page.
 ------------------------------------ */
 #ea-our-town {
-  background-color: rgba(77, 128, 19, 0.24);
+  border: 4px solid #e0e0e0;
   padding: 0 8px; }
   #ea-our-town .aq-template-wrapper h5:empty {
     display: none; }
