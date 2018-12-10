@@ -67,6 +67,14 @@ if ( function_exists('register_sidebar') ){
 			'before_widget' => '<div id="%1$s" class=" %2$s obit-ad-container">',
 			'after_widget'  => '</div>'
 		));
+		//  bottom content widget area for single posts.
+		register_sidebar(array(
+			'name' => 'Single Bottom WidgetArea',
+			'id' => 'single_bottom_widgetarea',
+			'description' => 'Widget at bottom of single post.',
+			'before_widget' => '<div id="%1$s" class=" %2$s post-bottom-widget-container">',
+			'after_widget'  => '</div>'
+		));
 		// new above footer widget area (used for yellow page ads...) zig 13Aug18
 		register_sidebar(array(
 			'name' => 'Over Footer',
