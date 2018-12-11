@@ -89,7 +89,9 @@
 
 						   <?php if(isset($prl_data['banner_after_single_content']) && $prl_data['banner_after_single_content']!='') echo '<div class="hide-mobile"><center class="ad-container ad-in-content">'.stripslashes($prl_data['banner_after_single_content']).'</center></div>';?>
                <?php if (is_active_sidebar('single_bottom_widgetarea')) {
-         			     dynamic_sidebar( 'single_bottom_widgetarea' );
+                 echo '<div id="under_content_widget_wrap" class="prl-container">';
+                 dynamic_sidebar( 'single_bottom_widgetarea' );
+                 echo "</div>";
              	} ?>
 						</div>
 					</div>
