@@ -17,7 +17,8 @@ Styling for the Our Town block on home page.
     }
     article.prl-article {
       .prl-article-meta {
-        .dsq-postid, // hide comment count. 
+        display: none;
+        .dsq-postid, // hide comment count.
         .comments-link {
           display: none;
         }
