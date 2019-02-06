@@ -40,6 +40,18 @@ i.fa-linkedin-square {
   display: flex;
   justify-content: space-between; }
 
+/* eai-grid */
+.eai-grid-wrapper ul.eai-archive-grid {
+  display: flex;
+  flex-wrap: wrap; }
+  .eai-grid-wrapper ul.eai-archive-grid li {
+    width: 170px;
+    min-height: 170px;
+    border-top: 0px;
+    padding-top: 0px; }
+    .eai-grid-wrapper ul.eai-archive-grid li img {
+      border: 1px solid #bbbbbb; }
+
 /* ********* sytles ******** */
 .nowrap {
   white-space: nowrap; }
