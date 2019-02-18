@@ -24,8 +24,14 @@
 		<h3 class="prl-archive-title "><?php _e('Blog Archives','presslayer');?></h3>
  	  <?php } elseif (is_search()){ ?>
 	  	<h3 class="prl-archive-title"><?php _e('Search Results','presslayer');?></h3>
-	  <?php  } elseif ( is_post_type_archive( )) {?>
-			<h3 class="prl-archive-title"><?php _e(post_type_archive_title(),'presslayer');?></h3>
+	  <?php  } elseif ( is_post_type_archive( )) {
+			 if ( file_exists(get_stylesheet_directory()."/images/archive-".get_post_type().".jpg") ) {
+				 echo '<div class="space-bot">';
+				 echo '<img src="'.get_stylesheet_directory_uri()."/images/archive-".get_post_type().".jpg".'">';
+				 echo '</div>';
+				}
+			 ?> <h1 class="prl-archive-title"><?php _e(post_type_archive_title(),'presslayer');?></h1>
+
 		<?php } ?>
 
 		<div class="eai-grid-wrapper">
