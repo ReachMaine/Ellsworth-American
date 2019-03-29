@@ -23,7 +23,7 @@ special archive display for the living category s.t. we can
 			$spec_cat1 = 431;   // weddings & engagements;
 			/* $spec_cat2 = 376;  // blogs */
 			/* $spec_cat2 = 1012; // dvd reviews */
-			$spec_cat2 = 3390;  // horoscopes
+			$spec_cat2 = 416;  // horoscopes
 			$spec_cat3 = 418;    // auto revies
 			$nopost_cat = 1013;  // tvlistings
 
