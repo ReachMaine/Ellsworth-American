@@ -28,6 +28,7 @@ $facebook-logo-color: #3B5998; // blue
 $twitter-logo-color: #1DA1F2; // bright blue
 $pinterest-logo-color: #BD081C; // red
 $linkedin-logo-color: #0077B5; // blue
+$eai-blue: #1055a3;
 
 /* Typography ------------------------------------------ */
 .ea-button-wrap {
@@ -77,4 +78,19 @@ i.fa-linkedin-square {
       }
     }
   }
+}
+.eai-wtitle-blue  { // widget title blue
+  .widget-title,
+  .prl-block-title {
+    background-color: $eai-blue;
+    color: white!important;
+    border-top: 0px;
+    a {
+      color: white;
+    }
+  }
+}
+.eai-wborder-blue {  // widget border blue.
+  border: 1px solid $eai-blue;
+  border-radius: 0px;
 }

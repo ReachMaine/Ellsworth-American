@@ -83,6 +83,15 @@ if ( function_exists('register_sidebar') ){
 			'before_widget' => '<div id="%1$s" class=" %2$s eai-overfooter-container">',
 			'after_widget'  => '</div>'
 		));
+		register_sidebar(array(
+			'name' => 'Neighborhood Buzz Topbanner',
+			'id' => 'eai-buzz-topad',
+			'description' => 'Widget area top banner add for Neighborhood buzz pages.',
+			'before_widget' => '<div id="%1$s" class="widget %2$s prl-span-12"> <div class="ads_top ad-container">',
+			'after_widget'  => '</div></div>',
+			'before_title' => '<h2 class="widget-title">',
+			'after_title' => '</h2>'
+		));
 	}
 
 function zig_remove_columns( $columns ) {

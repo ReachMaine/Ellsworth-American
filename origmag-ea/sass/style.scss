@@ -19,6 +19,7 @@
 @import "partials/year-in-review";
 @import "partials/real_news";
 @import "partials/our_town";
+@import "partials/hcc_calendar";
 //@import "partials/tecnavia";
 @import "partials/broadstreet";
 
@@ -232,39 +233,6 @@ body {
 		text-align: center;
 	}
 }
-/* my calendar width */
-aside .widget_hcclist {
-
-	h2.widgettitle {
-		border-bottom: 1px solid #DDD;
-		text-align: center;
-		padding-bottom: 10px;
-	}
-	ul.hcc_event_list {
-		padding-left: 0px;
-		li.hcc_event {
-			list-style: none;
-			padding-bottom: 10px;
-			a {
-				.hcc_event_title {
-					line-height: 20px;
-					margin-bottom: 3px;
-					font-size: 14px;
-				}
-				.hcc_event_venue {
-
-				}
-				.hcc_event_datetime {
-
-				}
-			}
-
-		}
-		li:not(:last-child) {
-
-		}
-	}
-}
 a.more-about-link:before  {
 	content: "More About "
 }
@@ -428,7 +396,7 @@ body {
 border-top: none;
 }
 
-#sidebar .widget_recent_entries, #sidebar .widget_advanced_menu, #sidebar .widget-recent-post, #sidebar .widget_awesomeweatherwidget, #sidebar .widget-zbzdir-list, #sidebar .widget-zbtlist, #sidebar .widget_hcclist, #sidebar #zsfw-authors, #sidebar {
+#sidebar .widget_recent_entries, #sidebar .widget_advanced_menu, #sidebar .widget-recent-post, #sidebar .widget_awesomeweatherwidget, #sidebar .widget-zbzdir-list, #sidebar .widget-zbtlist, #sidebar .widget_hcc_list, #sidebar .widget_hcclist, #sidebar #zsfw-authors, #sidebar {
 border: none;
 }
 

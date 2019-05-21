@@ -52,6 +52,19 @@ i.fa-linkedin-square {
     .eai-grid-wrapper ul.eai-archive-grid li img {
       border: 1px solid #bbbbbb; }
 
+.eai-wtitle-blue .widget-title,
+.eai-wtitle-blue .prl-block-title {
+  background-color: #1055a3;
+  color: white !important;
+  border-top: 0px; }
+  .eai-wtitle-blue .widget-title a,
+  .eai-wtitle-blue .prl-block-title a {
+    color: white; }
+
+.eai-wborder-blue {
+  border: 1px solid #1055a3;
+  border-radius: 0px; }
+
 /* ********* sytles ******** */
 .nowrap {
   white-space: nowrap; }
@@ -398,6 +411,7 @@ aside .widget-zbtlist {
 #sidebar .widget-zbzdir-list,
 #sidebar .widget-zbtlist,
 #sidebar .widget_hcclist,
+#sidebar .widget_hcc_list,
 #sidebar #zsfw-authors {
   border: 2px solid #808080;
   margin-left: -15px;
@@ -784,6 +798,28 @@ Styling for the Our Town block on home page.
     #ea-our-town .aq-template-wrapper article.prl-article .prl-article-meta .comments-link {
       display: none; }
 
+/* styling eai_custom_functions calendar widget hcc_list */
+aside .widget_hcc_list h5.prl-block-title,
+aside .widget_hcc_list h2.widgettitle {
+  border-bottom: 1px solid #DDD;
+  text-align: center;
+  padding-bottom: 10px; }
+aside .widget_hcc_list ul.hcc_event_list {
+  padding: 10px 10px 0 10px; }
+  aside .widget_hcc_list ul.hcc_event_list li.hcc_event {
+    list-style: none;
+    padding-bottom: 10px; }
+    aside .widget_hcc_list ul.hcc_event_list li.hcc_event .hcc_event_title {
+      line-height: 20px;
+      margin-bottom: 3px;
+      font-size: 14px;
+      font-weight: bold; }
+    aside .widget_hcc_list ul.hcc_event_list li.hcc_event .hcc_event_venue, aside .widget_hcc_list ul.hcc_event_list li.hcc_event .hcc_event_datetime {
+      color: #484848; }
+aside .widget_hcc_list a.hcc_seeall {
+  font-weight: bold;
+  padding-left: 10px; }
+
 /* styling for broadstreet ads */
 .biz-today #eia-bix-pull .bs-lazy-ad .bs-lazy-header,
 .biz-today #eia-bix-pull .bs-lazy-ad .bs-lazy-footer {
@@ -927,21 +963,6 @@ body {
 #eai-cal-out .zcal_date_group, #eai-cal-out .zcal_city_group {
   text-align: center; }
 
-/* my calendar width */
-aside .widget_hcclist h2.widgettitle {
-  border-bottom: 1px solid #DDD;
-  text-align: center;
-  padding-bottom: 10px; }
-aside .widget_hcclist ul.hcc_event_list {
-  padding-left: 0px; }
-  aside .widget_hcclist ul.hcc_event_list li.hcc_event {
-    list-style: none;
-    padding-bottom: 10px; }
-    aside .widget_hcclist ul.hcc_event_list li.hcc_event a .hcc_event_title {
-      line-height: 20px;
-      margin-bottom: 3px;
-      font-size: 14px; }
-
 a.more-about-link:before {
   content: "More About "; }
 
@@ -1072,7 +1093,7 @@ body {
 #nav.prl-navbar .prl-container .nav-wrapper {
   border-top: none; }
 
-#sidebar .widget_recent_entries, #sidebar .widget_advanced_menu, #sidebar .widget-recent-post, #sidebar .widget_awesomeweatherwidget, #sidebar .widget-zbzdir-list, #sidebar .widget-zbtlist, #sidebar .widget_hcclist, #sidebar #zsfw-authors, #sidebar {
+#sidebar .widget_recent_entries, #sidebar .widget_advanced_menu, #sidebar .widget-recent-post, #sidebar .widget_awesomeweatherwidget, #sidebar .widget-zbzdir-list, #sidebar .widget-zbtlist, #sidebar .widget_hcc_list, #sidebar .widget_hcclist, #sidebar #zsfw-authors, #sidebar {
   border: none; }
 
 #sidebar .widget_advanced_menu.icon-home::before, #sidebar .widget_hcclist::before, #sidebar .widget-zbzdir-list::before, #sidebar .widget-zbtlist::before, #sidebar .widget-recent-post::before {
