@@ -13,7 +13,7 @@
 		1sept 15 zig add google font Vollkorn
 		12Oct16 zig - remove https for search (for now)
 		13Sept17 zig - change technavia scripts.
-		6Nov17 zig - change reachdowneast.com to downeastmaine.com in link on date 
+		6Nov17 zig - change reachdowneast.com to downeastmaine.com in link on date
 */
 global $theme_url, $prl_data; ?>
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ global $theme_url, $prl_data; ?>
     	<meta http-equiv='Cache-Control' content='no-cache'>
     <?php }  ?>
 	<?php /* zig 17Mar15 trying to add meta name=thumbnail to post */
-		if (is_single() ) {
+		if (is_single() || is_page() ) {
 			global $post;
 			$image_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large');
 			echo '<!-- is single -->';
