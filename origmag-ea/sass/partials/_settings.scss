@@ -94,3 +94,15 @@ i.fa-linkedin-square {
   border: 1px solid $eai-blue;
   border-radius: 0px;
 }
+
+.eai-nav-horizontal {
+  ul.menu {
+    li {
+      display: inline-block;
+    }
+  }
+}
+
+.eai-pt20 {
+  padding-top: 20px;
+}

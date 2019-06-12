@@ -65,6 +65,12 @@ i.fa-linkedin-square {
   border: 1px solid #1055a3;
   border-radius: 0px; }
 
+.eai-nav-horizontal ul.menu li {
+  display: inline-block; }
+
+.eai-pt20 {
+  padding-top: 20px; }
+
 /* ********* sytles ******** */
 .nowrap {
   white-space: nowrap; }
