@@ -4,6 +4,8 @@
 		one large featured image and 3 smaller images
 		uses a _stickit tag to stick a particular article in the category to the big picture,
 			until unstuck or a more recent 'stuck' article
+	19Aug19 zig
+			add 'no_found_rows' => TRUE to WP query for optimization.
 **/
 if (!class_exists('eafeature_Block')) {
 	class eafeature_Block extends AQ_Block {
