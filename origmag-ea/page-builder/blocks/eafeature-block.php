@@ -88,7 +88,7 @@ if (!class_exists('eafeature_Block')) {
 			<?php
 			/* get most recent post tagged with 'staytop' in given category */
 			$p=0;
-			$stay_post = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'), 'cat' => $category, 'tag' => '_stickit'));
+			$stay_post = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'), 'cat' => $category, 'tag' => '_stickit', 'no_found_rows' => TRUE) );
 			$gotone= false;
 			while($stay_post->have_posts()): $stay_post->the_post();
 				$featuredid = get_the_ID();
@@ -116,7 +116,7 @@ if (!class_exists('eafeature_Block')) {
 			/*wp_reset_query(); */
 
 			/* get 4 incase one of the them is the featured post */
-			$recent_posts = new WP_Query(array('post_type' => 'post','showposts' => 4,'post__not_in' => get_option('sticky_posts'),'cat' => $category));
+			$recent_posts = new WP_Query(array('post_type' => 'post','showposts' => 4,'post__not_in' => get_option('sticky_posts'),'cat' => $category, 'no_found_rows' => TRUE));
 
 			while($recent_posts->have_posts()): $recent_posts->the_post();
 			?>
