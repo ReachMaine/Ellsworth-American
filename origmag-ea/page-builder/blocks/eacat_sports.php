@@ -1,13 +1,13 @@
 <?php
 
-/** EA category sport bock - category & subcategories
+/* EA category sport bock - category & subcategories
 
 	25Feb15 zig - copy eacat_landing for sport only.
 		Add sports scores block, 1st block after featured/heading block
 		-> use most recent post from the sport-> scores category
 	6April add link to scores archive
 	15Sept16 zig - apply filters to sports scores box.
-
+*	23Aug19 - zig add , 'no_found_rows' => TRUE for query  optimization.
 **/
 
 if (!class_exists('eacat_sports')) {
@@ -195,7 +195,7 @@ if (!class_exists('eacat_sports')) {
 			<?php
 			if ($do_scores) {
 				/* first get the scores post id, etc */
-				$scores_post = new WP_Query(array('post_type' => 'post', 'post_status=publish' ,'showposts' => 1, 'cat' => $scores_category , 'orderby' => 'date'));
+				$scores_post = new WP_Query(array('post_type' => 'post', 'post_status=publish' ,'showposts' => 1, 'cat' => $scores_category , 'orderby' => 'date', 'no_found_rows' => TRUE));
 				/* if ($scores_post->have_posts()) {
 					 echo "<p>got a post id = ".$scores_post->post->ID."</p>";
 				} else {
@@ -209,7 +209,7 @@ if (!class_exists('eacat_sports')) {
 
 			/* $stay_post = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'), 'cat' => $category, 'tag' => '_stickit')); */
 
-			$stay_post = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'), 'category__in' => $cats, 'tag' => '_stickit'));
+			$stay_post = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'), 'category__in' => $cats, 'tag' => '_stickit','no_found_rows' => TRUE));
 
 
 
@@ -241,7 +241,7 @@ if (!class_exists('eacat_sports')) {
 
 			/*$recent_posts = new WP_Query(array('post_type' => 'post','showposts' => 11,'post__not_in' => get_option('sticky_posts'),'category_name' => $catobj->slug)); */
 
-			$recent_posts = new WP_Query(array('post_type' => 'post','showposts' => 11,'category__in' => $cats, 'orderby' => 'date')); /* modified*/
+			$recent_posts = new WP_Query(array('post_type' => 'post','showposts' => 11,'category__in' => $cats, 'orderby' => 'date','no_found_rows' => TRUE)); /* modified*/
 
 			$done_feat = false;
 

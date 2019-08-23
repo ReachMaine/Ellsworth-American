@@ -11,6 +11,7 @@
 		- display title as h2 if it's not blank.
 	22Oct14 zig
 		- fix the count for the 2ndary featured box & dont include image in h-tag
+	20Aug19 - zig add , 'no_found_rows' => TRUE for query  optimization.
 **/
 if (!class_exists('eacat_landing')) {
 	class eacat_landing extends AQ_Block {
@@ -120,7 +121,7 @@ if (!class_exists('eacat_landing')) {
 			/* get most recent post tagged with '_stickit' in given category */
 			$p=0; /* count of post displayed */
 			/* $stay_post = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'), 'cat' => $category, 'tag' => '_stickit')); */
-			$stay_post = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'), 'category__in' => $cats, 'tag' => '_stickit'));
+			$stay_post = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'), 'category__in' => $cats, 'tag' => '_stickit', 'no_found_rows' => TRUE ));
 
 			$gotone= false;
 			while($stay_post->have_posts()): $stay_post->the_post();
@@ -137,7 +138,7 @@ if (!class_exists('eacat_landing')) {
 
 			/* get 11 incase one of the them is the featured post */
 			/*$recent_posts = new WP_Query(array('post_type' => 'post','showposts' => 11,'post__not_in' => get_option('sticky_posts'),'category_name' => $catobj->slug)); */
-			$recent_posts = new WP_Query(array('post_type' => 'post','showposts' => 11,'post__not_in' => get_option('sticky_posts'),'category__in' => $cats, 'orderby' => 'date')); /* modified*/
+			$recent_posts = new WP_Query(array('post_type' => 'post','showposts' => 11,'post__not_in' => get_option('sticky_posts'),'category__in' => $cats, 'orderby' => 'date', 'no_found_rows' => TRUE )); /* modified*/
 			$done_feat = false;
 			if (!$gotone) {
 				/* find the first one with a thumnail */
