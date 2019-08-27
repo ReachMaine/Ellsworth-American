@@ -176,11 +176,11 @@ if (!class_exists('eacat_sports')) {
 			$catobj = get_category($category);
 			$cat_children = get_categories(array('child_of'=>  $category));
 			$cats = array((int) $category);
-			foreach ($cat_children as $ccat) {
+			/* foreach ($cat_children as $ccat) {
 				if ($ccat != $sports_category) { //  dont include scores category in flow of posts.
 					$cats[] = (int) $ccat->term_id;
 				}
-			}
+			}*/
 			$do_scores = get_post_meta(get_the_ID(), 'show_sports_scores', true) == 'true';
 		?>
 
