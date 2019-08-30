@@ -39,11 +39,14 @@ global $theme_url, $prl_data; ?>
 
 <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700,700i" rel="stylesheet">
 <script data-cfasync="false" type="text/javascript" src="//cdn.broadstreetads.com/init.js"></script>
-<?php
+<?php /*
 	if (!is_singular('post') ) { 	?>
 		<script data-cfasync="false" type="text/javascript" >var ta_cat = "not_post"; </script>
-	<?php }  ?>
+	<?php } */  ?>
+	<?php /* only add  paywall scripts on single posts  */
+	if ( is_singular('post') ) { ?>
    <script data-cfasync="false" type="text/javascript" src="//ellsworthamerican-me-pw.newsmemory.com/?meter&amp;service=onstop&amp;v=0"></script>
+ <?php } ?>
 
 <?php wp_head();?>
 	<?php if ( is_home() || is_front_page() )  { ?>
@@ -69,8 +72,11 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 ?>
 <body <?php body_class($body_class[$prl_data['site_style']]); ?>>
 <?php if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) { gtm4wp_the_gtm_tag(); } ?>
-<?php /* 29Aug16 zig - put technavia script here....*/ ?>
-<script data-cfasync="false" type="text/javascript" src="//ellsworthamerican-me-pw.newsmemory.com/?meter&amp;v=0"></script>
+<?php /* 29Aug16 zig - put technavia script here....*/
+ 			/* 28Aug19 zig - but only if single post */
+			if ( is_singular('post') ) { ?>
+				<script data-cfasync="false" type="text/javascript" src="//ellsworthamerican-me-pw.newsmemory.com/?meter&amp;v=0"></script>
+			<?php } ?>
 <div id="topbar"><?php if ( is_active_sidebar( 'topbar') ) { 	dynamic_sidebar( 'topbar' );	}  ?></div>
 <div class="site-wrapper">
     <!--<div class="prl-container">-->
@@ -116,7 +122,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 					<?php  } if($prl_data['header_time']!='Disable'){  $current_site = get_current_site(); ?>
 					<span class="prl-header-time"><a href="https://www.downeastmaine.com/calendar/events/today/"><i class="fa fa-calendar"></i><?php echo date('l');?> - <?php echo date('M d, Y');?></a></span>
 					<?php } ?>
-					<?php  echo eai_technav_loginmenu();  ?>
+					<?php  if (is_singular('post')) {echo eai_technav_loginmenu(); }  ?>
 				</div>
 				<div class="prl-header-social">
 					<?php if($prl_data['header_facebook']!=''){?><a href="<?php echo $prl_data['header_facebook'];?>" class="fa fa-facebook" title="Facebook" target="_blank"></a><?php }?>
