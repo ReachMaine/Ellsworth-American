@@ -1,7 +1,9 @@
 <?php
 /** A simple text block **/
 /* mods:
-	17Sept2014 zig - no comments in calls to post_meta */
+	17Sept2014 zig - no comments in calls to post_meta
+	3Sept19 zig - 'no_found_rows' => TRUE
+	 */
 class AQ_Home4_Block extends AQ_Block {
 
 	//set and create block
@@ -72,7 +74,7 @@ class AQ_Home4_Block extends AQ_Block {
 
     <div class="prl-grid prl-grid-divider ea-multiple-posts">
          <?php
-		$recent_posts = new WP_Query(array('post_type' => 'post','showposts' => 3,'post__not_in' => get_option('sticky_posts'),'cat' => $category));
+		$recent_posts = new WP_Query(array('post_type' => 'post','showposts' => 3,'post__not_in' => get_option('sticky_posts'),'cat' => $category, 'no_found_rows' => TRUE));
 		$p=0;
 		while($recent_posts->have_posts()): $recent_posts->the_post();
 		$p++;

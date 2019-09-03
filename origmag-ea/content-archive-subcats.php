@@ -2,6 +2,7 @@
 /* template mods:
 special archive display for the living category s.t. we can
 8Oct2014 zig - add divider between 'row's of subcats.
+3Sept19 zig 	add 'no_found_rows' => TRUE to WP query for optimization.
 */
 	global $pl_data, $theme_url;
 	$displayed = array();
@@ -24,7 +25,7 @@ special archive display for the living category s.t. we can
 			$colcount=0;
 
 			foreach ($subcats as $subcat) {
-				$recent_post1 = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'),'cat' => $subcat->term_id));
+				$recent_post1 = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'),'cat' => $subcat->term_id, 'no_found_rows' => TRUE));
 				if ($recent_post1->have_posts()) {
 					while($recent_post1->have_posts()): $recent_post1->the_post();
 						$colcount++;

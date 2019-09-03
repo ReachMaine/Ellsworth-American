@@ -4,6 +4,7 @@ special archive display for the living category s.t. we can
 * 25Mar15 - had wrong category id for _stickit search, now use slug.
 * 21Aug15 zig - change spec_cat2 to dvd reviews (was blogs)
 * 9Aug17 TimS - change spec_cat2 to horoscopes (was dvd reviews)
+	28Aug19 zig 	add 'no_found_rows' => TRUE to WP query for optimization.
 */
 	global $pl_data, $theme_url;
 
@@ -28,21 +29,21 @@ special archive display for the living category s.t. we can
 			$nopost_cat = 1013;  // tvlistings
 
 			/* build the special category blocks the ids of the special category */
-			$recent_post1 = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'),'cat' => $spec_cat1));
+			$recent_post1 = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'),'cat' => $spec_cat1,	'no_found_rows' => TRUE ));
 			while($recent_post1->have_posts()): $recent_post1->the_post();
 				$cat1_out = eai_build_postcol(3, get_cat_name( $spec_cat1 )/* column title */, false/* excerpt */,true /* meta */, true /* date only*/);
 				$displayed[] = get_the_ID();
 			endwhile;
 			wp_reset_query();
 
-			$recent_post2 = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'),'cat' => $spec_cat2));
+			$recent_post2 = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'),'cat' => $spec_cat2,'no_found_rows' => TRUE));
 			while($recent_post2->have_posts()): $recent_post2->the_post();
 				$cat2_out = eai_build_postcol(3, get_cat_name( $spec_cat2 )/* column title */, false/* excerpt */, true /* meta */, true /* date only*/ );
 				$displayed[] = get_the_ID();
 			endwhile;
 			wp_reset_query();
 
-			$recent_post3 = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'),'cat' => $spec_cat3));
+			$recent_post3 = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'),'cat' => $spec_cat3,'no_found_rows' => TRUE));
 			while($recent_post3->have_posts()): $recent_post3->the_post();
 				$cat3_out = eai_build_postcol(3, get_cat_name( $spec_cat3 )/* column title */, false/* excerpt */, true /* meta */, true /* date only*/);
 				$displayed[] = get_the_ID();
@@ -52,7 +53,7 @@ special archive display for the living category s.t. we can
  			echo '<div class="prl-grid prl-grid-divider eacat-living">';
 			/* get most recent post tagged with '_stickit' in given category */
 			$p = 0;
-			$stay_post = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'), 'cat' => $category, 'tag' => '_stickit'));
+			$stay_post = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'), 'cat' => $category, 'tag' => '_stickit','no_found_rows' => TRUE));
 			$gotone = false;
 			while($stay_post->have_posts()): $stay_post->the_post();
 				$displayed[] =  get_the_ID();
