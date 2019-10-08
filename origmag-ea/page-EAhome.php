@@ -63,6 +63,14 @@ get_header();?>
               echo '</div>'; // col
             echo '</div>'; // grid
         }
+        $cats_str = get_post_meta(get_the_id(), 'eai-page-cats', true);
+        if ($cats_str) { // not working yet, since it a page not a post s.t. doesnt show post_meta box
+          $cats = explode($cats_str);
+          $stickit_cat = $cat[0]; // first one is stickit category
+        }
+        //echo "<pre>"; var_dump($cats); echo "</pre>";
+        //echo "<hr><p>stickit_cat is [".$stickit_cat."]";
+
 
         echo '<div class="prl-grid">';
         // *** Now the featured post ***
@@ -118,13 +126,13 @@ get_header();?>
         $pslice_limit = 2;
         // list next to featured.
         echo '<div class="prl-span-3">' ;
-          echo '<ul class="prl-list prl-list-line" style="list-style:none;" >';
+          echo '<ul class="prl-list" style="list-style:none;" >';
           while ( $recent_posts->have_posts()  && ($p < $num_posts_to_show) && ($pslice < $pslice_limit) ): $recent_posts->the_post();
               if ($feat_post != $post->ID) {
                   $p++;
                   $pslice++;
                   if (has_post_thumbnail()) {
-                    echo eai_build_postli( false/* excerpt */, true /* date only*/);
+                  echo eai_build_postli( false/* excerpt */, true /* date only*/);
                   } else {
                   echo eai_build_postli( true/* excerpt */, true /* date only*/);
                 }
@@ -155,9 +163,9 @@ get_header();?>
                   // display the post here???
                 //  echo "<p> post #: ".$p." display post ID: ".$post->ID." - </p>";
                 if (has_post_thumbnail()) {
-                  echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, true /* meta */, true /* date only*/);
+                echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, false /* meta */, false /* date only*/);
                 } else {
-                  echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, true /* meta */, true /* date only*/);
+                echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, false /* meta */, false /* date only*/);
                 }
               }
           endwhile;
@@ -201,9 +209,9 @@ get_header();?>
                 // display the post here???
               //  echo "<p> post #: ".$p." display post ID: ".$post->ID." - </p>";
               if (has_post_thumbnail()) {
-                echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, true /* meta */, true /* date only*/);
+              echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, false /* meta */,  true/* date only*/);
               } else {
-                echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, true /* meta */, true /* date only*/);
+              echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, false /* meta */, true /* date only*/);
               }
           }
         endwhile;
@@ -220,9 +228,9 @@ get_header();?>
                   // display the post here???
                 //  echo "<p> post #: ".$p." display post ID: ".$post->ID." - </p>";
                 if (has_post_thumbnail()) {
-                  echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, true /* meta */, true /* date only*/);
+                echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, false /* meta */, true /* date only*/);
                 } else {
-                  echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, true /* meta */, true /* date only*/);
+                echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, false /* meta */, true /* date only*/);
                 }
             }
           endwhile;
@@ -258,9 +266,9 @@ get_header();?>
                 $p++;
                 $pslice++;
                 if (has_post_thumbnail()) {
-                  echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, true /* meta */, true /* date only*/);
+                echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, false /* meta */, true /* date only*/);
                 } else {
-                  echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, true /* meta */, true /* date only*/);
+                echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, false /* meta */, true /* date only*/);
                 }
             }
           endwhile;
@@ -281,9 +289,9 @@ get_header();?>
                   $p++;
                   $pslice++;
                   if (has_post_thumbnail()) {
-                    echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, true /* meta */, true /* date only*/);
+                  echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, false /* meta */, true /* date only*/);
                   } else {
-                    echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, true /* meta */, true /* date only*/);
+                  echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, false /* meta */, true /* date only*/);
                   }
               }
             endwhile;
