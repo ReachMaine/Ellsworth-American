@@ -7,6 +7,7 @@
 */
 add_action('after_setup_theme', 'ea_setup');
 require_once(get_stylesheet_directory().'/inc/eai_custom_functions.php');
+require_once(get_stylesheet_directory().'/inc/eaihome_functions.php');
 //require_once(get_stylesheet_directory().'/inc/eai_election_results.php');
 //require_once(get_stylesheet_directory().'/inc/eai_leaky.php');
 require_once(get_stylesheet_directory().'/inc/eai_obits.php');
