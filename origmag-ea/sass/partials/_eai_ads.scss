@@ -1,0 +1,52 @@
+// sytling for ads (broadstreet or otherwise)
+
+.eai-ad-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.ads_top.ad-container,
+.eai-ad-container.eai-ad-across {
+  box-shadow: 5px 5px 15px 0px grey;
+}
+.eai-ad-container.eai-ad-right {
+  box-shadow: 5px 5px 15px 0px grey;
+}
+.eai-ad-container.eai-ad-left {
+  box-shadow: -5px 5px 15px 0px grey;
+}
+
+@media only screen and (min-width: 1200px) { // wide screen (25px margin on container)
+  .eai-ad-300w {
+    //min-width: 300px;
+    width: 300px;
+  }
+  .eai-ad-300w.eai-ad-right {
+    margin-left: -10px;
+  }
+  .eai-ad-300w.eai-ad-left {
+    margin-left: -40px;
+  }
+}
+@media only screen and (max-width: 1199px) and (min-width: 769px){ // med (20px margin on container)
+  .eai-ad-300w {
+
+  }
+  .eai-ad-300w.eai-ad-left {
+    margin-right: -15px;
+    margin-left: -10px;
+  }
+
+  .eai-ad-300w.eai-ad-right {
+    margin-right: -10px;
+    margin-left: -15px;
+
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .eai-ad-300w {
+    //min-width: 300px;
+    max-width: 300px;
+    margin: 20px auto;
+  }
+}
