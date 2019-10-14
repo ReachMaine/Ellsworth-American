@@ -1,28 +1,9 @@
 <?php
 /*
-Template Name: Page - EAHomeFlow
-*/?>
+Template Name: Page - EAHome
 <?php
 /* mods:
-  1Oct19 zig - new homepage page template.
-    idea:
-     slice1:  top banner ad
-     slice2:  featured post + stack of 3 in one col, position 2a sidebar
-              row of 4 across
-              position 2b
 
-    slice3:  position 3a + 3 accross
-            4 accross.
-            position 3b
-
-    slice4:  3 accross + position 4a
-            4 accross
-            position 4b
-
-Notes from Meeting with Chris & Cyndi
-- positions 2b & 3b not go all the way accross
-- need some type of styling that sets ads apart from file_get_contents
-- may need to label posts in Sports & Living with subcat.
 */
 get_header();?>
 <?php /* some inputs */
@@ -31,11 +12,11 @@ get_header();?>
   // ea
   $cats = array(374 /* news*/, 896 /* life style */, 1404/* sports */); // news, lifestyle, sports
   $stickit_cat = 374;
-  $stickit_id = 981;
+  $stickit_tag = 981;
   //testing
-  $cats = array(2, 3, 4);
+  /* $cats = array(2, 3, 4);
   $stickit_cat = 2;
-  $stickit_tag = 10;
+  $stickit_tag = 10; */
   // inits
   $p=0; // total posts shown
 ?>
@@ -63,16 +44,19 @@ get_header();?>
               echo '</div>'; // col
             echo '</div>'; // grid
         }
-        $cats_str = get_post_meta(get_the_id(), 'eai-page-cats', true);
+        /* $cats_str = get_post_meta(get_the_id(), 'eai-page-cats', true);
         if ($cats_str) { // not working yet, since it a page not a post s.t. doesnt show post_meta box
           $cats = explode($cats_str);
           $stickit_cat = $cat[0]; // first one is stickit category
-        }
+        } */
         //echo "<pre>"; var_dump($cats); echo "</pre>";
-        //echo "<hr><p>stickit_cat is [".$stickit_cat."]";
+        //echo "<hr><p>stickit_cat is [".$stickit_cat."].";
+        //echo "<hr><p>stickit_tag is [".$stickit_tag."].";
 
 
-        echo '<div class="prl-grid">';
+        echo '<div class="prl-grid">'; // whole thing
+        echo '<div class="prl-span-9 ">' ; // content section
+        echo '<div class="prl-grid eai-content-row">'; // content columns
         // *** Now the featured post ***
         $feat_post = "";
         $stay_postq = new WP_Query(array(
@@ -86,7 +70,7 @@ get_header();?>
                                     'taxonomy' => 'category',
                                     'field' => 'id',
                                     'terms' => array($stickit_cat),
-                                    'include_children' => true,
+                                    'include_children' => false,
                                     'operator' => 'AND'
                                 ),
                                 array(
@@ -97,108 +81,110 @@ get_header();?>
                                 )
                               ) // tax array
                             ));
-        //echo '<pre>'.$stay_postq->request."</pre>";
-        if ($stay_postq->have_posts()) {
-          //echo "<p>Past the if ... </p>";
-          //while($recent_posts->have_posts()): $recent_posts->the_post();
-          while ($stay_postq->have_posts()) : $stay_postq->the_post();
-          //echo "<p>GOt featured ...<p> ";
-            $feat_post = get_the_ID();
-            //echo '<div class="prl-span-6">'; // span 9 or twelve
-          echo eai_build_postcol(6 /* columns*/, ""/* column title */, true /* excerpt */, true /* meta */, true /* date only*/);
-            //echo '<div class="prl-span-6">'; // span 9 or twelve
-            $p++;
-          endwhile;  /* */
+          //echo '<pre>'.$stay_postq->request."</pre>";
+          if ($stay_postq->have_posts()) {
+            //echo "<p>Past the if ... </p>";
+            //while($recent_posts->have_posts()): $recent_posts->the_post();
+            while ($stay_postq->have_posts()) : $stay_postq->the_post();
+            //echo "<p>GOt featured ...<p> ";
+              $feat_post = get_the_ID();
+              //echo '<div class="prl-span-6">'; // span 9 or twelve
+              echo eaihome_build_postcol(8 /* columns*/,  ""/* column title */, true, true /* date */);
+              //echo '<div class="prl-span-6">'; // span 9 or twelve
+              $p++;
+            endwhile;  /* */
 
-        } else {
-          //echo "<p>nada featured.</p>";
-        }
-        //echo "<hr>";
-        wp_reset_query();
-        $recent_posts = new WP_Query(array('post_type' => 'post',
-                                          'posts_per_page'=> $num_post_to_get,
-                                          'post__not_in' => get_option('sticky_posts'),
-                                            'category__in' => $cats,
-                                          'no_found_rows' => TRUE));
-
-        // *** Now the column posts ***
-        $pslice = 0; // posts in this slice
-        $pslice_limit = 2;
-        // list next to featured.
-        echo '<div class="prl-span-3">' ;
-          echo '<ul class="prl-list" style="list-style:none;" >';
-          while ( $recent_posts->have_posts()  && ($p < $num_posts_to_show) && ($pslice < $pslice_limit) ): $recent_posts->the_post();
-              if ($feat_post != $post->ID) {
-                  $p++;
-                  $pslice++;
-                  if (has_post_thumbnail()) {
-                  echo eai_build_postli( false/* excerpt */, true /* date only*/);
-                  } else {
-                  echo eai_build_postli( true/* excerpt */, true /* date only*/);
-                }
-            }
-          endwhile;
-          echo '</ul>';
-        echo '</div>'; // div for list col
+          } else {
+            //echo "<p>nada featured.</p>";
+          }
+          //echo "<hr>";
+          wp_reset_query();
+          $recent_posts = new WP_Query(array('post_type' => 'post',
+                                            'posts_per_page'=> $num_post_to_get,
+                                            'post__not_in' => get_option('sticky_posts'),
+                                              'category__in' => $cats,
+                                            'no_found_rows' => TRUE));
+          //echo '<pre>'.$recent_posts->request."</pre>";
+          // *** Now the column posts ***
+          $pslice = 0; // posts in this slice
+          $pslice_limit = 2;
+          // list next to featured.
+          echo '<div class="prl-span-4">' ;
+            echo '<ul class="prl-list" style="list-style:none;" >';
+            while ( $recent_posts->have_posts()  && ($p < $num_posts_to_show) && ($pslice < $pslice_limit) ): $recent_posts->the_post();
+                if ($feat_post != $post->ID) {
+                    $p++;
+                    $pslice++;
+                    echo '<li id="post-'.get_the_ID().'" class="'.implode(' ', get_post_class('clearfix')). '" >';
+                    echo eaihome_build_post(false, false);
+                    echo '</li>';
+              }
+            endwhile;
+            echo '</ul>';
+          echo '</div>'; // div for list col
 
 
-        // **** now the sidebar....
-        if (is_active_sidebar('position2a')) {
-          echo '<aside class="eai-position2a prl-span-3">';
-          dynamic_sidebar( 'position2a' );
-          echo '</aside>';
-        }
-      echo '</div>'; // for grid
 
-
+        echo '</div><!-- end grid 1st content row -->'; // for grid
+        echo '<div class="prl-grid eia-content-row"><!-- start grid 2nd content row -->';
         // next row of posts...
-        $pslice_limit = 4;
+        $pslice_limit = 3;
         $pslice = 0;
-        echo '<div class="prl-grid">';
+
         //echo '<div class="prl-span-12">' ;
           while ( $recent_posts->have_posts()  && ($p < $num_posts_to_show) && ($pslice < $pslice_limit) ): $recent_posts->the_post();
               if ($feat_post != $post->ID) {
                   $p++;
                   $pslice++;
-                  // display the post here???
-                //  echo "<p> post #: ".$p." display post ID: ".$post->ID." - </p>";
-                if (has_post_thumbnail()) {
-                echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, false /* meta */, false /* date only*/);
-                } else {
-                echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, false /* meta */, false /* date only*/);
-                }
+
+                echo eaihome_build_postcol(3 /* columns*/, ""/* column title */, false /* excerpt*/, false /* date */);
               }
           endwhile;
-        //echo '</div>'; // div for columns
-        echo '</div>'; // grid
 
+          echo '</div><!-- end grid 2nd content row -->'; // content columns
 
-          if (is_active_sidebar('position2b')) {
-            echo '<div class="prl-grid">';
-              echo '<div class="eai-position2b prl-span-12">';
-                dynamic_sidebar( 'position2b' );
-              echo '</div>'; // span.
-            echo '</div>'; // grid
+          echo '</div><!-- end grid for content  -->'; // div for columns
+          // **** now the sidebar....
+          if (is_active_sidebar('eaihome_side1')) {
+            echo '<aside class="eaihome_side1 prl-span-3">';
+            dynamic_sidebar( 'eaihome_side1' );
+            echo '</aside>';
+          } else {
+
           }
+        echo '</div><!--  grid for whole thing -->';
 
-
-        //echo '</div>'; // div for grid
     echo '</section>';
-
+echo '</div><!-- container -->';
+echo '<div class="prl-container ea-float">';
+    if (is_active_sidebar('eaihome_across1')) {
+      echo '<div class="prl-grid">';
+        echo '<div class="eaihome_across1 prl-span-12" style="margin-top: 10px;" >';
+          dynamic_sidebar( 'eaihome_across1' );
+        echo '</div>'; // span.
+      echo '</div>'; // grid
+    }
+echo '</div><!-- container -->';
+echo '<div class="prl-container">';
 /* *** 2nd content section = slice 3 **** */
   echo '<section id="eai-slice3" class="eai-home-slice"><!-- 2nd section = slice 3 -->';
-    echo '<div class="prl-grid">';
+    echo '<div class="prl-grid">'; // whole slice
       // first side bar if there is one
       // **** now the sidebar....
-      if (is_active_sidebar('position3a')) {
-        echo '<aside class="eai-position3a prl-span-3">';
-        dynamic_sidebar( 'position3a' );
+      if (is_active_sidebar('eaihome_side2')) {
+        echo '<aside class="eaihome_side2 prl-span-3">';
+        dynamic_sidebar( 'eaihome_side2' );
         echo '</aside>';
         $pslice_limit = 3;
+        echo '<div class="prl-span-9 ea-content-grid">' ; // content section
+        echo '<div class="prl-grid eia-content-row">'; // content columns
       } else {
         $pslice_limit = 4; // no sidebar, do for across....
+        echo '<div class="prl-span-12">' ; // content section
+        echo '<div class="prl-grid eia-content-row">'; // content columns
       }
       // next row of posts...
+
 
       $pslice = 0;
       //echo '<div class="prl-span-12">' ;
@@ -208,17 +194,13 @@ get_header();?>
                 $pslice++;
                 // display the post here???
               //  echo "<p> post #: ".$p." display post ID: ".$post->ID." - </p>";
-              if (has_post_thumbnail()) {
-              echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, false /* meta */,  true/* date only*/);
-              } else {
-              echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, false /* meta */, true /* date only*/);
-              }
+            echo eaihome_build_postcol($pslice_limit /* columns*/, ""/* column title */, false, false /* date */);
           }
         endwhile;
-      echo "</div>"; // grid
+        echo "</div><!-- end content1 -->"; // grid
 
-      echo '<div class="prl-grid">';
-        $pslice_limit = 4; // no sidebar, do for across....
+        echo '<div class="prl-grid eia-content-row">';
+
         $pslice = 0;
         //echo '<div class="prl-span-12">' ;
           while ( $recent_posts->have_posts()  && ($p < $num_posts_to_show) && ($pslice < $pslice_limit) ): $recent_posts->the_post();
@@ -227,35 +209,43 @@ get_header();?>
                   $pslice++;
                   // display the post here???
                 //  echo "<p> post #: ".$p." display post ID: ".$post->ID." - </p>";
-                if (has_post_thumbnail()) {
-                echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, false /* meta */, true /* date only*/);
-                } else {
-                echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, false /* meta */, true /* date only*/);
-                }
+
+              echo eaihome_build_postcol($pslice_limit /* columns*/, ""/* column title */, false, false /* date */);
+
             }
           endwhile;
-        echo "</div>"; // grid
+        echo "</div><!-- content2 -->"; // grid
 
+        echo "</div><!-- content span -->";
+        echo "</div><!-- whole slice -->";
         // ad space across....
-        if (is_active_sidebar('position3b')) {
-          echo '<div class="prl-grid">';
-            echo '<div class="eai-position3b prl-span-12">';
-              dynamic_sidebar( 'position3b' );
-            echo '</div>'; // span.
-          echo '</div>'; // grid
-        }
-  echo '</section>';
 
+  echo '</section>';
+  echo '</div><!-- container -->';
+  echo '<div class="prl-container ea-float" >';
+              if (is_active_sidebar('eaihome_across2')) {
+            echo '<div class="prl-grid">';
+              echo '<div class="eaihome_across2 prl-span-12" style="margin-top: 10px;" >';
+                dynamic_sidebar( 'eaihome_across2' );
+              echo '</div>'; // span.
+            echo '</div>'; // grid
+          }
+  echo '</div><!-- container -->';
+  echo '<div class="prl-container">';
 
   /* *** 3nd content section = slice 4 **** */
     echo '<section id="eai-slice4" class="eai-home-slice"><!-- 3nd section = slice 4 -->';
-      echo '<div class="prl-grid">';
+      echo '<div class="prl-grid"><!-- begin grid for whole slice-->'; // whole slice
         // first side bar if there is one
         // **** now the sidebar....
         if (is_active_sidebar('position4a')) {
           $pslice_limit = 3;
+          echo '<div class="prl-span-9 eai-content"><!-- content section start -->' ; // content section
+          echo '<div class="prl-grid eai-content-row">'; // content columns
         } else {
           $pslice_limit = 4; // no sidebar, do for across....
+          echo '<div class="prl-span-12 eai-content"><!-- content section start -->' ; // content section
+          echo '<div class="prl-grid eai-content-row">'; // content columns
         }
         // next row of posts...
 
@@ -265,48 +255,51 @@ get_header();?>
               if ($feat_post != $post->ID) {
                 $p++;
                 $pslice++;
-                if (has_post_thumbnail()) {
-                echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, false /* meta */, true /* date only*/);
-                } else {
-                echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, false /* meta */, true /* date only*/);
-                }
+
+              echo eaihome_build_postcol($pslice_limit /* columns*/,  ""/* column title */, false, false /* date */);
+
             }
           endwhile;
 
-        if (is_active_sidebar('position4a')) {
-          echo '<aside class="eai-position4a prl-span-3">';
-          dynamic_sidebar( 'position4a' );
-          echo '</aside>';
-        }
-        echo "</div>"; // grid
 
-        echo '<div class="prl-grid">';
-          $pslice_limit = 4; // no sidebar, do for across....
+        echo "</div><!-- end content row1 -->"; // grid
+
+        echo '<div class="prl-grid eai-content-row">';
           $pslice = 0;
           //echo '<div class="prl-span-12">' ;
             while ( $recent_posts->have_posts()  && ($p < $num_posts_to_show) && ($pslice < $pslice_limit) ): $recent_posts->the_post();
                 if ($feat_post != $post->ID) {
                   $p++;
                   $pslice++;
-                  if (has_post_thumbnail()) {
-                  echo eai_build_postcol(4 /* columns*/, ""/* column title */, false/* excerpt */, false /* meta */, true /* date only*/);
-                  } else {
-                  echo eai_build_postcol(4 /* columns*/, ""/* column title */, true/* excerpt */, false /* meta */, true /* date only*/);
-                  }
+
+                echo eaihome_build_postcol($pslice_limit /* columns*/, ""/* column title */, false, false /* date */);
+
               }
             endwhile;
-          echo "</div>"; // grid
-          //echo "<p>p is: [".$p."]</p>";
+          echo "</div><!--end content row2 -->"; // grid
 
-          // ad space across....
-          if (is_active_sidebar('position4b')) {
-            echo '<div class="prl-grid">';
-              echo '<div class="eai-position4b prl-span-12">';
-                dynamic_sidebar( 'position4b' );
-              echo '</div>'; // span.
-            echo '</div>'; // grid
+        echo "</div><!-- content section end -->"; // grid
+          if (is_active_sidebar('position4a')) {
+            echo '<aside class="eai-position4a prl-span-3">';
+            dynamic_sidebar( 'position4a' );
+            echo '</aside>';
           }
+
+        echo "</div>"; // grid  for whole thing
+
     echo '</section>';
+    echo '</div><!-- container -->';
+echo '<div class="prl-container ea-float" >';
+ // ad space across....
+        if (is_active_sidebar('position4b')) {
+          echo '<div class="prl-grid">';
+            echo '<div class="eai-position4b prl-span-12" style="margin-top: 10px;">';
+              dynamic_sidebar( 'position4b' );
+            echo '</div>'; // span.
+          echo '</div>'; // grid
+        }
+echo '</div><!-- container -->';
+echo '<div class="prl-container">';
   ?>
     </div><!--.prl-grid-->
 </div>
