@@ -1,4 +1,38 @@
-<?php /* round two of custom functions */
+<?php /* custom functions for the new homepage layout */
+
+if ( function_exists('register_sidebar') ){
+		// topbar
+		register_sidebar(array(
+			'name' => 'EAIhome_side1',
+			'id' => 'eaihome_side1',
+			'description' => 'First sidebar on EA HOME',
+			'before_widget' => '',
+			'after_widget'  => ''
+		));
+    register_sidebar(array(
+      'name' => 'EAIhome_across1',
+      'id' => 'eaihome_across1',
+      'description' => 'First across on EA HOME',
+      'before_widget' => '',
+      'after_widget'  => ''
+    ));
+
+    register_sidebar(array(
+      'name' => 'EAIhome_side2',
+      'id' => 'eaihome_side2',
+      'description' => 'Second sidebar on EA HOME',
+      'before_widget' => '',
+      'after_widget'  => ''
+    ));
+    register_sidebar(array(
+      'name' => 'EAIhome_across2',
+      'id' => 'eaihome_across2',
+      'description' => 'Second across on EA HOME',
+      'before_widget' => '',
+      'after_widget'  => ''
+    ));
+  }
+
 function eaihome_build_postcol($arg_numcolumns = 3, $arg_coltitle = '', $arg_excerpt = false, $arg_date = false) {
   switch($arg_numcolumns){
     case '2':
