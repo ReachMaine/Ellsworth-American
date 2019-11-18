@@ -5,6 +5,7 @@ special archive display for the living category s.t. we can
 * 21Aug15 zig - change spec_cat2 to dvd reviews (was blogs)
 * 9Aug17 TimS - change spec_cat2 to horoscopes (was dvd reviews)
 	28Aug19 zig 	add 'no_found_rows' => TRUE to WP query for optimization.
+	18Nov19 zig - no longer using _stickit flag for living.
 */
 	global $pl_data, $theme_url;
 
@@ -24,7 +25,7 @@ special archive display for the living category s.t. we can
 			$spec_cat1 = 431;   // weddings & engagements;
 			/* $spec_cat2 = 376;  // blogs */
 			/* $spec_cat2 = 1012; // dvd reviews */
-			$spec_cat2 = 416;  // horoscopes
+			$spec_cat2 = 416;  // food
 			$spec_cat3 = 418;    // auto revies
 			$nopost_cat = 1013;  // tvlistings
 
@@ -51,26 +52,26 @@ special archive display for the living category s.t. we can
 			wp_reset_query();
 
  			echo '<div class="prl-grid prl-grid-divider eacat-living">';
-			/* get most recent post tagged with '_stickit' in given category */
+			/* get most recent post in given categories */
 			$p = 0;
-			$stay_post = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'), 'cat' => $category, 'tag' => '_stickit','no_found_rows' => TRUE));
 			$gotone = false;
+	/* zig xout 18Nov19		$stay_post = new WP_Query(array('post_type' => 'post','showposts' => 1,'post__not_in' => get_option('sticky_posts'), 'cat' => $category, 'tag' => '_stickit','no_found_rows' => TRUE));
 			while($stay_post->have_posts()): $stay_post->the_post();
 				$displayed[] =  get_the_ID();
 				$gotone=true;
-				eai_do_feat(false/*meta*/, true /*excerpt*/); ?>
-			<?php endwhile;  /* */
+				eai_do_feat(false, true);
+			endwhile;
 
-			wp_reset_postdata();
+	 */
 			/*wp_reset_query(); */
-
+			wp_reset_postdata();
 			if (!$gotone) {
 				/* find the first one with a thumnail */
 				while (have_posts()) : the_post();
 					$this_id = get_the_ID();
 					if ( (!$gotone) && has_post_thumbnail($this_id) ) {
 						 /* echo '<p>post '.get_the_ID().' has a thumbnail gotit. </p>';  */
-						if ( in_category('arts-a-living', $this_id)/*440 arts*/ || in_category('living-food', $this_id)/*food 416*/ || in_category('living-entertainment', $this_id) /*444 entertainment*/ ) {
+					 if ( in_category('arts-a-living', $this_id)/*440 arts*/ /* || in_category('living-food', $this_id)/*food 416*/ || in_category('living-entertainment', $this_id) /*444 entertainment*/ ) {
 							$gotone = true;
 							eai_do_feat(false/*meta*/, true /*excerpt*/);
 							$displayed[]= $this_id;
@@ -118,7 +119,7 @@ special archive display for the living category s.t. we can
 	        /* do the 3 'special' categories */
 
 	        echo '<hr/>';
-	        echo '<div class="prl-grid prl-grid-divider">';
+	        echo '<div class="prl-grid prl-grid-divider zig-next">';
 	        echo $cat1_out;
 	        echo $cat2_out;
 	        echo $cat3_out;
