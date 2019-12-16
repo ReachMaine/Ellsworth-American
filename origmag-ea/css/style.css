@@ -253,9 +253,6 @@ header#masthead .prl-container .masthead-bg {
   .widget .eai-right-rail div {
     width: 100%; }
 
-#eai_babyfaces.eia-right-rail.eai-countdown-bold .bs-countdown .bs-countdown-text {
-  font-weight: 900 !important; }
-
 /* .widget .eia-right-rail div,
 .widget .eai-right-rail div {
 	width: 100%;
@@ -482,146 +479,6 @@ aside .widget-zbtlist {
   font-style: italic; }
 
 /* *** END sidebar styling *** */
-#issuem-leaky-paywall-articles-remaining-nag #issuem-leaky-paywall-articles-remaining-close,
-#issuem-leaky-paywall-articles-zero-remaining-nag #issuem-leaky-paywall-articles-remaining-close {
-  height: 0px !important; }
-#issuem-leaky-paywall-articles-remaining-nag #issuem-leaky-paywall-articles-remaining-text,
-#issuem-leaky-paywall-articles-zero-remaining-nag #issuem-leaky-paywall-articles-remaining-text {
-  padding-top: 50px !important; }
-#issuem-leaky-paywall-articles-remaining-nag #issuem-leaky-paywall-articles-remaining-subscribe-link,
-#issuem-leaky-paywall-articles-zero-remaining-nag #issuem-leaky-paywall-articles-remaining-subscribe-link {
-  height: 45px !important; }
-#issuem-leaky-paywall-articles-remaining-nag #issuem-leaky-paywall-articles-remaining-login-link,
-#issuem-leaky-paywall-articles-zero-remaining-nag #issuem-leaky-paywall-articles-remaining-login-link {
-  background-color: #1d73be !important; }
-  #issuem-leaky-paywall-articles-remaining-nag #issuem-leaky-paywall-articles-remaining-login-link a,
-  #issuem-leaky-paywall-articles-zero-remaining-nag #issuem-leaky-paywall-articles-remaining-login-link a {
-    color: #FFFFFF !important; }
-
-#eai-inline-leaky-pay {
-  text-align: center; }
-  #eai-inline-leaky-pay h2 {
-    display: none;
-    visibility: hidden; }
-  #eai-inline-leaky-pay .leaky_paywall_subscription_options .leaky_paywall_subscription_option {
-    border: none;
-    box-shadow: none;
-    padding: 0px;
-    margin: 0px; }
-    #eai-inline-leaky-pay .leaky_paywall_subscription_options .leaky_paywall_subscription_option h3 {
-      display: none;
-      visibility: hidden; }
-    #eai-inline-leaky-pay .leaky_paywall_subscription_options .leaky_paywall_subscription_option .leaky_paywall_subscription_current_level,
-    #eai-inline-leaky-pay .leaky_paywall_subscription_options .leaky_paywall_subscription_option .leaky_paywall_subscription_allowed_content,
-    #eai-inline-leaky-pay .leaky_paywall_subscription_options .leaky_paywall_subscription_option .leaky_paywall_subscription_allowed_content p,
-    #eai-inline-leaky-pay .leaky_paywall_subscription_options .leaky_paywall_subscription_option .leaky_paywall_subscription_price,
-    #eai-inline-leaky-pay .leaky_paywall_subscription_options .leaky_paywall_subscription_option .leaky_paywall_subscription_price p {
-      display: none;
-      visibility: hidden; }
-    #eai-inline-leaky-pay .leaky_paywall_subscription_options .leaky_paywall_subscription_option .leaky_paywall_subscription_payment_options .stripe-button-el {
-      border-radius: 0px;
-      border: 0px;
-      padding: 0px; }
-      #eai-inline-leaky-pay .leaky_paywall_subscription_options .leaky_paywall_subscription_option .leaky_paywall_subscription_payment_options .stripe-button-el span {
-        border-radius: 0px;
-        padding: 10px;
-        width: 300px;
-        font-size: 25px;
-        background-image: none;
-        background-color: #92CF34; }
-
-.eai-paywall-thanks {
-  font-weight: bold;
-  text-align: center; }
-
-.ea-leaky-login {
-  display: inline;
-  float: left;
-  padding-right: 15px; }
-  .ea-leaky-login li {
-    padding-left: 5px;
-    padding-right: 5px;
-    display: inline; }
-  .ea-leaky-login li:first-child {
-    border-right: 1px solid #1E73BE; }
-
-#eia-updateuser .form-table th {
-  width: 130px; }
-#eia-updateuser input[type="text"]:disabled {
-  background-color: #cfcfcf; }
-
-.eai-leaky-nosub {
-  font-size: 20px;
-  color: red; }
-
-.eai-login-fail-msg {
-  padding: 10px 0;
-  color: red;
-  font-size: 20px; }
-
-#leaky_paywall_message {
-  background-color: #1d73be;
-  border-radius: 0px;
-  text-align: center;
-  border: 0px; }
-  #leaky_paywall_message a {
-    text-decoration: underline;
-    padding-left: 3px;
-    padding-right: 3px; }
-
-.eai-leaky-thanksbox {
-  padding: 10px;
-  margin-left: 0px; }
-  .eai-leaky-thanksbox .eai-leaky-thanks {
-    margin-left: 0px;
-    border: 2px solid black;
-    padding: 15px; }
-    .eai-leaky-thanksbox .eai-leaky-thanks h3 {
-      font-size: 28px;
-      color: #1E73BE; }
-  .eai-leaky-thanksbox .eai-leaky-continue a {
-    font-size: 25px;
-    color: #1E73BE; }
-
-.eai-leaky-welcome-box {
-  padding-left: 10%;
-  padding-right: 10%;
-  margin-left: 0px; }
-  .eai-leaky-welcome-box .eai-welcome-text {
-    color: #1E73BE; }
-  .eai-leaky-welcome-box .eai-leaky-welcome-user {
-    margin-left: 0px;
-    border: 2px solid black;
-    padding: 15px;
-    font-size: 16px;
-    text-align: center; }
-
-.eai-leaky-welcome-where {
-  text-align: center;
-  padding-top: 20px;
-  padding-bottom: 20px; }
-
-.eai-leaky-welcome-home,
-.eai-leaky-welcome-edig {
-  text-align: center; }
-  .eai-leaky-welcome-home img,
-  .eai-leaky-welcome-edig img {
-    border: 1px solid black; }
-  .eai-leaky-welcome-home .eai-where-to,
-  .eai-leaky-welcome-edig .eai-where-to {
-    padding-top: 10px;
-    color: #1E73BE; }
-
-.eai-leak-ngbox {
-  padding-top: 20px;
-  text-align: center; }
-  .eai-leak-ngbox .eai-leaky-expired {
-    color: red;
-    text-align: center; }
-
-.eai-with-subscript {
-  text-align: center; }
-
 .eai-scores .eai-scores-titlebox {
   width: 100%;
   background-color: #1E73BE;
@@ -785,23 +642,6 @@ Styling for the Real News Campaign Page
 
   div.real-news-question {
     clear: both; } }
-/* ------------------------------------
-Styling for the Our Town block on home page.
------------------------------------- */
-#ea-our-town {
-  border: 4px solid #e0e0e0;
-  padding: 0 8px; }
-  #ea-our-town .aq-template-wrapper h5:empty {
-    display: none; }
-  #ea-our-town .aq-template-wrapper h5.prl-block-title {
-    border-top: 0px;
-    padding-bottom: 10px; }
-  #ea-our-town .aq-template-wrapper article.prl-article .prl-article-meta {
-    display: none; }
-    #ea-our-town .aq-template-wrapper article.prl-article .prl-article-meta .dsq-postid,
-    #ea-our-town .aq-template-wrapper article.prl-article .prl-article-meta .comments-link {
-      display: none; }
-
 /* styling eai_custom_functions calendar widget hcc_list */
 .widget.widget_hcc_list .prl-block-title {
   border-bottom: 1px solid #DDD;
@@ -824,12 +664,88 @@ Styling for the Our Town block on home page.
   font-weight: bold;
   padding-left: 5px; }
 
+.eai-ad-container {
+  margin-top: 20px;
+  margin-bottom: 20px; }
+
+.ads_top {
+  margin-top: 20px; }
+
+.ads_top.ad-container img,
+.eai-ad-container.eai-ad-across img {
+  -webkit-box-shadow: 5px 5px 15px 0px gray;
+  -moz-box-shadow: 5px 5px 15px 0px gray;
+  box-shadow: 5px 5px 15px 0px grey; }
+
+.eai-ad-container.eai-ad-right img {
+  -webkit-box-shadow: 5px 5px 15px 0px gray;
+  -moz-box-shadow: 5px 5px 15px 0px gray;
+  box-shadow: 5px 5px 15px 0px grey; }
+
+.eai-ad-container.eai-ad-left img {
+  -webkit-box-shadow: -5px 5px 15px 0px gray;
+  -moz-box-shadow: -5px 5px 15px 0px gray;
+  box-shadow: -5px 5px 15px 0px grey; }
+
+.eai-ad-container.eai-ad-incontent div {
+  display: flex;
+  justify-content: space-evenly; }
+
+.eai-countdown-bold .bs-countdown .bs-countdown-text {
+  font-weight: 900 !important; }
+
+@media only screen and (min-width: 1200px) {
+  .eai-ad-300w {
+    width: 300px; }
+
+  .eai-ad-300w.eai-ad-right {
+    margin-left: -10px; }
+
+  .eai-ad-300w.eai-ad-right.eai-right-rail {
+    margin-left: -20px; }
+
+  .eai-ad-300w.eai-ad-left {
+    margin-left: -40px; } }
+@media only screen and (max-width: 1199px) and (min-width: 769px) {
+  .eai-ad-300w.eai-ad-left {
+    margin-right: -15px;
+    margin-left: -10px; }
+
+  .eai-ad-300w.eai-ad-right {
+    margin-right: -10px;
+    margin-left: -15px; } }
+@media only screen and (max-width: 768px) {
+  .eai-ad-container {
+    text-align: center; }
+
+  .eai-ad-300w {
+    max-width: 300px;
+    margin: 20px auto; } }
 /* styling for broadstreet ads */
 .biz-today #eia-bix-pull .bs-lazy-ad .bs-lazy-header,
 .biz-today #eia-bix-pull .bs-lazy-ad .bs-lazy-footer {
   background-color: white;
   color: black;
   opacity: initial; }
+
+/* css styling for new homepage template - Oct 2019
+ */
+.page-template-page-EAhome {
+  background-color: #f3f3f3; }
+  .page-template-page-EAhome .site-wrapper {
+    border: 1px solid #e1e1e1; }
+
+.eai-content-row {
+  margin-bottom: 20px; }
+
+article .eaihome-post-cat {
+  background-color: #e1e1e1;
+  padding: 5px 7px; }
+  article .eaihome-post-cat a {
+    color: #333;
+    letter-spacing: 1px; }
+article .eaihome-img {
+  width: 100%; }
 
 /* =Theme customization starts here */
 /* article.type-post {
@@ -1335,7 +1251,7 @@ strong:first-child {
   .ad-container-mobile,
   #sidebar {
     float: none;
-    max-width: 320px;
+    max-width: 340px;
     margin: auto; }
 
   #over_footer_wrap {
