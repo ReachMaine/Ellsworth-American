@@ -23,7 +23,7 @@ function my_img_caption_shortcode( $empty, $attr, $content ){
 	. 'class="wp-caption ea-contracted-image ' . esc_attr( $attr['align'] ) . '" '
 	. 'style="max-width: ' . ( 10 + (int) $attr['width'] ) . 'px;">'
 	. do_shortcode( $content )
-	. '<p class="wp-caption-text">' . $attr['caption'] . '</p>'
+	. '<div class="wp-caption-text">' . $attr['caption'] . '</div>'
 	. '</div>';
 
 }
@@ -65,7 +65,7 @@ add_filter('image_send_to_editor', 'filter_image_send_to_editor', 10, 8); */
 function add_image_class($class, $id, $align, $size){
     if (get_post_meta($id, '_eaNoExpand', true) != 'on') {
     	$class .= ' ea-expandable';
-    } 
+    }
     return $class;
 }
 add_filter('get_image_tag_class','add_image_class', 10, 4);
