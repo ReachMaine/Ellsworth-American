@@ -44,7 +44,7 @@ global $theme_url, $prl_data; ?>
 		<script data-cfasync="false" type="text/javascript" >var ta_cat = "not_post"; </script>
 	<?php } */  ?>
 	<?php /* only add  paywall scripts on single posts  */
-	if ( is_singular('post') ) { ?>
+	if ( is_singular('post') && !is_user_logged_in()  ) { ?>
    <script data-cfasync="false" type="text/javascript" src="//ellsworthamerican-me-pw.newsmemory.com/?meter&amp;service=onstop&amp;v=0"></script>
  <?php } ?>
 
@@ -74,7 +74,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 <?php if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) { gtm4wp_the_gtm_tag(); } ?>
 <?php /* 29Aug16 zig - put technavia script here....*/
  			/* 28Aug19 zig - but only if single post */
-			if ( is_singular('post') ) { ?>
+			if ( is_singular('post') && !is_user_logged_in() ) { ?>
 				<script data-cfasync="false" type="text/javascript" src="//ellsworthamerican-me-pw.newsmemory.com/?meter&amp;v=0"></script>
 			<?php } ?>
 <div id="topbar"><?php if ( is_active_sidebar( 'topbar') ) { 	dynamic_sidebar( 'topbar' );	}  ?></div>
@@ -113,13 +113,14 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 				</nav>
 
 			</div> <?php /* end pr1-container for top menu & search */ ?>
-			<div class="prl-container top-header"><div class="masthead-bg clearfix">
+			<div class="prl-container top-header">
+				<div class="masthead-bg clearfix">
 				<div class="prl-header-logo"><a href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?>"><img src="<?php echo sitelogo();?>" alt="<?php bloginfo('name'); ?>" /></a>
 				</div>
 				<div class="prl-header-mid">
 					<?php  if($prl_data['header_custom_text']!=''){?>
 					<span class="prl-header-custom-text"><?php echo trim($prl_data['header_custom_text']);?></span>
-					<?php  } if($prl_data['header_time']!='Disable'){  $current_site = get_current_site(); ?>
+					<?php  } if($prl_data['header_time']!='Disable'){   ?>
 					<span class="prl-header-time"><a href="https://www.downeastmaine.com/calendar/events/today/"><i class="fa fa-calendar"></i><?php echo date('l');?> - <?php echo date('M d, Y');?></a></span>
 					<?php } ?>
 					<?php  if (is_singular('post')) {echo eai_technav_loginmenu(); }  ?>
@@ -133,7 +134,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
                     <?php if($prl_data['header_instagram']!=''){?><a href="<?php echo $prl_data['header_instagram'];?>" class="fa fa-instagram" title="Instagram"></a><?php }?>
                     <?php if($prl_data['header_youtube']!=''){?><a href="<?php echo $prl_data['header_youtube'];?>" class="youtube-pic" title="Youtube"><img src="<?php echo get_stylesheet_directory_uri().'/images/youtube.jpg'; ?>"></a><?php }?>
 				</div><!-- end of header social -->
-			<?php /*  </div> */ ?>
+			 </div>  ?>
 			</div>
 		</header>
 		<nav id="nav" class="prl-navbar" role="navigation">
