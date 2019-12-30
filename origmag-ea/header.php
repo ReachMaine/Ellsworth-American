@@ -134,7 +134,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
                     <?php if($prl_data['header_instagram']!=''){?><a href="<?php echo $prl_data['header_instagram'];?>" class="fa fa-instagram" title="Instagram"></a><?php }?>
                     <?php if($prl_data['header_youtube']!=''){?><a href="<?php echo $prl_data['header_youtube'];?>" class="youtube-pic" title="Youtube"><img src="<?php echo get_stylesheet_directory_uri().'/images/youtube.jpg'; ?>"></a><?php }?>
 				</div><!-- end of header social -->
-			 </div>  ?>
+			 </div>
 			</div>
 		</header>
 		<nav id="nav" class="prl-navbar" role="navigation">
