@@ -99,14 +99,18 @@ if (!class_exists('eafeature_Block')) {
 		           <div class="prl-grid">
 					   <div class="prl-span-12">
 		               		<article class="prl-article stuck">
-								<?php echo post_thumb(get_the_ID(),580, 360, true);?>
+								<?php //echo post_thumb(get_the_ID(),580, 360, true);
+									echo '<a class="prl-thumbnail" href="'.get_permalink(get_the_ID()).'" title="'.the_title_attribute('echo=0').'">';
+									echo get_the_post_thumbnail(get_the_ID(),'ea_storycrop');
+									echo "</a>";
+								?>
 							</article>
 		               </div>
 		           	   <div class="prl-span-12">
 		                   <article class="prl-article">
 		                    <h3 class="prl-article-title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title();?></a> <?php echo get_label_format(get_the_ID());?> <?php echo get_label_meta(get_the_ID());?></h3>
 		                    <?php post_meta(true,false,false,false,false);?>
-							<p><?php echo text_trim(get_the_excerpt(),$num_excerpt,'...');?></p>
+												<p><?php echo text_trim(get_the_excerpt(),$num_excerpt,'...');?></p>
 		                    </article>
 		               </div>
 		           </div>
@@ -128,7 +132,11 @@ if (!class_exists('eafeature_Block')) {
 		           <div class="prl-grid">
 					   <div class="prl-span-12">
 		               		<article class="prl-article not-stuck">
-								<?php echo post_thumb(get_the_ID(),580, 360, true);?>
+								<?php //echo post_thumb(get_the_ID(),580, 360, true);
+									echo '<a class="prl-thumbnail" href="'.get_permalink(get_the_ID()).'" title="'.the_title_attribute('echo=0').'">';
+									echo get_the_post_thumbnail(get_the_ID(),'ea_storycrop');
+									echo "</a>";
+								?>
 							</article>
 		               </div>
 		           	   <div class="prl-span-12">
@@ -146,7 +154,11 @@ if (!class_exists('eafeature_Block')) {
 			 		$p++; ?>
 					<li style="list-style-type:none">
 						<!-- $p = <?php echo $p; ?> -->
-						<?php echo post_thumb(get_the_ID(),580, 360, true);?>
+						<?php //echo post_thumb(get_the_ID(),580, 360, true);
+						echo '<a class="prl-thumbnail" href="'.get_permalink(get_the_ID()).'" title="'.the_title_attribute('echo=0').'">';
+						echo get_the_post_thumbnail(get_the_ID(),'ea_storycrop');
+						echo "</a>";
+						?>
 						<h4 class="eai-featured-2nd prl-article-title">
 							<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title();?></a>
 						</h4>

@@ -47,7 +47,7 @@ function embed_related_content($in_placement="") {
 			echo '<!-- no content -->';
 		}
 	}
-	/* echo '-----------<br>'; var_dump($zcontent);echo '---------<br>'; */
+
 }	/* end embed_related_content */
 
 
@@ -288,9 +288,9 @@ if (!function_exists('embed_ad_single'))  {
 				$ptagcount = substr_count($zcontent, '<p');
 				 //echo '<p> ptagcount = '.$ptagcount.'</p>';
 				if ( ($ptagcount < $in_p_tag)  ) { /* run at end if less than 5 p-tags */
-					$zcontent1 = $zcontent."<p> less than ".$in_p_tag." </p>";
+					$zcontent1 = $zcontent;
 				} else {
-					$targetp = strnpos($zcontent,'<p',$in_p_tag-1); // find the start of the target <p> tag
+					$targetp = strnpos($zcontent,'<p',$in_p_tag); // find the start of the target <p> tag
 					/* echo '<!--- thirdp = '.$thirdp.'--->'; */
 					if ($targetp) { // check for no third p tag
 						$zcontent1 = substr($zcontent, 0, $targetp);
@@ -301,5 +301,7 @@ if (!function_exists('embed_ad_single'))  {
 		echo $zcontent1.$zad.$zcontent2;
 	}	/* end embed_ad_single */
 }
+
+
 /* EOF */
 ?>

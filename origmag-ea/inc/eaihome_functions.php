@@ -5,32 +5,58 @@ if ( function_exists('register_sidebar') ){
 		register_sidebar(array(
 			'name' => 'EAIhome_side1',
 			'id' => 'eaihome_side1',
-			'description' => 'First sidebar on EA HOME',
-			'before_widget' => '',
-			'after_widget'  => ''
+			'description' => 'First sidebar on EA HOME (right)',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
 		));
     register_sidebar(array(
       'name' => 'EAIhome_across1',
       'id' => 'eaihome_across1',
-      'description' => 'First across on EA HOME',
-      'before_widget' => '',
-      'after_widget'  => ''
+      'description' => 'Under First content area EA HOME (full width)',
+      'before_widget' => '<div id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
     ));
 
     register_sidebar(array(
       'name' => 'EAIhome_side2',
       'id' => 'eaihome_side2',
-      'description' => 'Second sidebar on EA HOME',
-      'before_widget' => '',
-      'after_widget'  => ''
+      'description' => 'Second sidebar on EA HOME (left)',
+      'before_widget' => '<div id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
     ));
     register_sidebar(array(
       'name' => 'EAIhome_across2',
       'id' => 'eaihome_across2',
-      'description' => 'Second across on EA HOME',
-      'before_widget' => '',
-      'after_widget'  => ''
+      'description' => 'Under Second content area on EA HOME (full width)',
+      'before_widget' => '<div id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
     ));
+		register_sidebar(array(
+			'name' => 'EAIhome_side3',
+			'id' => 'eaihome_side3',
+			'description' => 'Third sidebar on EA HOME (left)',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+		));
+		register_sidebar(array(
+			'name' => 'EAIhome_across3',
+			'id' => 'eaihome_across3',
+			'description' => 'Under Third content acea on EA HOME (full width)',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+		));
   }
 
 function eaihome_build_postcol($arg_numcolumns = 3, $arg_coltitle = '', $arg_excerpt = false, $arg_date = false) {
@@ -74,7 +100,7 @@ function eaihome_build_postcol($arg_numcolumns = 3, $arg_coltitle = '', $arg_exc
 function eaihome_build_post($arg_excerpt = false, $arg_date = false) {
     $outstring .='';
 		$outstring .= '<article class="prl-article">';
-  $outstring .= eaihome_build_postcat();
+  	$outstring .= eaihome_build_postcat();
     $do_excerpt = false;
 		if (has_post_thumbnail()) {
 			$outstring .= '<div class = "eaihome-img">';
@@ -134,10 +160,11 @@ function eaihome_build_postcat($useCatLink = true) {
   	if ( !empty($category_display) ){
   	    if ( $useCatLink == true && !empty($category_link) ){
           $outcat_string .= '<div class="eaihome-post-cat">';
-  		    $outcat_string .=  '<a href="'.$category_link.'">'.htmlspecialchars($category_display).'</a>';
+  		    //$outcat_string .=  '<a href="'.$category_link.'">'.htmlspecialchars($category_display).'</a>';
+					$outcat_string .=  '<a href="'.$category_link.'">'.$category_display.'</a>';
   		    $outcat_string .=  '</div>';
   	    } else {
-          $outcat_string .=  '<div class="eaihome-post-cat">'.htmlspecialchars($category_display).'</div>';
+          $outcat_string .=  '<div class="eaihome-post-cat">'.$category_display.'</div>';
   	    }
   	}
 

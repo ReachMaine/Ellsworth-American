@@ -202,7 +202,7 @@ if (!class_exists('eacat_sports')) {
 
 	    /* end of featured part */
 	        echo '<hr/>';
-			if ($recent_posts->have_posts() || $scores_post->have_posts()) {
+			if ($recent_posts->have_posts() ) {
 				?>
 
 				<div class="prl-span-12">

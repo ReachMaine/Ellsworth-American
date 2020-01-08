@@ -9,6 +9,10 @@ get_header();?>
 <?php /* some inputs */
   $num_post_to_get = '40';
   $num_posts_to_show = 24; // number of posts to flow on page...
+  // dev
+  //$cats = array(2 /* news*/, 4 /* life style */, 13 /* flood */); // news, lifestyle, sports
+  //$stickit_cat = 2;
+  // $stickit_tag = 10;
   // ea
   $cats = array(374 /* news*/, 896 /* life style */, 1404/* sports */); // news, lifestyle, sports
   $stickit_cat = 374;
@@ -44,16 +48,6 @@ get_header();?>
               echo '</div>'; // col
             echo '</div>'; // grid
         }
-        /* $cats_str = get_post_meta(get_the_id(), 'eai-page-cats', true);
-        if ($cats_str) { // not working yet, since it a page not a post s.t. doesnt show post_meta box
-          $cats = explode($cats_str);
-          $stickit_cat = $cat[0]; // first one is stickit category
-        } */
-        //echo "<pre>"; var_dump($cats); echo "</pre>";
-        //echo "<hr><p>stickit_cat is [".$stickit_cat."].";
-        //echo "<hr><p>stickit_tag is [".$stickit_tag."].";
-
-
         echo '<div class="prl-grid">'; // whole thing
         echo '<div class="prl-span-9 ">' ; // content section
         echo '<div class="prl-grid eai-content-row">'; // content columns
@@ -83,21 +77,19 @@ get_header();?>
                             ));
           //echo '<pre>'.$stay_postq->request."</pre>";
           if ($stay_postq->have_posts()) {
-            //echo "<p>Past the if ... </p>";
-            //while($recent_posts->have_posts()): $recent_posts->the_post();
             while ($stay_postq->have_posts()) : $stay_postq->the_post();
             //echo "<p>GOt featured ...<p> ";
               $feat_post = get_the_ID();
-              //echo '<div class="prl-span-6">'; // span 9 or twelve
+
               echo eaihome_build_postcol(8 /* columns*/,  ""/* column title */, true, true /* date */);
-              //echo '<div class="prl-span-6">'; // span 9 or twelve
+
               $p++;
             endwhile;  /* */
 
           } else {
             //echo "<p>nada featured.</p>";
           }
-          //echo "<hr>";
+
           wp_reset_query();
           $recent_posts = new WP_Query(array('post_type' => 'post',
                                             'posts_per_page'=> $num_post_to_get,
@@ -109,64 +101,68 @@ get_header();?>
           $pslice = 0; // posts in this slice
           $pslice_limit = 2;
           // list next to featured.
-          echo '<div class="prl-span-4">' ;
-            echo '<ul class="prl-list" style="list-style:none;" >';
+          if (TRUE) {
+            echo '<div class="prl-span-4">' ;
+              echo '<ul class="prl-list" style="list-style:none;" >';
+              while ( $recent_posts->have_posts()  && ($p < $num_posts_to_show) && ($pslice < $pslice_limit) ): $recent_posts->the_post();
+                  if ($feat_post != $post->ID) {
+                      $p++;
+                      $pslice++;
+                      echo '<li id="post-'.get_the_ID().'" class="'.implode(' ', get_post_class('clearfix')). '" >';
+                      echo eaihome_build_post(false, false);
+                      echo '</li>';
+                }
+              endwhile;
+              echo '</ul>';
+            echo '</div>'; // div for list span4 col
+          }
+      echo '</div><!-- end grid 1st content row -->'; // for grid
+
+      if (true) { // turn off 2nd content row
+          echo '<div class="prl-grid eia-content-row"><!-- start grid 2nd content row -->';
+          // next row of posts...
+          $pslice_limit = 3;
+          $pslice = 0;
+
+          //echo '<div class="prl-span-12">' ;
             while ( $recent_posts->have_posts()  && ($p < $num_posts_to_show) && ($pslice < $pslice_limit) ): $recent_posts->the_post();
                 if ($feat_post != $post->ID) {
                     $p++;
                     $pslice++;
-                    echo '<li id="post-'.get_the_ID().'" class="'.implode(' ', get_post_class('clearfix')). '" >';
-                    echo eaihome_build_post(false, false);
-                    echo '</li>';
-              }
+
+                  echo eaihome_build_postcol(3 /* columns*/, ""/* column title */, false /* excerpt*/, false /* date */);
+                }
             endwhile;
-            echo '</ul>';
-          echo '</div>'; // div for list col
 
+            echo '</div><!-- end grid 2nd content row -->'; // content columns
+      } // 2nd row of content
+    echo '</div><!-- end of span 9-->';      // **** now the sidebar....
+    if (is_active_sidebar('eaihome_side1')) {
+      echo '<aside class="eaihome_side1 prl-span-3">';
+      dynamic_sidebar( 'eaihome_side1' );
+      echo '</aside>';
+    } else {
 
+    }
 
-        echo '</div><!-- end grid 1st content row -->'; // for grid
-        echo '<div class="prl-grid eia-content-row"><!-- start grid 2nd content row -->';
-        // next row of posts...
-        $pslice_limit = 3;
-        $pslice = 0;
-
-        //echo '<div class="prl-span-12">' ;
-          while ( $recent_posts->have_posts()  && ($p < $num_posts_to_show) && ($pslice < $pslice_limit) ): $recent_posts->the_post();
-              if ($feat_post != $post->ID) {
-                  $p++;
-                  $pslice++;
-
-                echo eaihome_build_postcol(3 /* columns*/, ""/* column title */, false /* excerpt*/, false /* date */);
-              }
-          endwhile;
-
-          echo '</div><!-- end grid 2nd content row -->'; // content columns
-
-          echo '</div><!-- end grid for content  -->'; // div for columns
-          // **** now the sidebar....
-          if (is_active_sidebar('eaihome_side1')) {
-            echo '<aside class="eaihome_side1 prl-span-3">';
-            dynamic_sidebar( 'eaihome_side1' );
-            echo '</aside>';
-          } else {
-
-          }
-        echo '</div><!--  grid for whole thing -->';
+      echo '</div><!--  grid for whole thing -->';
 
     echo '</section>';
-echo '</div><!-- container -->';
-echo '<div class="prl-container ea-float">';
+    echo '</div><!-- container -->';
+
     if (is_active_sidebar('eaihome_across1')) {
-      echo '<div class="prl-grid">';
-        echo '<div class="eaihome_across1 prl-span-12" style="margin-top: 10px;" >';
-          dynamic_sidebar( 'eaihome_across1' );
-        echo '</div>'; // span.
-      echo '</div>'; // grid
+      echo '<div class="prl-container ea-float">';
+        echo '<div class="prl-grid">';
+          echo '<div class="eaihome_across1 prl-span-12" style="margin-top: 10px;" >';
+            dynamic_sidebar( 'eaihome_across1' );
+          echo '</div>'; // span.
+        echo '</div>'; // grid
+      echo '</div><!-- container -->';
     }
-echo '</div><!-- container -->';
-echo '<div class="prl-container">';
+/* ******************************************* */
+if (TRUE) {
 /* *** 2nd content section = slice 3 **** */
+echo '<div class="prl-container">';
   echo '<section id="eai-slice3" class="eai-home-slice"><!-- 2nd section = slice 3 -->';
     echo '<div class="prl-grid">'; // whole slice
       // first side bar if there is one
@@ -220,25 +216,29 @@ echo '<div class="prl-container">';
         echo "</div><!-- whole slice -->";
         // ad space across....
 
-  echo '</section>';
-  echo '</div><!-- container -->';
-  echo '<div class="prl-container ea-float" >';
-              if (is_active_sidebar('eaihome_across2')) {
+    echo '</section>';
+    echo '</div><!-- container -->';
+
+      if (is_active_sidebar('eaihome_across2')) {
+          echo '<div class="prl-container ea-float" >';
             echo '<div class="prl-grid">';
               echo '<div class="eaihome_across2 prl-span-12" style="margin-top: 10px;" >';
                 dynamic_sidebar( 'eaihome_across2' );
-              echo '</div>'; // span.
+              echo '</div>'; // span 12
             echo '</div>'; // grid
-          }
-  echo '</div><!-- container -->';
-  echo '<div class="prl-container">';
+          echo '</div><!-- container -->';
+      }
 
+} // end 2nd content section
+/* ******************************************* */
   /* *** 3nd content section = slice 4 **** */
+  if (TRUE) { // 3rd content section
+    echo '<div class="prl-container">';
     echo '<section id="eai-slice4" class="eai-home-slice"><!-- 3nd section = slice 4 -->';
       echo '<div class="prl-grid"><!-- begin grid for whole slice-->'; // whole slice
         // first side bar if there is one
         // **** now the sidebar....
-        if (is_active_sidebar('position4a')) {
+        if (is_active_sidebar('EAIhome_side3')) {
           $pslice_limit = 3;
           echo '<div class="prl-span-9 eai-content"><!-- content section start -->' ; // content section
           echo '<div class="prl-grid eai-content-row">'; // content columns
@@ -279,9 +279,9 @@ echo '<div class="prl-container">';
           echo "</div><!--end content row2 -->"; // grid
 
         echo "</div><!-- content section end -->"; // grid
-          if (is_active_sidebar('position4a')) {
+          if (is_active_sidebar('EAIhome_side3')) {
             echo '<aside class="eai-position4a prl-span-3">';
-            dynamic_sidebar( 'position4a' );
+            dynamic_sidebar( 'EAIhome_side3' );
             echo '</aside>';
           }
 
@@ -289,18 +289,18 @@ echo '<div class="prl-container">';
 
     echo '</section>';
     echo '</div><!-- container -->';
-echo '<div class="prl-container ea-float" >';
+
  // ad space across....
-        if (is_active_sidebar('position4b')) {
-          echo '<div class="prl-grid">';
-            echo '<div class="eai-position4b prl-span-12" style="margin-top: 10px;">';
-              dynamic_sidebar( 'position4b' );
-            echo '</div>'; // span.
-          echo '</div>'; // grid
+        if (is_active_sidebar('eaihome_across3')) {
+          echo '<div class="prl-container ea-float ziggy" >';
+            echo '<div class="prl-grid">';
+              echo '<div class="eai-position4b prl-span-12" style="margin-top: 10px;">';
+                dynamic_sidebar( 'eaihome_across3' );
+              echo '</div>'; // span.
+            echo '</div>'; // grid
+          echo '</div><!-- container -->';
         }
-echo '</div><!-- container -->';
-echo '<div class="prl-container">';
+} // end third slice
+
   ?>
-    </div><!--.prl-grid-->
-</div>
 <?php get_footer();?>

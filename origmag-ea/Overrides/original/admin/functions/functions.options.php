@@ -8,7 +8,7 @@ if (!function_exists('of_options'))
 	{
 		//Access the WordPress Categories via an Array
 		/* zig x-out - for performance issues
-		$of_categories 		= array();  
+		$of_categories 		= array();
 		$of_categories_obj 	= get_categories('hide_empty=0');
 		foreach ($of_categories_obj as $of_cat) {
 		    $of_categories[$of_cat->cat_ID] = $of_cat->cat_name;}
@@ -426,7 +426,7 @@ $of_options[] = array( 	"name" 		=> "Ads Management",
 
 $theme_url = get_template_directory_uri();
 
-$of_options[] = array( 	"name" 		=> "Banner - Top categories",
+$of_options[] = array( 	"name" 		=> "Banner - In categories",
 						"desc" 		=> "",
 						"id" 		=> "banner_top_cat",
 						"std" 		=> '<a href="#"><img src="'.$theme_url.'/images/ads/banner728x90.png" alt="" /></a>',
@@ -439,7 +439,7 @@ $of_options[] = array( 	"name" 		=> "Banner - Bottom categories",
 						"type" 		=> "textarea"
 				);
 
-$of_options[] = array( 	"name" 		=> "Banner - Before single title",
+$of_options[] = array( 	"name" 		=> "Banner - in single",
 						"desc" 		=> "",
 						"id" 		=> "banner_before_single_title",
 						"std" 		=> '<a href="#"><img src="'.$theme_url.'/images/ads/banner728x90.png" alt="" /></a>',

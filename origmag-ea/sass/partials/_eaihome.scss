@@ -23,3 +23,12 @@
     width: 100%;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .eai-content-row {
+    .prl-list {
+      padding-left: 0px;
+    }
+  }
+
+}

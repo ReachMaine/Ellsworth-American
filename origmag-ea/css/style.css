@@ -687,9 +687,21 @@ Styling for the Real News Campaign Page
   -moz-box-shadow: -5px 5px 15px 0px gray;
   box-shadow: -5px 5px 15px 0px grey; }
 
-.eai-ad-container.eai-ad-incontent div {
-  display: flex;
-  justify-content: space-evenly; }
+article broadstreet-zone-container broadstreet-zone,
+.eai-ad-container.eai-ad-incontent {
+  clear: both; }
+  article broadstreet-zone-container broadstreet-zone div,
+  .eai-ad-container.eai-ad-incontent div {
+    display: flex;
+    justify-content: space-evenly; }
+    article broadstreet-zone-container broadstreet-zone div span:nth-of-type(2),
+    .eai-ad-container.eai-ad-incontent div span:nth-of-type(2) {
+      padding-left: 15px; }
+    article broadstreet-zone-container broadstreet-zone div img,
+    .eai-ad-container.eai-ad-incontent div img {
+      -webkit-box-shadow: 5px 5px 15px 0px gray;
+      -moz-box-shadow: 5px 5px 15px 0px gray;
+      box-shadow: 5px 5px 15px 0px grey; }
 
 .eai-countdown-bold .bs-countdown .bs-countdown-text {
   font-weight: 900 !important; }
@@ -747,6 +759,9 @@ article .eaihome-post-cat {
 article .eaihome-img {
   width: 100%; }
 
+@media only screen and (max-width: 768px) {
+  .eai-content-row .prl-list {
+    padding-left: 0px; } }
 /* =Theme customization starts here */
 /* article.type-post {
 	padding-left: 8%;
@@ -925,7 +940,8 @@ a.more-about-link:before {
   box-shadow: 7px 15px 33px 0px rgba(0, 0, 0, 0.75); }
 
 .flexslider.gallery_slider {
-  float: left; }
+  float: left;
+  margin-bottom: 20px; }
 
 .flexslider .caption {
   position: initial; }
