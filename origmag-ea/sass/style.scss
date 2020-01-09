@@ -181,6 +181,8 @@ body {
 	background-color: $yellow-page-bkg;
   padding-top: 20px;
 	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
 	.flex-ad-container {
 		display: flex;
 		justify-content: space-between;
@@ -386,10 +388,14 @@ a.more-about-link:before  {
 background-color: #0D365A;
 }
 
-body.site-boxed .site-wrapper {
-	box-shadow: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
+body.site-boxed {
+	 background-color: #f3f3f3;
+	.site-wrapper {
+		border: 1px solid #e1e1e1;
+		box-shadow: none;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+	}
 }
 
 body {

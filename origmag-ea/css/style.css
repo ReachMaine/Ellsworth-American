@@ -742,11 +742,6 @@ article broadstreet-zone-container broadstreet-zone,
 
 /* css styling for new homepage template - Oct 2019
  */
-.page-template-page-EAhome {
-  background-color: #f3f3f3; }
-  .page-template-page-EAhome .site-wrapper {
-    border: 1px solid #e1e1e1; }
-
 .eai-content-row {
   margin-bottom: 20px; }
 
@@ -859,7 +854,9 @@ body {
 #over_footer_wrap {
   background-color: rgba(255, 255, 102, 0.67);
   padding-top: 20px;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px; }
   #over_footer_wrap .flex-ad-container {
     display: flex;
     justify-content: space-between; }
@@ -1018,10 +1015,16 @@ a.more-about-link:before {
 #sliderTab {
   background-color: #0D365A; }
 
-body.site-boxed .site-wrapper {
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none; }
+body {
+  background-color: #f3f3f3; }
+
+body.site-boxed {
+  background-color: #f3f3f3; }
+  body.site-boxed .site-wrapper {
+    border: 1px solid #e1e1e1;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none; }
 
 body {
   background-image: none; }
