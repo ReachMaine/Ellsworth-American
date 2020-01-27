@@ -733,6 +733,30 @@ article broadstreet-zone-container broadstreet-zone,
   .eai-ad-300w {
     max-width: 300px;
     margin: 20px auto; } }
+@media only screen and (max-width: 479px) {
+  body #ta_invisible #ta_paywall.ta_centralPopup {
+    width: 90% !important; }
+    body #ta_invisible #ta_paywall.ta_centralPopup .loginFormContainer {
+      margin: 0px 15px 10px 15px; }
+      body #ta_invisible #ta_paywall.ta_centralPopup .loginFormContainer #ta_loginTable {
+        width: 95%; }
+      body #ta_invisible #ta_paywall.ta_centralPopup .loginFormContainer #ta_loginSubmitButtonContainer {
+        margin-left: 13%; }
+    body #ta_invisible #ta_paywall.ta_centralPopup .ta_paywallText .pw_subscribe_container a.pw_subscribe.ta_loginLables {
+      width: 70%; } }
+ul.ea-technav-login {
+  display: inline;
+  float: left;
+  padding-right: 15px; }
+  ul.ea-technav-login li {
+    padding-left: 5px;
+    padding-right: 5px;
+    display: inline; }
+    ul.ea-technav-login li #ta_account_button {
+      cursor: pointer; }
+  ul.ea-technav-login li:first-child {
+    border-right: 1px solid #1E73BE; }
+
 /* styling for broadstreet ads */
 .biz-today #eia-bix-pull .bs-lazy-ad .bs-lazy-header,
 .biz-today #eia-bix-pull .bs-lazy-ad .bs-lazy-footer {
@@ -1014,9 +1038,6 @@ a.more-about-link:before {
 /* May 2016 re-design */
 #sliderTab {
   background-color: #0D365A; }
-
-body {
-  background-color: #f3f3f3; }
 
 body.site-boxed {
   background-color: #f3f3f3; }
