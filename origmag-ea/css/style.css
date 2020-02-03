@@ -672,17 +672,17 @@ Styling for the Real News Campaign Page
   margin-top: 20px; }
 
 .ads_top.ad-container img,
-.eai-ad-container.eai-ad-across img {
+.eai-ad-container.eai-ad-across broadstreet-zone {
   -webkit-box-shadow: 5px 5px 15px 0px gray;
   -moz-box-shadow: 5px 5px 15px 0px gray;
   box-shadow: 5px 5px 15px 0px grey; }
 
-.eai-ad-container.eai-ad-right img {
+.eai-ad-container.eai-ad-right broadstreet-zone {
   -webkit-box-shadow: 5px 5px 15px 0px gray;
   -moz-box-shadow: 5px 5px 15px 0px gray;
   box-shadow: 5px 5px 15px 0px grey; }
 
-.eai-ad-container.eai-ad-left img {
+.eai-ad-container.eai-ad-left broadstreet-zone {
   -webkit-box-shadow: -5px 5px 15px 0px gray;
   -moz-box-shadow: -5px 5px 15px 0px gray;
   box-shadow: -5px 5px 15px 0px grey; }
