@@ -244,7 +244,7 @@ if (!class_exists('eacat_sports')) {
 								echo '<h3 class="prl-article-title">'.get_the_title().'</h3>';
 								echo apply_filters('the_content',get_the_content());
 							echo '</article>';
-							echo '<a class="scores-more-link" href="'.get_category_link( $scores_category ).'">Past Scores</a>';
+							//echo '<a class="scores-more-link" href="'.get_category_link( $scores_category ).'">Past Scores</a>';
 						echo '</div>';
 					endwhile;
 					$endRow++; $p++;

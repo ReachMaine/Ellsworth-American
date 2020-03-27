@@ -14,7 +14,7 @@ get_header();?>
   //$stickit_cat = 2;
   // $stickit_tag = 10;
   // ea
-  $cats = array(374 /* news*/, 896 /* life style */, 1404/* sports */); // news, lifestyle, sports
+$cats = array(374 /* news*/, 896 /* life style */, 1404/* sports */, 6695 /* workout of the day */); // news, lifestyle, sports
   $stickit_cat = 374;
   $stickit_tag = 981;
   //testing
