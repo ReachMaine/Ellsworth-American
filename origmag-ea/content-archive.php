@@ -59,7 +59,7 @@
 	<?php if ($i == $posts_first_half) {
 		//echo "<p>MIDDLE-ish.</p>";
 		 if(isset($prl_data['banner_before_single_title']) && $prl_data['banner_before_single_title']!='') {
-		 	echo '<div class="eai-ad-container eai-ad-across eai-ad-incontent">'.do_shortcode(stripslashes($prl_data['banner_before_single_title'])).'</div>';
+		 	echo '<div class="eai-ad-container eai-ad-incontent">'.do_shortcode(stripslashes($prl_data['banner_before_single_title'])).'</div>';
 		}
 	}
  	endwhile; ?>
