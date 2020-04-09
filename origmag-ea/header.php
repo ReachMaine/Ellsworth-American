@@ -37,7 +37,8 @@ global $theme_url, $prl_data; ?>
 	<link rel="shortcut icon" href="<?php echo trim($prl_data['site_fav']);?>">
 	<?php } ?>
 
-<link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700,700i" rel="stylesheet">
+<?php/* link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700,700i" rel="stylesheet"> */ ?>
+<link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Vollkorn:400,700&display=swap" rel="stylesheet">
 <script data-cfasync="false" type="text/javascript" src="//cdn.broadstreetads.com/init.js"></script>
 <?php /*
 	if (!is_singular('post') ) { 	?>

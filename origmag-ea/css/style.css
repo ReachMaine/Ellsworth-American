@@ -774,7 +774,8 @@ article .eaihome-post-cat {
   padding: 5px 7px; }
   article .eaihome-post-cat a {
     color: #333;
-    letter-spacing: 1px; }
+    letter-spacing: 1px;
+    font-family: 'Archivo Narrow', sans-serif; }
 article .eaihome-img {
   width: 100%; }
 
