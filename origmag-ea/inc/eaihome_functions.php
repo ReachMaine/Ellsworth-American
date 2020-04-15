@@ -3,6 +3,16 @@
 if ( function_exists('register_sidebar') ){
 		// topbar
 		register_sidebar(array(
+      'name' => 'EAIhome_topleader',
+      'id' => 'eaihome_topleader',
+      'description' => 'Top Leaderboard ad for EA HOME (full width)',
+      'before_widget' => '<div id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+    ));
+
+		register_sidebar(array(
 			'name' => 'EAIhome_side1',
 			'id' => 'eaihome_side1',
 			'description' => 'First sidebar on EA HOME (right)',

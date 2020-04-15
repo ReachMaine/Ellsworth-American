@@ -27,9 +27,23 @@ $cats = array(374 /* news*/, 896 /* life style */, 1404/* sports */, 6695 /* wor
 <div class="prl-container">
 <?php
     //<div class="prl-grid prl-grid-divider">
+    /* orig....
     if ( isset($prl_data['banner_top_cat']) && $prl_data['banner_top_cat']!='') {
         echo '<div class="prl-grid prl-grid-divider">';
-        echo '<div id="archive-top-ad" class=prl-span-12> <div class="ads_top ad-container">'.stripslashes($prl_data['banner_top_cat']).'</div></div>';
+          echo '<div id="archive-top-ad" class=prl-span-12>';
+            echo '<div class="ads_top ad-container">';
+              echo stripslashes($prl_data['banner_top_cat']);
+            echo '</div>';
+          echo '</div>';
+        echo '</div>';
+    } */
+     if (is_active_sidebar('eaihome_topleader')) {
+        echo '<div class="prl-grid prl-grid-divider">';
+          echo '<div id="archive-top-ad" class="prl-span-12">';
+            echo '<div class="ads_top ad-container">';
+              dynamic_sidebar( 'eaihome_topleader' );
+            echo '</div>';
+          echo '</div>';
         echo '</div>';
     }
 
