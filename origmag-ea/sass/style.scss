@@ -523,7 +523,7 @@ p {
 }
 #nav.prl-navbar #sf-menu { // main menu
 	li.ea-menu-button { // styling the subscribe button on main menu.
-		background-color:  #7fda9a;
+		background-color:  $subscribe-hilite;
 		a {
 			padding-left: 7px;
 			padding-right: 7px;
@@ -534,6 +534,16 @@ p {
 #topnav a {
 	font-family: "Roboto Condensed";
 	font-size: 14px;
+}
+
+/* mobile Menu */
+#nav-list {
+	li.ea-menu-button {
+		background-color: $subscribe-hilite;
+		a {
+			color: black;
+		}
+	}
 }
 
 .ccfic { //featured image caption size
