@@ -1,19 +1,7 @@
 <?php /*
 	Mods:
-		12Aug2014 - Move Masthead around, use image for youtube, add calendar for date.
-		9Sept2014 - take out search button & make saarch always show.
-		28Oct2014 - add data-cfasync="false" to broadscreet init js
-		22Dec2014 - move default og:image lower in script.
-		22Dec2014 - use home_url with params('', 'https') for search.
-		29Dec2014 - add login-link next to time
-		17Mar15 -zig - add meta name=thumbnail
-		3Aug15 zig - dont add broadstreet init for secure pages ,may not need this....
-		31jan16 - zig:  add technavia paywall login call (take out leaky)
-		29Aug16 - zig - move technavia script put to under body tag (from footer)
-		1sept 15 zig add google font Vollkorn
-		12Oct16 zig - remove https for search (for now)
-		13Sept17 zig - change technavia scripts.
-		6Nov17 zig - change reachdowneast.com to downeastmaine.com in link on date
+  4Dec2020 - removed ancient history
+	         - put technavia login back on homepage
 */
 global $theme_url, $prl_data; ?>
 <!DOCTYPE html>
@@ -75,7 +63,8 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 <?php if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) { gtm4wp_the_gtm_tag(); } ?>
 <?php /* 29Aug16 zig - put technavia script here....*/
  			/* 28Aug19 zig - but only if single post */
-			if ( is_singular('post') && !is_user_logged_in() ) { ?>
+			/* 4Dec20 zig - put back on */
+			if ( !is_user_logged_in() ) { ?>
 				<script data-cfasync="false" type="text/javascript" src="//ellsworthamerican-me-pw.newsmemory.com/?meter&amp;v=0"></script>
 			<?php } ?>
 <div id="topbar"><?php if ( is_active_sidebar( 'topbar') ) { 	dynamic_sidebar( 'topbar' );	}  ?></div>
@@ -124,7 +113,7 @@ $body_class = array('Boxed'=>'site-boxed', 'Wide'=>'site-wide');
 					<?php  } if($prl_data['header_time']!='Disable'){   ?>
 					<span class="prl-header-time"><a href="https://www.downeastmaine.com/calendar/events/today/"><i class="fa fa-calendar"></i><?php echo date('l');?> - <?php echo date('M d, Y');?></a></span>
 					<?php } ?>
-					<?php  if (is_singular('post')) {echo eai_technav_loginmenu(); }  ?>
+					<?php  echo eai_technav_loginmenu();   ?>
 				</div>
 				<div class="prl-header-social">
 					<?php if($prl_data['header_facebook']!=''){?><a href="<?php echo $prl_data['header_facebook'];?>" class="fa fa-facebook" title="Facebook" target="_blank"></a><?php }?>
