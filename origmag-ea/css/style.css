@@ -56,7 +56,9 @@ i.fa-linkedin-square {
 .eai-wtitle-blue .prl-block-title {
   background-color: #1055a3;
   color: white !important;
-  border-top: 0px; }
+  border-top: 0px;
+  padding-left: 5px;
+  padding-right: 5px; }
   .eai-wtitle-blue .widget-title a,
   .eai-wtitle-blue .prl-block-title a {
     color: white; }
