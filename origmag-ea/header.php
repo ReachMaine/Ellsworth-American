@@ -28,10 +28,10 @@ global $theme_url, $prl_data; ?>
 <?php/* link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700,700i" rel="stylesheet"> */ ?>
 <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Vollkorn:400,700&display=swap" rel="stylesheet">
 <script data-cfasync="false" type="text/javascript" src="//cdn.broadstreetads.com/init.js"></script>
-<?php /*
+<?php
 	if (!is_singular('post') ) { 	?>
 		<script data-cfasync="false" type="text/javascript" >var ta_cat = "not_post"; </script>
-	<?php } */  ?>
+	<?php }  ?>
 	<?php /* only add  paywall scripts on single posts  */
 	if ( is_singular('post') && !is_user_logged_in()  ) { ?>
    <script data-cfasync="false" type="text/javascript" src="//ellsworthamerican-me-pw.newsmemory.com/?meter&amp;service=onstop&amp;v=0"></script>
