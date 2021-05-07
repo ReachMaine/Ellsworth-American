@@ -198,7 +198,7 @@ class ea_calendar extends AQ_Block {
     		$calquery .= " p.post_content, p.post_excerpt ";
     		/* now for the tables & joins */
 			$calquery .= " FROM `ea_12_posts` p";
-			$calquery .= " JOIN `ea_12_postmeta` pm ON p.ID=pm.post_id and pm.meta_key = '_EventVenueID' ";
+			$calquery .= " LEFT JOIN `ea_12_postmeta` pm ON p.ID=pm.post_id and pm.meta_key = '_EventVenueID' ";
 			$calquery .= " LEFT JOIN `ea_12_posts` vp ON  pm.meta_value = vp.ID  and pm.meta_key= '_EventVenueID' ";
 			if ($cats) {
 				$calquery .= "  LEFT JOIN ea_12_term_relationships tr ON (p.ID = tr.object_id) ";
