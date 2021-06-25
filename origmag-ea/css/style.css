@@ -789,6 +789,31 @@ article .eaihome-img {
 	padding-left: 8%;
 	padding-right: 8%:
 } */
+#topbar .msm-coastal-menu {
+  background-color: #e4e4e4;
+  text-align: center; }
+  #topbar .msm-coastal-menu .widget_nav_menu {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    max-width: 1140px;
+    margin: auto; }
+    #topbar .msm-coastal-menu .widget_nav_menu .widgettitle {
+      text-align: left;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 18px;
+      display: inline-block;
+      margin-bottom: 0px; }
+    #topbar .msm-coastal-menu .widget_nav_menu .menu-msm-papers-container {
+      display: inline-flex; }
+      #topbar .msm-coastal-menu .widget_nav_menu .menu-msm-papers-container ul.menu {
+        display: flex;
+        list-style: none; }
+        #topbar .msm-coastal-menu .widget_nav_menu .menu-msm-papers-container ul.menu li {
+          padding: 0px 8px; }
+          #topbar .msm-coastal-menu .widget_nav_menu .menu-msm-papers-container ul.menu li a:hover {
+            text-decoration: underline; }
+
 #eai-home-house img {
   border: 1px solid #333333; }
 
