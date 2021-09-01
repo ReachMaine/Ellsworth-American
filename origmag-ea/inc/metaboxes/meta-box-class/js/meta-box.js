@@ -25,7 +25,8 @@ jQuery(document).ready(function($) {
 
 	// Upload WP 3.5
 	var my_original_editor = window.send_to_editor;
-	$('body').on("click", '.custom_media_upload',function() {
+  // zig change .live to .on
+	$('.custom_media_upload').on("click",function() {
 
 		var send_attachment_bkp = wp.media.editor.send.attachment;
 		var formfield = $(this).prev('input').attr('name');
