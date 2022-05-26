@@ -1203,6 +1203,13 @@ aside .widget .widget-title {
 strong:first-child {
   font-size: 15px; }
 
+.ea-YellowPages {
+  background-color: rgba(255, 255, 102, 0.67);
+  padding-top: 30px; }
+  .ea-YellowPages .ea-page-title {
+    text-align: center;
+    padding-top: 30px; }
+
 /* this should stay at bottom */
 /* ********** media ************ */
 /* All Mobile Sizes (devices and browser) */
@@ -1365,3 +1372,5 @@ strong:first-child {
   .yarpp-thumbnails-vertical {
     display: none; } }
 /* ** end print styling ***/
+
+/*# sourceMappingURL=style.css.map */

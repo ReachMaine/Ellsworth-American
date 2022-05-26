@@ -602,6 +602,15 @@ strong:first-child { //dateline in posts smaller
 	font-size: 15px;
 }
 
+// yellowpages page template
+.ea-YellowPages {
+	background-color: $yellow-page-bkg;
+	padding-top: 30px;
+	.ea-page-title {
+		text-align: center;
+		padding-top: 30px;
+	}
+}
 /* this should stay at bottom */
 @import "partials/media";
 @import "partials/print";
